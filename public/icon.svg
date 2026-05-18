@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Kambradu">
+  <rect width="512" height="512" rx="112" fill="#fbfaf6"/>
+  <path d="M261 96c-43 52-67 111-72 177-3 48 9 92 35 132" fill="none" stroke="#0d5a32" stroke-width="28" stroke-linecap="round"/>
+  <path d="M281 96c48 9 77 38 87 86-48 5-85-16-109-63 6-11 13-18 22-23Z" fill="#2f914f"/>
+  <path d="M177 166c-45 8-72 35-82 80 43 7 79-11 106-53-5-12-13-21-24-27Z" fill="#ee5f4c"/>
+  <path d="M300 266c50 11 82 42 96 91-48 9-89-10-119-57 5-14 13-25 23-34Z" fill="#d69600"/>
+</svg>

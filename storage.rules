@@ -1,0 +1,34 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function membershipPath(communityId) {
+      return /databases/(default)/documents/communities/$(communityId)/memberships/$(request.auth.uid);
+    }
+
+    function isSteward(communityId) {
+      return signedIn() &&
+        firestore.exists(membershipPath(communityId)) &&
+        firestore.get(membershipPath(communityId)).data.role in ["steward", "admin"];
+    }
+
+    function isSafeMediaUpload() {
+      return request.resource.size < 50 * 1024 * 1024 &&
+        request.resource.contentType.matches("(audio|video|image)/.*");
+    }
+
+    match /communities/{communityId}/recordings/{userId}/{fileName} {
+      allow read: if signedIn() && (request.auth.uid == userId || isSteward(communityId));
+      allow write: if signedIn() && request.auth.uid == userId && isSafeMediaUpload();
+      allow delete: if signedIn() && (request.auth.uid == userId || isSteward(communityId));
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

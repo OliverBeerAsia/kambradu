@@ -1,0 +1,142 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return signedIn() && request.auth.uid == userId;
+    }
+
+    function membershipPath(communityId) {
+      return /databases/$(database)/documents/communities/$(communityId)/memberships/$(request.auth.uid);
+    }
+
+    function isMember(communityId) {
+      return signedIn() && exists(membershipPath(communityId));
+    }
+
+    function isSteward(communityId) {
+      return isMember(communityId) &&
+        get(membershipPath(communityId)).data.role in ["steward", "admin"];
+    }
+
+    function isApprovedOpenContent() {
+      return resource.data.reviewStatus == "approved" && resource.data.access == "open";
+    }
+
+    function canReadCommunityContent(communityId) {
+      return isApprovedOpenContent() ||
+        (resource.data.reviewStatus == "approved" &&
+          resource.data.access == "community" &&
+          isMember(communityId)) ||
+        isSteward(communityId);
+    }
+
+    function validContributionShape() {
+      return request.resource.data.keys().hasAll([
+        "communityId",
+        "contentType",
+        "title",
+        "body",
+        "provenance",
+        "consent",
+        "access",
+        "attributionName",
+        "reviewStatus",
+        "submittedBy"
+      ]) &&
+      request.resource.data.communityId is string &&
+      request.resource.data.contentType in ["word", "phrase", "story", "note"] &&
+      request.resource.data.access in ["open", "community", "restricted"] &&
+      request.resource.data.reviewStatus in ["draft", "submitted"] &&
+      request.resource.data.submittedBy == request.auth.uid;
+    }
+
+    match /communities/{communityId} {
+      allow read: if true;
+      allow write: if isSteward(communityId);
+
+      match /memberships/{userId} {
+        allow read: if isOwner(userId) || isSteward(communityId);
+        allow write: if isSteward(communityId);
+      }
+
+      match /lessons/{lessonId} {
+        allow read: if canReadCommunityContent(communityId);
+        allow create, update, delete: if isSteward(communityId);
+      }
+    }
+
+    match /users/{userId} {
+      allow create: if isOwner(userId);
+      allow read, update, delete: if isOwner(userId);
+
+      match /journalEntries/{entryId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /personalLexicon/{entryId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /learningPlans/{planId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /savedWords/{savedId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      match /goals/{goalId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+
+    match /lexicalEntries/{entryId} {
+      allow read: if canReadCommunityContent(resource.data.communityId);
+      allow create, update, delete: if isSteward(request.resource.data.communityId);
+    }
+
+    match /stories/{storyId} {
+      allow read: if canReadCommunityContent(resource.data.communityId);
+      allow create, update, delete: if isSteward(request.resource.data.communityId);
+    }
+
+    match /recordings/{recordingId} {
+      allow read: if canReadCommunityContent(resource.data.communityId);
+      allow create: if signedIn() &&
+        request.resource.data.ownerId == request.auth.uid &&
+        request.resource.data.reviewStatus in ["draft", "submitted"];
+      allow update, delete: if isSteward(resource.data.communityId) || resource.data.ownerId == request.auth.uid;
+    }
+
+    match /contributions/{contributionId} {
+      allow create: if signedIn() && validContributionShape();
+      allow read: if signedIn() &&
+        (resource.data.submittedBy == request.auth.uid || isSteward(resource.data.communityId));
+      allow update: if signedIn() &&
+        (
+          (resource.data.submittedBy == request.auth.uid &&
+            request.resource.data.submittedBy == request.auth.uid &&
+            request.resource.data.reviewStatus in ["draft", "submitted"]) ||
+          isSteward(resource.data.communityId)
+        );
+      allow delete: if signedIn() &&
+        (resource.data.submittedBy == request.auth.uid || isSteward(resource.data.communityId));
+    }
+
+    match /consentProfiles/{profileId} {
+      allow create: if signedIn() && request.resource.data.ownerId == request.auth.uid;
+      allow read, update, delete: if signedIn() &&
+        (resource.data.ownerId == request.auth.uid || isSteward(resource.data.communityId));
+    }
+
+    match /exports/{exportId} {
+      allow read: if signedIn() && isSteward(resource.data.communityId);
+      allow create, update, delete: if signedIn() && isSteward(request.resource.data.communityId);
+    }
+  }
+}

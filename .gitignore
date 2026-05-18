@@ -1,0 +1,36 @@
+# dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+
+# local env and secrets
+.env
+.env.*
+!.env.example
+*.local
+service-account*.json
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# source/reference material not for the public repo
+*.pdf
+deep-research-report*.md
+raw/
+extracted/
+private/
+
+# test output
+test-results/
+playwright-report/
+coverage/
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/

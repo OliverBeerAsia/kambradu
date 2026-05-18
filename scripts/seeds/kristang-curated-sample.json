@@ -1,0 +1,82 @@
+{
+  "community": {
+    "id": "kristang-melaka",
+    "name": "Kristang / Melaka",
+    "languageName": "Kristang",
+    "region": "Melaka, Malaysia",
+    "defaultAccess": "community"
+  },
+  "lexicalEntries": [
+    {
+      "id": "loja",
+      "communityId": "kristang-melaka",
+      "headword": "loja",
+      "normalizedHeadword": "loja",
+      "englishGlosses": ["shop", "store"],
+      "partOfSpeech": "noun",
+      "pronunciation": "LO-zha",
+      "alternateSpellings": [],
+      "example": "Nha mae bai loja kompra sabang.",
+      "exampleTranslation": "My mother went to the shop to buy soap.",
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0"
+      },
+      "access": "open",
+      "reviewStatus": "approved",
+      "hasAudio": false,
+      "tags": ["place", "daily life"]
+    },
+    {
+      "id": "balcao",
+      "communityId": "kristang-melaka",
+      "headword": "balcao",
+      "normalizedHeadword": "balcao",
+      "englishGlosses": ["counter", "shop counter"],
+      "partOfSpeech": "noun",
+      "alternateSpellings": ["balkau"],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0"
+      },
+      "access": "open",
+      "reviewStatus": "approved",
+      "hasAudio": false,
+      "tags": ["shop", "objects"]
+    }
+  ],
+  "stories": [
+    {
+      "id": "shop-phrase",
+      "communityId": "kristang-melaka",
+      "title": "At the shop",
+      "summary": "A phrase card built around everyday buying and greeting language.",
+      "kind": "phrase",
+      "body": "Nha mae bai loja kompra sabang.",
+      "translation": "My mother went to the shop to buy soap.",
+      "contributor": "Kambradu seed set",
+      "access": "open",
+      "reviewStatus": "approved",
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0"
+      },
+      "tags": ["phrase", "daily life"]
+    }
+  ]
+}

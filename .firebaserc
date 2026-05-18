@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "kambradu"
+  },
+  "targets": {
+    "kambradu": {
+      "hosting": {
+        "kambradu": [
+          "kambradu"
+        ]
+      }
+    }
+  }
+}
