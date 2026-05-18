@@ -4,7 +4,10 @@ import type { FormEvent } from "react";
 import { CheckCircle2, Download, FileText, Plus, Send } from "lucide-react";
 import { useState } from "react";
 import { AccessPill } from "@/components/ui/AccessPill";
+import { LedgerStrip, WorkbenchHeader, cycleLedgerItems } from "@/components/ui/Workbench";
 import { starterBuilderEntries } from "@/data/kristang";
+import { markCycleRevised } from "@/lib/learning-cycles";
+import { useLearningCycles } from "@/lib/hooks/use-learning-cycles";
 import { useLocalStorageState } from "@/lib/hooks/use-local-storage-state";
 import type { AccessLevel, PersonalLexiconEntry } from "@/types/kambradu";
 
@@ -29,10 +32,11 @@ function createEntryId(headword: string) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 
-  return `personal-${slug || "entry"}-${Date.now()}`;
+  return `users/demo/personalLexicon/personal-${slug || "entry"}-${Date.now()}`;
 }
 
 export function LexiconBuilder() {
+  const { activeCycle, attachPersonalLexiconEntry, updateCycle } = useLearningCycles();
   const [entries, setEntries] = useLocalStorageState<PersonalLexiconEntry[]>(
     "kambradu-personal-lexicon-v1",
     starterBuilderEntries
@@ -68,8 +72,12 @@ export function LexiconBuilder() {
     };
 
     setEntries((current) => [nextEntry, ...current]);
+    attachPersonalLexiconEntry(nextEntry.id);
+    if (activeCycle.reviewStatus === "changes-requested") {
+      updateCycle(activeCycle.id, markCycleRevised);
+    }
     setDraft(initialDraft);
-    setMessage("Entry saved privately in this browser.");
+    setMessage("Entry saved privately and attached to the active cycle.");
   }
 
   function markReady(entryId: string) {
@@ -96,6 +104,13 @@ export function LexiconBuilder() {
   return (
     <section className="builder-workbench" aria-label="Personal lexicon builder">
       <form className="builder-form" onSubmit={addEntry}>
+        <WorkbenchHeader
+          title={`${activeCycle.title}: build privately`}
+          description="Personal entries can stay private or become the editable revision layer before steward approval."
+          cycle={activeCycle}
+        />
+        <LedgerStrip items={cycleLedgerItems(activeCycle)} />
+
         <div className="rail-title compact-title">
           <h2>Build your own mini-dictionary</h2>
           <Plus size={18} aria-hidden="true" />

@@ -21,4 +21,14 @@ Kambradu now uses the related HeadsUp and LevelHeads product system as its local
 - dense but readable dashboard surfaces rather than marketing-style page sections
 - Hegel, the HeadsUp owl, as the app mark, rail guide, and PWA icon
 
+## Current UX Rule
+
+The latest local wave intentionally reduces cognitive load for non-technical learners:
+
+- keep only five persistent tabs: `Today`, `Browse`, `Practice`, `Build`, `Review`
+- make each screen answer one question: what do I do here?
+- avoid explanatory paragraphs unless they prevent a consent, privacy, or review mistake
+- keep Hegel for privacy, consent, offline/local state, and steward-review guidance
+- prefer one primary action per screen over dashboard-style equal-weight panels
+
 The design should keep public browsing, learner tools, contributor flow, and steward review visually connected while making access, consent, source, and review state easy to scan.

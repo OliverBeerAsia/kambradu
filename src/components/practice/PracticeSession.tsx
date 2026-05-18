@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { BookOpen, CheckCircle2, ChevronRight, Eye, EyeOff, FileText, Mic, Play, ShieldCheck, Users, Volume2 } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AccessPill } from "@/components/ui/AccessPill";
+import { LedgerStrip, WorkbenchHeader, cycleLedgerItems } from "@/components/ui/Workbench";
 import { Waveform } from "@/components/ui/Waveform";
 import { practicePrompts } from "@/data/kristang";
+import { useLearningCycles } from "@/lib/hooks/use-learning-cycles";
 import { useLocalStorageState } from "@/lib/hooks/use-local-storage-state";
 import { formatReviewDate, scheduleNextPracticeReview } from "@/lib/practice-scheduler";
 import type { AccessLevel, PracticeReview, ReviewConfidence, SpeakerCheck } from "@/types/kambradu";
@@ -55,6 +57,7 @@ function statusForConsent(status: SpeakerCheckDraft["consentStatus"]): SpeakerCh
 }
 
 export function PracticeSession() {
+  const { activeCycle, attachPracticeReview, attachSpeakerCheck } = useLearningCycles();
   const [activePromptId, setActivePromptId] = useLocalStorageState("kambradu-practice-active-prompt-v1", practicePrompts[0]?.id ?? "");
   const [activeStep, setActiveStep] = useLocalStorageState<PracticeStep>("kambradu-practice-step-v1", "listen");
   const [reviews, setReviews] = useLocalStorageState<PracticeReview[]>("kambradu-practice-reviews-v1", initialReviews);
@@ -64,7 +67,11 @@ export function PracticeSession() {
   const [confidence, setConfidence] = useLocalStorageState<PracticeConfidence>("kambradu-practice-confidence-v1", "almost");
   const [showText, setShowText] = useState(false);
   const [message, setMessage] = useState("");
-  const activePrompt = practicePrompts.find((prompt) => prompt.id === activePromptId) ?? practicePrompts[0];
+  const activePrompts = useMemo(() => {
+    const cyclePrompts = practicePrompts.filter((prompt) => activeCycle.practicePromptIds.includes(prompt.id));
+    return cyclePrompts.length ? cyclePrompts : practicePrompts;
+  }, [activeCycle.practicePromptIds]);
+  const activePrompt = activePrompts.find((prompt) => prompt.id === activePromptId) ?? activePrompts[0] ?? practicePrompts[0];
   const reflection = reflections[activePrompt.id] ?? "";
   const previousReview = useMemo(
     () => [...reviews].reverse().find((review) => review.promptId === activePrompt.id),
@@ -73,6 +80,14 @@ export function PracticeSession() {
   const consentAccess = accessForConsent(speakerDraft.consentStatus);
   const readyForContribution = speakerDraft.consentStatus === "community-review" || speakerDraft.consentStatus === "publish-approved";
   const currentPromptChecks = speakerChecks.filter((check) => check.linkedEntryId === activePrompt.lexicalEntryId);
+
+  useEffect(() => {
+    if (!activePrompts.some((prompt) => prompt.id === activePromptId)) {
+      setActivePromptId(activePrompts[0]?.id ?? practicePrompts[0]?.id ?? "");
+      setActiveStep("listen");
+      setShowText(false);
+    }
+  }, [activePromptId, activePrompts, setActivePromptId, setActiveStep]);
 
   function updateReflection(value: string) {
     setReflections((current) => ({ ...current, [activePrompt.id]: value }));
@@ -85,7 +100,7 @@ export function PracticeSession() {
   function saveReview() {
     const schedule = scheduleNextPracticeReview(confidence, previousReview?.intervalDays ?? 0);
     const nextReview: PracticeReview = {
-      id: `practice-${activePrompt.id}-${Date.now()}`,
+      id: `users/demo/practiceReviews/practice-${activePrompt.id}-${Date.now()}`,
       userId: "demo",
       communityId: activePrompt.communityId,
       promptId: activePrompt.id,
@@ -98,6 +113,7 @@ export function PracticeSession() {
     };
 
     setReviews((current) => [nextReview, ...current]);
+    attachPracticeReview(nextReview.id);
     setActiveStep("done");
     setMessage(`Saved on this device. Next review: ${formatReviewDate(schedule.nextReviewAt)}.`);
   }
@@ -105,7 +121,7 @@ export function PracticeSession() {
   function saveSpeakerCheck() {
     const question = speakerDraft.question.trim() || activePrompt.speakerQuestion;
     const check: SpeakerCheck = {
-      id: `speaker-check-${activePrompt.id}-${Date.now()}`,
+      id: `users/demo/speakerChecks/speaker-check-${activePrompt.id}-${Date.now()}`,
       userId: "demo",
       communityId: activePrompt.communityId,
       linkedEntryId: activePrompt.lexicalEntryId,
@@ -119,6 +135,7 @@ export function PracticeSession() {
     };
 
     setSpeakerChecks((current) => [check, ...current]);
+    attachSpeakerCheck(check.id);
     setMessage(
       readyForContribution
         ? "Speaker check saved as review-ready. Prepare the contribution only after the speaker confirms consent."
@@ -129,13 +146,20 @@ export function PracticeSession() {
   return (
     <section className="practice-workbench" aria-label="Audio-first daily practice">
       <article className="practice-panel practice-main-panel">
+        <WorkbenchHeader
+          title={`${activeCycle.title}: practice`}
+          description="Prompts are filtered to the active learning cycle, so practice feeds the same local review packet."
+          cycle={activeCycle}
+        />
+        <LedgerStrip items={cycleLedgerItems(activeCycle)} />
+
         <div className="rail-title compact-title">
           <h2>Today&apos;s 10-minute practice</h2>
           <Volume2 size={18} aria-hidden="true" />
         </div>
 
         <div className="practice-prompt-switcher" aria-label="Practice prompts">
-          {practicePrompts.map((prompt) => (
+          {activePrompts.map((prompt) => (
             <button
               aria-pressed={activePrompt.id === prompt.id}
               className={activePrompt.id === prompt.id ? "active" : ""}

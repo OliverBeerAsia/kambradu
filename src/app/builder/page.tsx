@@ -7,11 +7,7 @@ export default function BuilderPage() {
     <AppShell activePath="/builder" authSlot={<UserMenu />}>
       <div className="route-page">
         <section className="route-heading">
-          <h1>Lexicon builder</h1>
-          <p>
-            Build a private mini-dictionary from family phrases, lessons, recipes, songs, and field notes before anything
-            moves into steward review.
-          </p>
+          <h1>Build</h1>
         </section>
         <LexiconBuilder />
       </div>

@@ -7,11 +7,7 @@ export default function PracticePage() {
     <AppShell activePath="/practice" authSlot={<UserMenu />}>
       <div className="route-page">
         <section className="route-heading">
-          <h1>Practice session</h1>
-          <p>
-            A private audio-first loop for hearing, recalling, using, and checking Kristang before anything moves into
-            public review.
-          </p>
+          <h1>Practice</h1>
         </section>
         <PracticeSession />
       </div>

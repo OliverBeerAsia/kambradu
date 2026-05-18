@@ -7,11 +7,7 @@ export default function LessonsPage() {
     <AppShell activePath="/lessons">
       <div className="route-page">
         <section className="route-heading">
-          <h1>Lessons and resources</h1>
-          <p>
-            Top-down language content stays lightweight: short word, phrase, story, and culture units that can feed review,
-            journals, recordings, and personal dictionaries.
-          </p>
+          <h1>Browse</h1>
         </section>
         <LessonCatalog lessons={lessonUnits} />
       </div>

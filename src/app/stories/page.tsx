@@ -9,7 +9,6 @@ export default function StoriesPage() {
       <div className="route-page">
         <section className="route-heading">
           <h1>Phrases and stories</h1>
-          <p>Approved public phrase cards and story seeds for Kristang learners.</p>
         </section>
 
         <section className="story-grid">

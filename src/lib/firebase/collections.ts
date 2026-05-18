@@ -7,7 +7,9 @@ export const collections = {
   recordings: "recordings",
   contributions: "contributions",
   consentProfiles: "consentProfiles",
-  exports: "exports"
+  exports: "exports",
+  practiceReviews: "practiceReviews",
+  speakerChecks: "speakerChecks"
 } as const;
 
 export function userJournalPath(userId: string) {
@@ -28,6 +30,14 @@ export function userPersonalLexiconPath(userId: string) {
 
 export function userLearningPlansPath(userId: string) {
   return `${collections.users}/${userId}/learningPlans`;
+}
+
+export function userPracticeReviewsPath(userId: string) {
+  return `${collections.users}/${userId}/${collections.practiceReviews}`;
+}
+
+export function userSpeakerChecksPath(userId: string) {
+  return `${collections.users}/${userId}/${collections.speakerChecks}`;
 }
 
 export function communityLessonsPath(communityId: string) {

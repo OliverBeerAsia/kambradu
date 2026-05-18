@@ -55,6 +55,41 @@ service cloud.firestore {
       request.resource.data.submittedBy == request.auth.uid;
     }
 
+    function validPracticeReviewShape(userId) {
+      return request.resource.data.keys().hasAll([
+        "userId",
+        "communityId",
+        "promptId",
+        "promptKind",
+        "confidence",
+        "reviewedAt",
+        "nextReviewAt",
+        "intervalDays",
+        "ease",
+        "reflection"
+      ]) &&
+      request.resource.data.userId == userId &&
+      request.resource.data.confidence in ["again", "almost", "steady"] &&
+      request.resource.data.intervalDays is int &&
+      request.resource.data.ease is number;
+    }
+
+    function validSpeakerCheckShape(userId) {
+      return request.resource.data.keys().hasAll([
+        "userId",
+        "communityId",
+        "question",
+        "speakerDisplayName",
+        "consentStatus",
+        "access",
+        "status"
+      ]) &&
+      request.resource.data.userId == userId &&
+      request.resource.data.consentStatus in ["not-asked", "storage-only", "community-review", "publish-approved"] &&
+      request.resource.data.access in ["open", "community", "restricted"] &&
+      request.resource.data.status in ["private-draft", "ready-for-review", "submitted"];
+    }
+
     match /communities/{communityId} {
       allow read: if true;
       allow write: if isSteward(communityId);
@@ -84,6 +119,16 @@ service cloud.firestore {
 
       match /learningPlans/{planId} {
         allow read, write: if isOwner(userId);
+      }
+
+      match /practiceReviews/{reviewId} {
+        allow read, delete: if isOwner(userId);
+        allow create, update: if isOwner(userId) && validPracticeReviewShape(userId);
+      }
+
+      match /speakerChecks/{checkId} {
+        allow read, delete: if isOwner(userId);
+        allow create, update: if isOwner(userId) && validSpeakerCheckShape(userId);
       }
 
       match /savedWords/{savedId} {

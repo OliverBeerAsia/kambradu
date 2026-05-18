@@ -1,6 +1,6 @@
 export type AccessLevel = "open" | "community" | "restricted";
 
-export type ReviewStatus = "draft" | "submitted" | "approved" | "rejected" | "archived";
+export type ReviewStatus = "draft" | "submitted" | "changes-requested" | "approved" | "rejected" | "archived";
 
 export type CommunityRole = "learner" | "contributor" | "steward" | "admin";
 
@@ -184,6 +184,51 @@ export type LearningTask = {
   minutes: number;
   detail: string;
   completed: boolean;
+};
+
+export type LearningCycleReviewStatus = "not-started" | "in-progress" | "submitted" | "changes-requested" | "approved";
+
+export type LearningCycleFeedback = {
+  id: string;
+  stewardName: string;
+  message: string;
+  createdAt: string;
+  resolvedAt?: string;
+};
+
+export type LearningCycleSubmission = {
+  contentType: ContentType;
+  title: string;
+  body: string;
+  englishGloss?: string;
+  provenance: string;
+  consent: string;
+  access: AccessLevel;
+  attributionName: string;
+  submittedAt: string;
+  revisedAt?: string;
+};
+
+export type LearningCycle = {
+  id: string;
+  userId: string;
+  communityId: string;
+  title: string;
+  shortTitle: string;
+  lessonId: string;
+  practicePromptIds: string[];
+  practiceReviewIds: string[];
+  journalEntryIds: string[];
+  personalLexiconEntryIds: string[];
+  speakerCheckIds: string[];
+  contributionId?: string;
+  reviewStatus: LearningCycleReviewStatus;
+  feedback: LearningCycleFeedback[];
+  submission?: LearningCycleSubmission;
+  publicEntryIds: string[];
+  focus: string[];
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type ReviewConfidence = "new" | "again" | "almost" | "steady";

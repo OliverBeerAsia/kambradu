@@ -1,9 +1,12 @@
 "use client";
 
-import { BookOpen, FileText, Languages, Mic, Plus, Users } from "lucide-react";
+import { BookOpen, CheckCircle2, FileText, Languages, Mic, Plus, Users } from "lucide-react";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { AccessPill } from "@/components/ui/AccessPill";
+import { LedgerStrip, RouteToolbar, WorkbenchHeader, cycleLedgerItems } from "@/components/ui/Workbench";
+import { cycleReviewLabels } from "@/lib/learning-cycles";
+import { useLearningCycles } from "@/lib/hooks/use-learning-cycles";
 import type { LessonUnit } from "@/types/kambradu";
 
 const filters = ["all", "word", "phrase", "story", "culture"] as const;
@@ -18,6 +21,7 @@ const kindIcons = {
 
 export function LessonCatalog({ lessons }: { lessons: LessonUnit[] }) {
   const [filter, setFilter] = useState<Filter>("all");
+  const { activeCycle, findCycleForLesson, startOrResumeLesson } = useLearningCycles();
   const filteredLessons = useMemo(
     () => (filter === "all" ? lessons : lessons.filter((lesson) => lesson.kind === filter)),
     [filter, lessons]
@@ -25,27 +29,38 @@ export function LessonCatalog({ lessons }: { lessons: LessonUnit[] }) {
 
   return (
     <section className="lesson-workbench" aria-label="Lessons and resources">
-      <div className="lesson-filter" role="tablist" aria-label="Lesson filters">
-        {filters.map((item) => (
-          <button
-            aria-selected={filter === item}
-            className={filter === item ? "active" : ""}
-            key={item}
-            onClick={() => setFilter(item)}
-            role="tab"
-            type="button"
-          >
-            {item === "all" ? "All" : item}
-          </button>
-        ))}
-      </div>
+      <WorkbenchHeader
+        title="Cycle-ready lessons"
+        description="Each lesson can become a local learning cycle with practice, private artifacts, speaker check, contribution, and steward review."
+        cycle={activeCycle}
+      />
+      <LedgerStrip items={cycleLedgerItems(activeCycle)} />
+
+      <RouteToolbar label="Lesson filters">
+        <div className="lesson-filter" role="tablist" aria-label="Lesson filters">
+          {filters.map((item) => (
+            <button
+              aria-selected={filter === item}
+              className={filter === item ? "active" : ""}
+              key={item}
+              onClick={() => setFilter(item)}
+              role="tab"
+              type="button"
+            >
+              {item === "all" ? "All" : item}
+            </button>
+          ))}
+        </div>
+      </RouteToolbar>
 
       <div className="lesson-grid">
         {filteredLessons.map((lesson) => {
           const Icon = kindIcons[lesson.kind];
+          const cycle = findCycleForLesson(lesson.id);
+          const isActive = activeCycle.lessonId === lesson.id;
 
           return (
-            <article className="lesson-card" key={lesson.id}>
+            <article className={`lesson-card ${isActive ? "active-cycle-card" : ""}`} key={lesson.id}>
               <span className="lesson-icon">
                 <Icon size={25} aria-hidden="true" />
               </span>
@@ -67,11 +82,15 @@ export function LessonCatalog({ lessons }: { lessons: LessonUnit[] }) {
               <small>
                 Source: {lesson.source.label}. {lesson.source.license}
               </small>
+              <div className="entry-status-row">
+                <span>{cycle ? cycleReviewLabels[cycle.reviewStatus] : "No cycle"}</span>
+                {isActive ? <span>Active cycle</span> : null}
+              </div>
               <div className="lesson-card-actions">
-                <Link href="/practice" prefetch={false}>
-                  <BookOpen size={16} aria-hidden="true" />
-                  Start practice
-                </Link>
+                <button type="button" onClick={() => startOrResumeLesson(lesson.id)}>
+                  <CheckCircle2 size={16} aria-hidden="true" />
+                  {cycle ? "Resume cycle" : "Start cycle"}
+                </button>
                 <Link href="/builder" prefetch={false}>
                   <Plus size={16} aria-hidden="true" />
                   Save words

@@ -6,7 +6,9 @@
 - `npm run type-check`
 - `npm run build`
 - `npm run test:smoke -- --project=chromium`
-- Manual mobile viewport check for `/`, `/lexicon`, `/lessons`, `/learn`, `/builder`, `/contribute`, and `/steward`
+- `npm run test:smoke -- --project=mobile`
+- Manual desktop and mobile viewport check for `/`, `/lexicon`, `/lessons`, `/learn`, `/practice`, `/builder`, `/contribute`, and `/steward`
+- Confirm the interface still follows the five-zone IA: `Today`, `Browse`, `Practice`, `Build`, `Review`
 
 ## Firebase
 
@@ -15,6 +17,7 @@
 - Enable Firestore and Storage.
 - Deploy Firestore and Storage rules.
 - Run emulators for rules validation.
+- Install Firebase CLI locally before running `npm run test:rules`.
 - Seed only curated JSON with attribution and review/access fields.
 
 ## Hosting and Domain
@@ -28,7 +31,6 @@
 ## GitHub
 
 - Confirm `.gitignore` excludes PDFs, raw extracts, build output, env files, service accounts, and node modules.
-- Initialize Git.
 - Commit code and docs.
 - Create public repo `OliverBeerAsia/kambradu`.
 - Push `main`.

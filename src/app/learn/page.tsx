@@ -7,11 +7,7 @@ export default function LearnPage() {
     <AppShell activePath="/learn" authSlot={<UserMenu />}>
       <div className="route-page">
         <section className="route-heading">
-          <h1>Learning plan</h1>
-          <p>
-            Turn the original multi-track language-learning idea into small daily loops: listen, review, journal, record,
-            and connect words to culture.
-          </p>
+          <h1>Cycle</h1>
         </section>
         <LearningPlan />
       </div>

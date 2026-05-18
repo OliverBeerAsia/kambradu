@@ -11,20 +11,27 @@ Both files remain excluded by `.gitignore`.
 
 ## Implemented Local Features
 
-- `/lessons`: public top-down lesson/resource catalog for word, phrase, story, and culture units.
-- `/practice`: authenticated audio-first daily practice loop with hidden text reveal, recall confidence, private use note, local spaced-review scheduling, and restricted speaker checks before contribution.
-- `/learn`: authenticated multi-track practice plan for listening, review, journaling, recording, and culture notes.
-- `/builder`: authenticated personal mini-dictionary for learner-owned entries, access intent, source notes, review-ready export preview, and submission handoff.
-- Existing `/journal`, `/saved`, `/contribute`, and `/steward` routes now sit inside the same roadmap-derived learner/contributor/steward loop.
+- The shell now uses five plain operating zones: `Today`, `Browse`, `Practice`, `Build`, and `Review`.
+- `/`: a simplified learner home with one primary next action, three main routes, saved words, and review state.
+- `/lessons`: the Browse surface for cycle-ready lesson/resource units.
+- `/learn`: active local cycle status, next action, feedback, and progress.
+- `/practice`: cycle-filtered audio-first practice with hidden text reveal, recall confidence, private use note, local spaced-review scheduling, and restricted speaker checks before contribution.
+- `/journal` and `/builder`: private note and personal mini-dictionary surfaces that attach artifacts to the active local cycle.
+- `/contribute`: builds a local submission packet from active cycle data.
+- `/steward`: local review bench for requesting changes, recording revisions, approving, and exposing approved local entries in `/lexicon`.
+
+The current local proof is deliberately hybrid: localStorage-backed workflows with Firestore-shaped IDs, not full emulator persistence yet.
 
 ## Next Backend Step
 
-Wire `/learn` and `/builder` to Firestore collections after Firebase Auth is configured:
+Wire the local cycle workflow to Firestore collections after Firebase Auth and emulator tooling are configured:
 
 - `users/{userId}/learningPlans/{planId}`
 - `users/{userId}/practiceReviews/{reviewId}`
 - `users/{userId}/speakerChecks/{checkId}`
 - `users/{userId}/personalLexicon/{entryId}`
+- `users/{userId}/journalEntries/{entryId}`
+- `contributions/{contributionId}`
 - `communities/{communityId}/lessons/{lessonId}`
 
 Personal lexicon entries should remain private until a user explicitly submits them through the contribution workflow.

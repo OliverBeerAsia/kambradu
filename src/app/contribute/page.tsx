@@ -7,11 +7,7 @@ export default function ContributePage() {
     <AppShell activePath="/contribute" authSlot={<UserMenu />}>
       <div className="route-page narrow-page">
         <section className="route-heading">
-          <h1>Record and submit</h1>
-          <p>
-            Every word, phrase, story, and note needs provenance, consent, access level, and steward approval before it
-            appears publicly.
-          </p>
+          <h1>Submit</h1>
         </section>
         <ContributionForm />
       </div>

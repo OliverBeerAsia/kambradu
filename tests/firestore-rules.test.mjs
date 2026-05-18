@@ -113,3 +113,66 @@ test("only stewards can approve submitted contributions", async () => {
   const approved = await getDoc(doc(stewardDb, "contributions/pending"));
   assert.equal(approved.data()?.reviewStatus, "approved");
 });
+
+test("practice reviews are private to the learner and require scheduler fields", async () => {
+  const learnerDb = testEnv.authenticatedContext("learner").firestore();
+  const otherDb = testEnv.authenticatedContext("other").firestore();
+  const reviewRef = doc(learnerDb, "users/learner/practiceReviews/listen-loja");
+
+  await assertSucceeds(
+    setDoc(reviewRef, {
+      userId: "learner",
+      communityId: "kristang-melaka",
+      promptId: "listen-loja",
+      promptKind: "listen-recall",
+      confidence: "almost",
+      reviewedAt: "2026-05-18T00:00:00.000Z",
+      nextReviewAt: "2026-05-20T00:00:00.000Z",
+      intervalDays: 2,
+      ease: 2,
+      reflection: "Need more listening before text."
+    })
+  );
+  await assertFails(getDoc(doc(otherDb, "users/learner/practiceReviews/listen-loja")));
+  await assertFails(
+    setDoc(doc(learnerDb, "users/learner/practiceReviews/bad-review"), {
+      userId: "learner",
+      communityId: "kristang-melaka",
+      promptId: "listen-loja",
+      confidence: "almost"
+    })
+  );
+});
+
+test("speaker checks stay owner-private with explicit consent state", async () => {
+  const learnerDb = testEnv.authenticatedContext("learner").firestore();
+  const stewardDb = testEnv.authenticatedContext("steward").firestore();
+  const checkRef = doc(learnerDb, "users/learner/speakerChecks/shop-check");
+
+  await assertSucceeds(
+    setDoc(checkRef, {
+      userId: "learner",
+      communityId: "kristang-melaka",
+      linkedEntryId: "loja",
+      question: "Can you confirm the family pronunciation?",
+      speakerDisplayName: "Private speaker",
+      relationship: "family",
+      consentStatus: "community-review",
+      access: "community",
+      status: "ready-for-review",
+      createdAt: "2026-05-18T00:00:00.000Z"
+    })
+  );
+  await assertFails(getDoc(doc(stewardDb, "users/learner/speakerChecks/shop-check")));
+  await assertFails(
+    setDoc(doc(learnerDb, "users/learner/speakerChecks/bad-check"), {
+      userId: "learner",
+      communityId: "kristang-melaka",
+      question: "Can this be published?",
+      speakerDisplayName: "Private speaker",
+      consentStatus: "unknown",
+      access: "community",
+      status: "ready-for-review"
+    })
+  );
+});

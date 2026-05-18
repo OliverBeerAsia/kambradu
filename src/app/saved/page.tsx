@@ -10,7 +10,6 @@ export default function SavedPage() {
       <div className="route-page">
         <section className="route-heading">
           <h1>Saved words</h1>
-          <p>Review state is learner-private. Public dictionary entries remain source-attributed separately.</p>
         </section>
 
         <section className="saved-word-grid">

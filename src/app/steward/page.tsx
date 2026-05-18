@@ -7,8 +7,7 @@ export default function StewardPage() {
     <AppShell activePath="/steward" authSlot={<UserMenu role="Steward" />}>
       <div className="route-page">
         <section className="route-heading">
-          <h1>Steward review</h1>
-          <p>Approve, reject, set access, and prepare source-attributed exports for reviewed Kristang content.</p>
+          <h1>Review</h1>
         </section>
         <ReviewQueue />
       </div>

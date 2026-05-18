@@ -1,7 +1,10 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Mic, Square, Upload } from "lucide-react";
+import { AccessState, LedgerStrip, RecordRow, WorkbenchHeader, cycleLedgerItems } from "@/components/ui/Workbench";
+import { submitCycle } from "@/lib/learning-cycles";
+import { useLearningCycles } from "@/lib/hooks/use-learning-cycles";
 import { useLocalStorageState } from "@/lib/hooks/use-local-storage-state";
 import type { AccessLevel, ContentType, ContributionDraft } from "@/types/kambradu";
 
@@ -19,10 +22,19 @@ const initialDraft: ContributionDraft = {
 };
 
 export function ContributionForm() {
+  const { activeCycle, activeContributionDraft, updateCycle } = useLearningCycles();
   const [draft, setDraft] = useLocalStorageState<ContributionDraft>("kambradu-contribution-draft-v1", initialDraft);
+  const [hydratedCycleId, setHydratedCycleId] = useState("");
   const [recordingState, setRecordingState] = useState<"idle" | "recording" | "ready">("idle");
   const [message, setMessage] = useState("");
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+
+  useEffect(() => {
+    if (hydratedCycleId !== activeCycle.id) {
+      setDraft(activeContributionDraft);
+      setHydratedCycleId(activeCycle.id);
+    }
+  }, [activeContributionDraft, activeCycle.id, hydratedCycleId, setDraft]);
 
   function update<K extends keyof ContributionDraft>(key: K, value: ContributionDraft[K]) {
     setDraft((current) => ({ ...current, [key]: value }));
@@ -60,12 +72,41 @@ export function ContributionForm() {
       return;
     }
 
-    setDraft({ ...draft, reviewStatus: "submitted" });
-    setMessage("Draft is queued locally as submitted. Firestore write is enabled when Firebase env vars are configured.");
+    const submittedDraft: ContributionDraft = {
+      ...draft,
+      id: draft.id ?? `contributions/${draft.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-${Date.now()}`,
+      reviewStatus: "submitted",
+      submittedBy: "demo",
+      updatedAt: new Date().toISOString()
+    };
+
+    setDraft(submittedDraft);
+    updateCycle(activeCycle.id, (cycle) => submitCycle(cycle, submittedDraft));
+    setMessage("Draft is queued locally as submitted and attached to the active learning cycle.");
   }
 
   return (
     <form className="contribution-form" onSubmit={submitForReview}>
+      <WorkbenchHeader
+        title={`${activeCycle.title}: submission packet`}
+        description="The packet is built from the active cycle: lesson, practice, private notes, builder entries, speaker checks, and consent."
+        cycle={activeCycle}
+      />
+      <LedgerStrip items={cycleLedgerItems(activeCycle)} />
+
+      <div className="packet-summary">
+        <AccessState
+          state={activeCycle.reviewStatus === "approved" ? "approved" : activeCycle.contributionId ? "review" : "local"}
+          label={activeCycle.contributionId ? "Review packet created" : "Local draft packet"}
+          detail={activeCycle.contributionId ?? "No Firestore write until Firebase is configured."}
+        />
+        <RecordRow
+          title="Cycle data included"
+          detail={`${activeCycle.practiceReviewIds.length} practice reviews, ${activeCycle.journalEntryIds.length} notes, ${activeCycle.personalLexiconEntryIds.length} builder entries, ${activeCycle.speakerCheckIds.length} speaker checks.`}
+          status={activeCycle.reviewStatus}
+        />
+      </div>
+
       <div className="form-grid">
         <label>
           Content type

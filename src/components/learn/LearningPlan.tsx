@@ -2,7 +2,10 @@
 
 import Link from "next/link";
 import { BookOpen, CalendarDays, CheckCircle2, ChevronRight, FileText, Mic, RotateCcw, Volume2 } from "lucide-react";
+import { LedgerStrip, RecordRow, RouteToolbar, WorkbenchHeader, cycleLedgerItems } from "@/components/ui/Workbench";
 import { starterLearningTasks } from "@/data/kristang";
+import { cycleReviewLabels, getNextCycleAction } from "@/lib/learning-cycles";
+import { useLearningCycles } from "@/lib/hooks/use-learning-cycles";
 import { useLocalStorageState } from "@/lib/hooks/use-local-storage-state";
 import type { LearningTask } from "@/types/kambradu";
 
@@ -15,12 +18,15 @@ const trackMeta = {
 } satisfies Record<LearningTask["track"], { label: string; icon: typeof Volume2; action: string; href: string }>;
 
 export function LearningPlan() {
+  const { activeCycle, cycles, setActiveCycle } = useLearningCycles();
   const [tasks, setTasks] = useLocalStorageState<LearningTask[]>("kambradu-learning-plan-v1", starterLearningTasks);
   const [reminderCadence, setReminderCadence] = useLocalStorageState("kambradu-reminder-cadence-v1", "Weekday mornings");
   const completedCount = tasks.filter((task) => task.completed).length;
   const totalMinutes = tasks.reduce((sum, task) => sum + task.minutes, 0);
   const completedMinutes = tasks.filter((task) => task.completed).reduce((sum, task) => sum + task.minutes, 0);
   const progress = Math.round((completedCount / tasks.length) * 100);
+  const nextAction = getNextCycleAction(activeCycle);
+  const latestFeedback = activeCycle.feedback[0];
 
   function toggleTask(taskId: string) {
     setTasks((current) => current.map((task) => (task.id === taskId ? { ...task, completed: !task.completed } : task)));
@@ -33,6 +39,57 @@ export function LearningPlan() {
   return (
     <section className="learning-workbench" aria-label="Learning support">
       <article className="learning-plan-panel">
+        <WorkbenchHeader
+          title="Active learning cycle"
+          description="Follow one full local loop from lesson to steward decision before deeper Firebase persistence."
+          cycle={activeCycle}
+          action={
+            <Link className="primary-action inline-action" href={nextAction.href} prefetch={false}>
+              {nextAction.label}
+              <ChevronRight size={17} aria-hidden="true" />
+            </Link>
+          }
+        />
+        <LedgerStrip items={cycleLedgerItems(activeCycle)} />
+
+        <RouteToolbar label="Learning cycles">
+          <div className="cycle-switcher" role="tablist" aria-label="Learning cycles">
+            {cycles.map((cycle) => (
+              <button
+                aria-selected={activeCycle.id === cycle.id}
+                className={activeCycle.id === cycle.id ? "active" : ""}
+                key={cycle.id}
+                onClick={() => setActiveCycle(cycle.id)}
+                role="tab"
+                type="button"
+              >
+                <strong>{cycle.shortTitle}</strong>
+                <small>{cycleReviewLabels[cycle.reviewStatus]}</small>
+              </button>
+            ))}
+          </div>
+        </RouteToolbar>
+
+        <div className="cycle-next-action">
+          <RecordRow
+            icon={<CalendarDays size={20} aria-hidden="true" />}
+            title={nextAction.label}
+            detail={nextAction.detail}
+            meta={`Lesson ID: ${activeCycle.lessonId}`}
+            href={nextAction.href}
+            status={cycleReviewLabels[activeCycle.reviewStatus]}
+          />
+          {latestFeedback ? (
+            <RecordRow
+              icon={<FileText size={20} aria-hidden="true" />}
+              title="Latest steward feedback"
+              detail={latestFeedback.message}
+              meta={latestFeedback.resolvedAt ? "Resolved in local revision" : "Open"}
+              status={latestFeedback.resolvedAt ? "Resolved" : "Open"}
+            />
+          ) : null}
+        </div>
+
         <div className="rail-title compact-title">
           <h2>Multi-track practice plan</h2>
           <CalendarDays size={18} aria-hidden="true" />

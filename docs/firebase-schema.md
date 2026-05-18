@@ -25,3 +25,9 @@
 Public content must include `communityId`, `access`, `reviewStatus`, and `source` or contribution attribution.
 
 Only `reviewStatus: "approved"` and `access: "open"` should be browseable without sign-in.
+
+## Safe Local Emulator Defaults
+
+Use `demo-kambradu` with `NEXT_PUBLIC_USE_FIREBASE_EMULATORS=true` for local work. The client treats `demo-*` project IDs as emulator-only and connects Auth, Firestore, and Storage independently as each SDK is initialized, so opening Auth first does not prevent Firestore or Storage from attaching later.
+
+Do not place source PDFs, private journals, uploaded recordings, consent profiles, service-account JSON, or emulator exports in Git.
