@@ -16,7 +16,7 @@ type ReviewDisplayItem = ContributionDraft & {
 };
 
 export function ReviewQueue() {
-  const { activeCycle, cycles, updateCycle } = useLearningCycles();
+  const { activeCycle, cycles, updateCycle, isHydrated } = useLearningCycles();
   const [items, setItems] = useState<ContributionDraft[]>(reviewQueueSeed);
   const cycleItems = useMemo<ReviewDisplayItem[]>(
     () =>
@@ -73,12 +73,16 @@ export function ReviewQueue() {
       updateCycle(cycleItem.cycleId, (cycle) =>
         status === "approved" ? approveCycle(cycle) : requestCycleChanges(cycle, feedbackNote)
       );
-      setMessage(status === "approved" ? "Cycle approved locally and exposed to public browse." : "Feedback sent to the learner cycle.");
+      setMessage(status === "approved" ? "Marked as locally checked. It has not been published." : "Feedback sent to the learner cycle.");
       return;
     }
 
     setItems((current) => current.map((item) => (item.id === id ? { ...item, reviewStatus: status } : item)));
-    setMessage(status === "approved" ? "Seed review item approved locally." : "Seed review item marked for changes.");
+    setMessage(status === "approved" ? "Marked as locally checked. It has not been published." : "Review item marked for changes.");
+  }
+
+  if (!isHydrated) {
+    return <section className="review-workbench"><p role="status">Preparing review items...</p></section>;
   }
 
   return (
@@ -86,7 +90,7 @@ export function ReviewQueue() {
       <div className="review-column">
         <WorkbenchHeader
           title="Steward review bench"
-          description="Local submissions can be approved, sent back for revision, and surfaced in public browse after approval."
+          description="Prototype drafts can be checked or returned for revision. Local checks do not publish community content."
           cycle={activeCycle}
         />
         <LedgerStrip items={cycleLedgerItems(activeCycle)} />
@@ -160,7 +164,7 @@ export function ReviewQueue() {
           <div className="review-actions">
             <button onClick={() => updateStatus(selectedItem.id, "approved")} type="button">
               <Check size={18} aria-hidden="true" />
-              Approve and publish
+              Mark locally checked
             </button>
             <button onClick={() => updateStatus(selectedItem.id, "changes-requested")} type="button">
               <X size={18} aria-hidden="true" />
@@ -172,7 +176,7 @@ export function ReviewQueue() {
             </button>
           </div>
 
-          {message ? <p className="form-message">{message}</p> : null}
+          {message ? <p className="form-message" role="status" aria-live="polite">{message}</p> : null}
         </article>
       ) : null}
     </section>

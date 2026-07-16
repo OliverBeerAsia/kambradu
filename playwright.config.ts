@@ -15,7 +15,11 @@ export default defineConfig({
     command: "npm run dev -- --hostname 127.0.0.1 --port 3217",
     url: "http://127.0.0.1:3217",
     reuseExistingServer: true,
-    timeout: 120_000
+    timeout: 120_000,
+    env: {
+      KAMBRADU_DEMO_AUTH_ENABLED: "true",
+      NEXT_PUBLIC_KAMBRADU_DEMO_AUTH_ENABLED: "true"
+    }
   },
   projects: [
     {

@@ -18,9 +18,9 @@ const trackMeta = {
 } satisfies Record<LearningTask["track"], { label: string; icon: typeof Volume2; action: string; href: string }>;
 
 export function LearningPlan() {
-  const { activeCycle, cycles, setActiveCycle } = useLearningCycles();
-  const [tasks, setTasks] = useLocalStorageState<LearningTask[]>("kambradu-learning-plan-v1", starterLearningTasks);
-  const [reminderCadence, setReminderCadence] = useLocalStorageState("kambradu-reminder-cadence-v1", "Weekday mornings");
+  const { activeCycle, cycles, setActiveCycle, isHydrated: cyclesReady } = useLearningCycles();
+  const [tasks, setTasks, tasksReady] = useLocalStorageState<LearningTask[]>("kambradu-learning-plan-v1", starterLearningTasks);
+  const [reminderCadence, setReminderCadence, reminderReady] = useLocalStorageState("kambradu-reminder-cadence-v1", "Weekday mornings");
   const completedCount = tasks.filter((task) => task.completed).length;
   const totalMinutes = tasks.reduce((sum, task) => sum + task.minutes, 0);
   const completedMinutes = tasks.filter((task) => task.completed).reduce((sum, task) => sum + task.minutes, 0);
@@ -34,6 +34,10 @@ export function LearningPlan() {
 
   function resetPlan() {
     setTasks(starterLearningTasks.map((task) => ({ ...task, completed: false })));
+  }
+
+  if (!cyclesReady || !tasksReady || !reminderReady) {
+    return <section className="learning-workbench" aria-label="Learning support"><p role="status">Preparing your learning plan...</p></section>;
   }
 
   return (

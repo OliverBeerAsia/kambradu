@@ -136,6 +136,7 @@ export type SavedWord = {
   reviewCount?: number;
   lapses?: number;
   hasAudio?: boolean;
+  savedAt?: string;
 };
 
 export type Goal = {
@@ -246,6 +247,7 @@ export type PracticePrompt = {
   example?: string;
   exampleTranslation?: string;
   hasAudio: boolean;
+  audioPath?: string;
   access: AccessLevel;
   source: Attribution;
   focus: string[];

@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { Mic, Square, Upload } from "lucide-react";
+import { useEffect, useState } from "react";
 import { AccessState, LedgerStrip, RecordRow, WorkbenchHeader, cycleLedgerItems } from "@/components/ui/Workbench";
 import { submitCycle } from "@/lib/learning-cycles";
 import { useLearningCycles } from "@/lib/hooks/use-learning-cycles";
 import { useLocalStorageState } from "@/lib/hooks/use-local-storage-state";
-import type { AccessLevel, ContentType, ContributionDraft } from "@/types/kambradu";
+import type { ContentType, ContributionDraft } from "@/types/kambradu";
 
 const initialDraft: ContributionDraft = {
   communityId: "kristang-melaka",
@@ -16,52 +15,26 @@ const initialDraft: ContributionDraft = {
   englishGloss: "",
   provenance: "",
   consent: "",
-  access: "community",
+  access: "restricted",
   attributionName: "",
   reviewStatus: "draft"
 };
 
 export function ContributionForm() {
-  const { activeCycle, activeContributionDraft, updateCycle } = useLearningCycles();
-  const [draft, setDraft] = useLocalStorageState<ContributionDraft>("kambradu-contribution-draft-v1", initialDraft);
+  const { activeCycle, activeContributionDraft, updateCycle, isHydrated: cyclesReady } = useLearningCycles();
+  const [draft, setDraft, draftReady] = useLocalStorageState<ContributionDraft>("kambradu-contribution-draft-v1", initialDraft);
   const [hydratedCycleId, setHydratedCycleId] = useState("");
-  const [recordingState, setRecordingState] = useState<"idle" | "recording" | "ready">("idle");
   const [message, setMessage] = useState("");
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
 
   useEffect(() => {
-    if (hydratedCycleId !== activeCycle.id) {
+    if (cyclesReady && draftReady && hydratedCycleId !== activeCycle.id) {
       setDraft(activeContributionDraft);
       setHydratedCycleId(activeCycle.id);
     }
-  }, [activeContributionDraft, activeCycle.id, hydratedCycleId, setDraft]);
+  }, [activeContributionDraft, activeCycle.id, cyclesReady, draftReady, hydratedCycleId, setDraft]);
 
   function update<K extends keyof ContributionDraft>(key: K, value: ContributionDraft[K]) {
     setDraft((current) => ({ ...current, [key]: value }));
-  }
-
-  async function toggleRecording() {
-    if (recordingState === "recording") {
-      mediaRecorderRef.current?.stop();
-      setRecordingState("ready");
-      return;
-    }
-
-    if (!navigator.mediaDevices?.getUserMedia) {
-      setMessage("This browser does not expose microphone recording in the current context.");
-      return;
-    }
-
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const recorder = new MediaRecorder(stream);
-      mediaRecorderRef.current = recorder;
-      recorder.start();
-      setRecordingState("recording");
-      setMessage("");
-    } catch {
-      setMessage("Microphone access was not granted.");
-    }
   }
 
   function submitForReview(event: React.FormEvent<HTMLFormElement>) {
@@ -82,7 +55,11 @@ export function ContributionForm() {
 
     setDraft(submittedDraft);
     updateCycle(activeCycle.id, (cycle) => submitCycle(cycle, submittedDraft));
-    setMessage("Draft is queued locally as submitted and attached to the active learning cycle.");
+    setMessage("Draft saved on this device for future review. It has not been published.");
+  }
+
+  if (!cyclesReady || !draftReady || hydratedCycleId !== activeCycle.id) {
+    return <form className="contribution-form"><p role="status">Preparing your private draft...</p></form>;
   }
 
   return (
@@ -97,8 +74,8 @@ export function ContributionForm() {
       <div className="packet-summary">
         <AccessState
           state={activeCycle.reviewStatus === "approved" ? "approved" : activeCycle.contributionId ? "review" : "local"}
-          label={activeCycle.contributionId ? "Review packet created" : "Local draft packet"}
-          detail={activeCycle.contributionId ?? "No Firestore write until Firebase is configured."}
+          label={activeCycle.contributionId ? "Draft prepared" : "Draft on this device"}
+          detail="This prototype does not send or publish contributions."
         />
         <RecordRow
           title="Cycle data included"
@@ -118,14 +95,7 @@ export function ContributionForm() {
           </select>
         </label>
 
-        <label>
-          Access level
-          <select value={draft.access} onChange={(event) => update("access", event.target.value as AccessLevel)}>
-            <option value="open">Open</option>
-            <option value="community">Community</option>
-            <option value="restricted">Restricted</option>
-          </select>
-        </label>
+        <p>This draft stays on this device.</p>
       </div>
 
       <label>
@@ -163,12 +133,12 @@ export function ContributionForm() {
       </label>
 
       <label>
-        Consent and attribution
+        Permission notes
         <textarea
           rows={3}
           value={draft.consent}
           onChange={(event) => update("consent", event.target.value)}
-          placeholder="Confirm permission to store, review, and publish at the chosen access level."
+          placeholder="Note what permission would still be needed before any review or sharing."
         />
       </label>
 
@@ -181,28 +151,11 @@ export function ContributionForm() {
         />
       </label>
 
-      <div className="recorder-box">
-        <button className={`record-button ${recordingState === "recording" ? "recording" : ""}`} onClick={toggleRecording} type="button">
-          {recordingState === "recording" ? <Square size={24} aria-hidden="true" /> : <Mic size={26} aria-hidden="true" />}
-        </button>
-        <span>
-          {recordingState === "idle"
-            ? "Record audio"
-            : recordingState === "recording"
-              ? "Recording now"
-              : "Audio ready for upload queue"}
-        </span>
-        <button type="button">
-          <Upload size={17} aria-hidden="true" />
-          Upload file
-        </button>
-      </div>
-
       <button className="primary-action" type="submit">
-        Submit for steward review
+        Keep draft for future review
       </button>
 
-      {message ? <p className="form-message">{message}</p> : null}
+      {message ? <p className="form-message" role="status" aria-live="polite">{message}</p> : null}
     </form>
   );
 }

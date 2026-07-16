@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-const protectedRoutes = ["/practice", "/learn", "/journal", "/builder", "/saved", "/contribute", "/steward"];
+const protectedRoutes = ["/contribute", "/steward"];
+const demoAuthEnabled = process.env.KAMBRADU_DEMO_AUTH_ENABLED === "true";
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
@@ -10,7 +11,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const hasDemoSession = request.cookies.get("kambradu_demo_user")?.value === "true";
+  const hasDemoSession = demoAuthEnabled && request.cookies.get("kambradu_demo_user")?.value === "true";
 
   if (hasDemoSession) {
     return NextResponse.next();

@@ -7,7 +7,8 @@ export default function LessonsPage() {
     <AppShell activePath="/lessons">
       <div className="route-page">
         <section className="route-heading">
-          <h1>Browse</h1>
+          <h1>Learn</h1>
+          <p>Choose a word to practise.</p>
         </section>
         <LessonCatalog lessons={lessonUnits} />
       </div>

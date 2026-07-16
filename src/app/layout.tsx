@@ -6,10 +6,10 @@ export const metadata: Metadata = {
     default: "Kambradu",
     template: "%s | Kambradu"
   },
-  description: "Kristang-first language preservation, learning, contribution, and steward review.",
+  description: "An independent prototype for learning Kristang and keeping personal language memories.",
   icons: {
-    icon: "/hegel.png",
-    apple: "/hegel.png"
+    icon: "/icon.svg",
+    apple: "/icon.svg"
   },
   manifest: "/manifest.webmanifest",
   appleWebApp: {
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#171717",
+  themeColor: "#1E1B18",
   width: "device-width",
   initialScale: 1
 };

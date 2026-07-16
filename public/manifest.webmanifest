@@ -1,19 +1,13 @@
 {
   "name": "Kambradu",
   "short_name": "Kambradu",
-  "description": "Kristang-first language preservation, learning, and steward review.",
+  "description": "An independent prototype for learning Kristang and keeping personal language memories.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#f5f4f2",
   "theme_color": "#171717",
   "icons": [
-    {
-      "src": "/hegel.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
     {
       "src": "/icon.svg",
       "sizes": "any",
@@ -23,14 +17,14 @@
   ],
   "shortcuts": [
     {
-      "name": "Kristang lexicon",
-      "short_name": "Lexicon",
-      "url": "/lexicon"
+      "name": "Learn Kristang",
+      "short_name": "Learn",
+      "url": "/lessons"
     },
     {
-      "name": "Submit material",
-      "short_name": "Contribute",
-      "url": "/contribute"
+      "name": "My memories",
+      "short_name": "Memories",
+      "url": "/saved"
     }
   ]
 }

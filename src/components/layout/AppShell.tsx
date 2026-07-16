@@ -3,65 +3,46 @@
 import Link from "next/link";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
-  BookOpen,
-  CheckCircle2,
+  BookHeart,
+  ChevronLeft,
   Headphones,
   Home,
   Library,
   LockKeyhole,
-  LogIn,
   Menu,
-  RadioTower,
   ShieldCheck,
 } from "lucide-react";
 import { BrandMark } from "@/components/ui/BrandMark";
 import { kristangCommunity } from "@/data/kristang";
 
 const navItems = [
-  { href: "/", label: "Today", icon: Home, group: "Today" },
-  { href: "/lessons", label: "Browse", icon: Library, group: "Browse" },
-  { href: "/practice", label: "Practice", icon: Headphones, group: "Practice" },
-  { href: "/builder", label: "Build", icon: BookOpen, group: "Build" },
-  { href: "/steward", label: "Review", icon: CheckCircle2, group: "Review" }
+  { href: "/", label: "Today", icon: Home, activePaths: ["/"] },
+  { href: "/lessons", label: "Learn", icon: Headphones, activePaths: ["/lessons", "/learn", "/practice"] },
+  { href: "/saved", label: "Memories", icon: BookHeart, activePaths: ["/saved", "/builder", "/journal", "/contribute"] },
+  { href: "/lexicon", label: "Explore", icon: Library, activePaths: ["/lexicon", "/stories"] }
 ];
 
-const protectedHrefs = new Set(["/practice", "/learn", "/journal", "/builder", "/saved", "/contribute", "/steward"]);
-
-const routeContexts: Record<string, { label: string; helper: string }> = {
-  "/": { label: "Today", helper: "Learner loop" },
-  "/learn": { label: "Today", helper: "Active cycle" },
-  "/lexicon": { label: "Browse", helper: "Approved entries" },
-  "/lessons": { label: "Browse", helper: "Lessons and resources" },
-  "/stories": { label: "Browse", helper: "Phrases and stories" },
-  "/practice": { label: "Practice", helper: "Audio-first cycle work" },
-  "/saved": { label: "Practice", helper: "Review queue" },
-  "/journal": { label: "Build", helper: "Private notes" },
-  "/builder": { label: "Build", helper: "Personal lexicon" },
-  "/contribute": { label: "Build", helper: "Draft and submit" },
-  "/steward": { label: "Review", helper: "Steward queue" },
-  "/about": { label: "Review", helper: "Policy and attribution" },
-  "/sign-in": { label: "Account", helper: "Local session" }
-};
-
-function routeContext(activePath: string) {
-  return routeContexts[activePath] ?? routeContexts["/"];
-}
+const restrictedHrefs = new Set(["/contribute", "/steward"]);
+const deviceLocalHrefs = ["/practice", "/learn", "/journal", "/builder", "/saved"];
 
 export function AppShell({
   children,
   activePath = "/",
   authSlot,
-  className = ""
+  className = "",
+  immersive = false
 }: {
   children: ReactNode;
   activePath?: string;
   authSlot?: ReactNode;
   className?: string;
+  immersive?: boolean;
 }) {
-  const context = routeContext(activePath);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  const isProtectedRoute = [...protectedHrefs].some((href) => activePath === href || activePath.startsWith(`${href}/`));
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLElement>(null);
+  const isDeviceLocalRoute = deviceLocalHrefs.some((href) => activePath === href || activePath.startsWith(`${href}/`));
 
   useEffect(() => {
     if (!drawerOpen) {
@@ -69,12 +50,27 @@ export function AppShell({
     }
 
     const previousOverflow = document.body.style.overflow;
+    const previouslyFocused = document.activeElement instanceof HTMLElement ? document.activeElement : menuButtonRef.current;
     document.body.style.overflow = "hidden";
     closeButtonRef.current?.focus();
 
     function closeOnEscape(event: KeyboardEvent) {
       if (event.key === "Escape") {
         setDrawerOpen(false);
+      }
+
+      if (event.key === "Tab" && drawerRef.current) {
+        const focusable = [...drawerRef.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')];
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first?.focus();
+        }
       }
     }
 
@@ -83,29 +79,25 @@ export function AppShell({
     return () => {
       window.removeEventListener("keydown", closeOnEscape);
       document.body.style.overflow = previousOverflow;
+      previouslyFocused?.focus();
     };
   }, [drawerOpen]);
 
   function renderNavigation(onNavigate?: () => void) {
-    let previousGroup = "";
-
     return (
-      <nav className="nav-list">
+      <nav className="nav-list" aria-label="Primary navigation">
         {navItems.map((item) => {
           const Icon = item.icon;
-          const isActive = activePath === item.href || (item.href !== "/" && activePath.startsWith(item.href));
-          const showGroup = item.group !== previousGroup;
-          previousGroup = item.group;
+          const isActive = item.activePaths.some((path) => activePath === path || (path !== "/" && activePath.startsWith(`${path}/`)));
 
           return (
             <span className="nav-cluster" key={item.href}>
-              {showGroup ? <span className="nav-group-label">{item.group}</span> : null}
               <Link
                 aria-current={isActive ? "page" : undefined}
                 className={`nav-button ${isActive ? "active" : ""}`}
                 href={item.href}
                 onClick={onNavigate}
-                prefetch={protectedHrefs.has(item.href) ? false : undefined}
+                prefetch={restrictedHrefs.has(item.href) ? false : undefined}
               >
                 <Icon size={21} strokeWidth={2.2} aria-hidden="true" />
                 <span>{item.label}</span>
@@ -118,11 +110,11 @@ export function AppShell({
   }
 
   return (
-    <main className={`app-shell ${drawerOpen ? "drawer-open" : ""} ${className}`}>
+    <div className={`app-shell ${drawerOpen ? "drawer-open" : ""} ${immersive ? "immersive-shell" : ""} ${className}`}>
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
-      <aside className="sidebar desktop-rail" aria-label="Primary navigation">
+      {!immersive ? <aside className="sidebar desktop-rail" aria-hidden={drawerOpen || undefined} inert={drawerOpen ? true : undefined} aria-label="Primary navigation">
         <Link className="brand" href="/" aria-label="Kambradu home">
           <BrandMark />
           <span>
@@ -132,20 +124,12 @@ export function AppShell({
 
         {renderNavigation()}
 
-        <div className="rail-status">
-          <img src="/hegel.png" alt="" width={34} height={34} aria-hidden="true" />
-          <span>
-            <strong>Hegel</strong>
-            <small>Local guide</small>
-          </span>
-          <RadioTower size={16} aria-hidden="true" />
-        </div>
-      </aside>
+      </aside> : null}
 
       {drawerOpen ? (
         <>
-          <button className="drawer-backdrop" aria-label="Close navigation drawer" onClick={() => setDrawerOpen(false)} type="button" />
-          <aside className="mobile-drawer" role="dialog" aria-label="Kambradu navigation" aria-modal="true">
+          <button className="drawer-backdrop" tabIndex={-1} aria-label="Close navigation drawer" onClick={() => setDrawerOpen(false)} type="button" />
+          <aside className="mobile-drawer" id="mobile-navigation" ref={drawerRef} role="dialog" aria-label="Kambradu navigation" aria-modal="true">
             <div className="drawer-heading">
               <Link className="brand" href="/" onClick={() => setDrawerOpen(false)} aria-label="Kambradu home">
                 <BrandMark />
@@ -160,69 +144,77 @@ export function AppShell({
 
             {renderNavigation(() => setDrawerOpen(false))}
 
-            <div className="drawer-state-grid">
-              <span>
-                <ShieldCheck size={17} aria-hidden="true" />
-                {isProtectedRoute ? "Protected learner route" : "Public browse route"}
-              </span>
-              <span>
-                <RadioTower size={17} aria-hidden="true" />
-                Local prototype
-              </span>
+            <p className="drawer-reassurance">
+              <ShieldCheck size={18} aria-hidden="true" />
+              Notes are stored in this browser profile. Other people using it may be able to see them.
+            </p>
+
+            <div className="drawer-secondary-links" aria-label="More Kambradu spaces">
+              <Link href="/about" onClick={() => setDrawerOpen(false)}>
+                About Kambradu
+              </Link>
             </div>
 
-            <div className="rail-status">
-              <img src="/hegel.png" alt="" width={34} height={34} aria-hidden="true" />
-              <span>
-                <strong>Hegel</strong>
-                <small>Consent before publication</small>
-              </span>
-              <RadioTower size={16} aria-hidden="true" />
-            </div>
           </aside>
         </>
       ) : null}
 
-      <section className="workspace" id="main-content" tabIndex={-1}>
+      <div className="workspace" aria-hidden={drawerOpen || undefined} inert={drawerOpen ? true : undefined}>
         <header className="topbar">
           <div className="topbar-left">
-            <button className="mobile-menu-button" type="button" onClick={() => setDrawerOpen(true)} aria-label="Open navigation drawer">
+            {immersive ? (
+              <Link className="lesson-exit" href="/">
+                <ChevronLeft size={20} aria-hidden="true" />
+                Today
+              </Link>
+            ) : <button
+              ref={menuButtonRef}
+              className="mobile-menu-button"
+              type="button"
+              onClick={() => setDrawerOpen(true)}
+              aria-controls="mobile-navigation"
+              aria-expanded={drawerOpen}
+              aria-label="Open navigation drawer"
+            >
               <Menu size={21} aria-hidden="true" />
               Menu
-            </button>
+            </button>}
 
-            <Link className="community-selector" href="/lexicon">
-              <span className="flag-tile" aria-hidden="true" />
+            <div className="community-selector" aria-label={`Learning Kristang, ${kristangCommunity.region}`}>
+              <span className="flag-tile neutral-language-tile" aria-hidden="true">K</span>
               <span>
-                <strong>{kristangCommunity.name}</strong>
+                <strong>Kristang</strong>
                 <small>{kristangCommunity.region}</small>
               </span>
-              <span aria-hidden="true">⌄</span>
-            </Link>
-
-            <div className="workspace-context" aria-label="Current workspace">
-              <strong>{context.label}</strong>
-              <span>{context.helper}</span>
             </div>
 
             <div className="mobile-route-state">
               <LockKeyhole size={16} aria-hidden="true" />
-              <span>{isProtectedRoute ? "Protected" : "Public"}</span>
+              <span>{isDeviceLocalRoute ? "On this device" : "Reference collection"}</span>
             </div>
           </div>
 
           <div className="topbar-actions">
-            {authSlot ?? (
-              <Link className="sync-button" href="/sign-in">
-                <LogIn size={18} aria-hidden="true" />
-                Sign in
-              </Link>
-            )}
+            {authSlot}
           </div>
         </header>
 
-        {children}
-      </section>
-    </main>
+        <main id="main-content" tabIndex={-1}>{children}</main>
+      </div>
+
+      {!immersive ? <nav className="mobile-bottom-nav" aria-hidden={drawerOpen || undefined} inert={drawerOpen ? true : undefined} aria-label="Quick navigation">
+        {navItems.map((item) => {
+          const Icon = item.icon;
+          const isActive = item.activePaths.some((path) => activePath === path || (path !== "/" && activePath.startsWith(`${path}/`)));
+
+          return (
+            <Link aria-current={isActive ? "page" : undefined} className={isActive ? "active" : ""} href={item.href} key={item.href} prefetch={restrictedHrefs.has(item.href) ? false : undefined}>
+              <Icon size={20} strokeWidth={2.2} aria-hidden="true" />
+              <span>{item.label}</span>
+            </Link>
+          );
+        })}
+      </nav> : null}
+    </div>
   );
 }

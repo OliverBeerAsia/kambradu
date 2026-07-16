@@ -1,19 +1,17 @@
 "use client";
 
 import type { FormEvent } from "react";
-import { CheckCircle2, Download, FileText, Plus, Send } from "lucide-react";
+import { FileText, Plus } from "lucide-react";
 import { useState } from "react";
-import { AccessPill } from "@/components/ui/AccessPill";
-import { LedgerStrip, WorkbenchHeader, cycleLedgerItems } from "@/components/ui/Workbench";
 import { starterBuilderEntries } from "@/data/kristang";
-import { markCycleRevised } from "@/lib/learning-cycles";
 import { useLearningCycles } from "@/lib/hooks/use-learning-cycles";
+import { MEMORY_STORAGE_KEYS } from "@/lib/hooks/use-memories-data";
 import { useLocalStorageState } from "@/lib/hooks/use-local-storage-state";
-import type { AccessLevel, PersonalLexiconEntry } from "@/types/kambradu";
+import type { PersonalLexiconEntry } from "@/types/kambradu";
 
 type BuilderDraft = Pick<
   PersonalLexiconEntry,
-  "headword" | "englishGloss" | "alternateSpellings" | "example" | "sourceNote" | "access"
+  "headword" | "englishGloss" | "alternateSpellings" | "example" | "sourceNote"
 >;
 
 const initialDraft: BuilderDraft = {
@@ -21,8 +19,7 @@ const initialDraft: BuilderDraft = {
   englishGloss: "",
   alternateSpellings: "",
   example: "",
-  sourceNote: "",
-  access: "community"
+  sourceNote: ""
 };
 
 function createEntryId(headword: string) {
@@ -36,14 +33,13 @@ function createEntryId(headword: string) {
 }
 
 export function LexiconBuilder() {
-  const { activeCycle, attachPersonalLexiconEntry, updateCycle } = useLearningCycles();
-  const [entries, setEntries] = useLocalStorageState<PersonalLexiconEntry[]>(
-    "kambradu-personal-lexicon-v1",
+  const { attachPersonalLexiconEntry, isHydrated: cyclesReady } = useLearningCycles();
+  const [entries, setEntries, entriesReady] = useLocalStorageState<PersonalLexiconEntry[]>(
+    MEMORY_STORAGE_KEYS.personalLexicon,
     starterBuilderEntries
   );
   const [draft, setDraft] = useState<BuilderDraft>(initialDraft);
   const [message, setMessage] = useState("");
-  const [showExport, setShowExport] = useState(false);
 
   function update<K extends keyof BuilderDraft>(key: K, value: BuilderDraft[K]) {
     setDraft((current) => ({ ...current, [key]: value }));
@@ -53,7 +49,7 @@ export function LexiconBuilder() {
     event.preventDefault();
 
     if (!draft.headword.trim() || !draft.englishGloss.trim() || !draft.sourceNote.trim()) {
-      setMessage("Headword, English gloss, and source note are required.");
+      setMessage("Add the word, its meaning and where it came from.");
       return;
     }
 
@@ -66,148 +62,64 @@ export function LexiconBuilder() {
       alternateSpellings: draft.alternateSpellings.trim(),
       example: draft.example.trim(),
       sourceNote: draft.sourceNote.trim(),
-      access: draft.access,
+      access: "restricted",
       status: "private",
       createdAt: new Date().toISOString()
     };
 
     setEntries((current) => [nextEntry, ...current]);
     attachPersonalLexiconEntry(nextEntry.id);
-    if (activeCycle.reviewStatus === "changes-requested") {
-      updateCycle(activeCycle.id, markCycleRevised);
-    }
     setDraft(initialDraft);
-    setMessage("Entry saved privately and attached to the active cycle.");
+    setMessage("Saved on this device. Other people using this browser profile may be able to see it.");
   }
 
-  function markReady(entryId: string) {
-    setEntries((current) =>
-      current.map((entry) => (entry.id === entryId ? { ...entry, status: entry.status === "ready" ? "private" : "ready" } : entry))
-    );
+  if (!cyclesReady || !entriesReady) {
+    return <section className="builder-workbench" aria-label="My word list"><p role="status">Preparing your words...</p></section>;
   }
-
-  const readyCount = entries.filter((entry) => entry.status === "ready").length;
-  const exportPreview = JSON.stringify(
-    entries.map((entry) => ({
-      headword: entry.headword,
-      englishGloss: entry.englishGloss,
-      alternateSpellings: entry.alternateSpellings,
-      example: entry.example,
-      sourceNote: entry.sourceNote,
-      access: entry.access,
-      status: entry.status
-    })),
-    null,
-    2
-  );
 
   return (
-    <section className="builder-workbench" aria-label="Personal lexicon builder">
+    <section className="builder-workbench simple-builder" aria-label="My word list">
       <form className="builder-form" onSubmit={addEntry}>
-        <WorkbenchHeader
-          title={`${activeCycle.title}: build privately`}
-          description="Personal entries can stay private or become the editable revision layer before steward approval."
-          cycle={activeCycle}
-        />
-        <LedgerStrip items={cycleLedgerItems(activeCycle)} />
-
         <div className="rail-title compact-title">
-          <h2>Build your own mini-dictionary</h2>
+          <h2>Add a word to your list</h2>
           <Plus size={18} aria-hidden="true" />
         </div>
 
-        <div className="form-grid">
-          <label>
-            Headword
-            <input value={draft.headword} onChange={(event) => update("headword", event.target.value)} placeholder="teng bong" />
-          </label>
-
-          <label>
-            English gloss
-            <input
-              value={draft.englishGloss}
-              onChange={(event) => update("englishGloss", event.target.value)}
-              placeholder="good morning"
-            />
-          </label>
-        </div>
-
         <label>
-          Alternate spellings
-          <input
-            value={draft.alternateSpellings}
-            onChange={(event) => update("alternateSpellings", event.target.value)}
-            placeholder="Comma-separated variants or family spellings"
-          />
+          Kristang word or phrase
+          <input required value={draft.headword} onChange={(event) => update("headword", event.target.value)} />
         </label>
 
         <label>
-          Example sentence or context
-          <textarea
-            rows={4}
-            value={draft.example}
-            onChange={(event) => update("example", event.target.value)}
-            placeholder="Where did you hear this, and how would you use it?"
-          />
+          Meaning in English
+          <input required value={draft.englishGloss} onChange={(event) => update("englishGloss", event.target.value)} />
         </label>
 
         <label>
-          Source note
-          <textarea
-            rows={3}
-            value={draft.sourceNote}
-            onChange={(event) => update("sourceNote", event.target.value)}
-            placeholder="Family speaker, lesson, dictionary, song, recipe, or observation."
-          />
+          Other spellings, if relevant
+          <input value={draft.alternateSpellings} onChange={(event) => update("alternateSpellings", event.target.value)} />
         </label>
 
         <label>
-          Intended access if submitted
-          <select value={draft.access} onChange={(event) => update("access", event.target.value as AccessLevel)}>
-            <option value="open">Open</option>
-            <option value="community">Community</option>
-            <option value="restricted">Restricted</option>
-          </select>
+          Your example or context
+          <textarea rows={3} value={draft.example} onChange={(event) => update("example", event.target.value)} />
+        </label>
+
+        <label>
+          Where this came from
+          <textarea required rows={3} value={draft.sourceNote} onChange={(event) => update("sourceNote", event.target.value)} />
         </label>
 
         <button className="primary-action" type="submit">
           <FileText size={18} aria-hidden="true" />
-          Add to my lexicon
+          Save on this device
         </button>
 
-        {message ? <p className="form-message">{message}</p> : null}
+        {message ? <p className="form-message" role="status" aria-live="polite">{message}</p> : null}
       </form>
 
-      <aside className="builder-list">
-        <div className="builder-summary">
-          <span>
-            <strong>{entries.length}</strong>
-            private entries
-          </span>
-          <span>
-            <strong>{readyCount}</strong>
-            ready for steward prep
-          </span>
-        </div>
-
-        <div className="builder-actions">
-          <button type="button" onClick={() => setShowExport((current) => !current)}>
-            <Download size={17} aria-hidden="true" />
-            {showExport ? "Hide export" : "Preview export"}
-          </button>
-          <a href="/contribute">
-            <Send size={17} aria-hidden="true" />
-            Submit ready entries
-          </a>
-        </div>
-
-        {showExport ? (
-          <label className="export-box">
-            Review-ready JSON
-            <textarea readOnly rows={8} value={exportPreview} />
-          </label>
-        ) : null}
-
+      <aside className="builder-list" aria-labelledby="my-words-heading">
+        <h2 id="my-words-heading">My words</h2>
         <div className="personal-entry-list">
           {entries.map((entry) => (
             <article className="personal-entry-card" key={entry.id}>
@@ -215,16 +127,8 @@ export function LexiconBuilder() {
                 <h3>{entry.headword}</h3>
                 <p>{entry.englishGloss}</p>
               </div>
-              <div className="entry-status-row">
-                <AccessPill level={entry.access} />
-                <span>{entry.status === "ready" ? "Ready for review prep" : "Private draft"}</span>
-              </div>
               {entry.example ? <blockquote>{entry.example}</blockquote> : null}
               <small>{entry.sourceNote}</small>
-              <button type="button" onClick={() => markReady(entry.id)}>
-                <CheckCircle2 size={17} aria-hidden="true" />
-                {entry.status === "ready" ? "Move back to private" : "Mark ready for review"}
-              </button>
             </article>
           ))}
         </div>

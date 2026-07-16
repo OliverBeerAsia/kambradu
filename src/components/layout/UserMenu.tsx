@@ -1,13 +1,13 @@
 import Link from "next/link";
 
-export function UserMenu({ role = "Learner" }: { role?: string }) {
+export function UserMenu({ role = "On this device" }: { role?: string }) {
   return (
-    <Link className="profile-button simple-profile" href="/journal" prefetch={false}>
+    <Link aria-label="Open your memories on this device" className="profile-button simple-profile" href="/saved" prefetch={false}>
       <span className="avatar avatar-photo" aria-hidden="true">
-        MD
+        Y
       </span>
       <span>
-        <strong>Maria D.</strong>
+        <strong>Your space</strong>
         <small>{role}</small>
       </span>
     </Link>

@@ -19,16 +19,16 @@ Kambradu now uses the related HeadsUp and LevelHeads product system as its local
 - hard borders, low radii, and offset yellow shadows for active or primary states
 - Montserrat display type for workspace headings and Inter for product chrome
 - dense but readable dashboard surfaces rather than marketing-style page sections
-- Hegel, the HeadsUp owl, as the app mark, rail guide, and PWA icon
+- the Kambradu mark as the product identity, with Hegel kept as an occasional guide
 
 ## Current UX Rule
 
 The latest local wave intentionally reduces cognitive load for non-technical learners:
 
-- keep only five persistent tabs: `Today`, `Browse`, `Practice`, `Build`, `Review`
+- keep four persistent destinations: `Today`, `Learn`, `Memories`, `Explore`
 - make each screen answer one question: what do I do here?
 - avoid explanatory paragraphs unless they prevent a consent, privacy, or review mistake
-- keep Hegel for privacy, consent, offline/local state, and steward-review guidance
+- use Hegel for orientation and encouragement, never as a linguistic, cultural, privacy or consent authority
 - prefer one primary action per screen over dashboard-style equal-weight panels
 
 The design should keep public browsing, learner tools, contributor flow, and steward review visually connected while making access, consent, source, and review state easy to scan.

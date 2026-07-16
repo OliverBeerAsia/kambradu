@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 export function useLocalStorageState<T>(key: string, initialValue: T) {
   const [value, setValue] = useState<T>(initialValue);
+  const [isHydrated, setIsHydrated] = useState(false);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     try {
       const stored = window.localStorage.getItem(key);
       if (stored) {
@@ -13,16 +14,22 @@ export function useLocalStorageState<T>(key: string, initialValue: T) {
       }
     } catch {
       setValue(initialValue);
+    } finally {
+      setIsHydrated(true);
     }
   }, [initialValue, key]);
 
   useEffect(() => {
+    if (!isHydrated) {
+      return;
+    }
+
     try {
       window.localStorage.setItem(key, JSON.stringify(value));
     } catch {
       // Local storage is best-effort for offline draft recovery.
     }
-  }, [key, value]);
+  }, [isHydrated, key, value]);
 
-  return [value, setValue] as const;
+  return [value, setValue, isHydrated] as const;
 }

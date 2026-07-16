@@ -1,6 +1,4 @@
 import {
-  communityAttribution,
-  dictionaryAttribution,
   kristangCommunity,
   lessonUnits,
   practicePrompts
@@ -11,12 +9,11 @@ import type {
   ContributionDraft,
   LearningCycle,
   LearningCycleFeedback,
-  LearningCycleReviewStatus,
-  LexicalEntry
+  LearningCycleReviewStatus
 } from "@/types/kambradu";
 
-export const LEARNING_CYCLES_STORAGE_KEY = "kambradu-learning-cycles-v1";
-export const ACTIVE_LEARNING_CYCLE_STORAGE_KEY = "kambradu-active-learning-cycle-v1";
+export const LEARNING_CYCLES_STORAGE_KEY = "kambradu-learning-cycles-v2";
+export const ACTIVE_LEARNING_CYCLE_STORAGE_KEY = "kambradu-active-learning-cycle-v2";
 
 const seedDate = "2026-05-17T00:00:00.000Z";
 
@@ -28,7 +25,7 @@ export const seedLearningCycles: LearningCycle[] = [
     title: "Shop visit",
     shortTitle: "Shop",
     lessonId: "shop-visit",
-    practicePromptIds: ["listen-loja"],
+    practicePromptIds: ["read-sabang"],
     practiceReviewIds: [],
     journalEntryIds: [],
     personalLexiconEntryIds: [],
@@ -36,7 +33,7 @@ export const seedLearningCycles: LearningCycle[] = [
     reviewStatus: "not-started",
     feedback: [],
     publicEntryIds: [],
-    focus: ["loja", "kompra", "sabang"],
+    focus: ["sabang"],
     createdAt: seedDate,
     updatedAt: seedDate
   },
@@ -48,60 +45,14 @@ export const seedLearningCycles: LearningCycle[] = [
     shortTitle: "Home",
     lessonId: "home-objects",
     practicePromptIds: ["meaning-janela"],
-    practiceReviewIds: ["practice-meaning-janela-seed"],
-    journalEntryIds: ["users/demo/journalEntries/home-objects-seed"],
-    personalLexiconEntryIds: ["users/demo/personalLexicon/personal-sabang"],
+    practiceReviewIds: [],
+    journalEntryIds: [],
+    personalLexiconEntryIds: [],
     speakerCheckIds: [],
-    reviewStatus: "changes-requested",
-    feedback: [
-      {
-        id: "feedback/home-objects/first-pass",
-        stewardName: "Local steward",
-        message: "Add one speaker check before this can move from private notes into community review.",
-        createdAt: seedDate
-      }
-    ],
+    reviewStatus: "not-started",
+    feedback: [],
     publicEntryIds: [],
-    focus: ["janela", "sabang", "balcao"],
-    createdAt: seedDate,
-    updatedAt: seedDate
-  },
-  {
-    id: "cycles/kristang-melaka/demo/family-greeting",
-    userId: "demo",
-    communityId: kristangCommunity.id,
-    title: "Family greeting",
-    shortTitle: "Greeting",
-    lessonId: "family-greeting",
-    practicePromptIds: ["repeat-teng-bong"],
-    practiceReviewIds: ["practice-repeat-teng-bong-seed"],
-    journalEntryIds: ["users/demo/journalEntries/family-greeting-seed"],
-    personalLexiconEntryIds: ["users/demo/personalLexicon/personal-teng-bong"],
-    speakerCheckIds: ["users/demo/speakerChecks/teng-bong-seed"],
-    contributionId: "contributions/family-greeting-seed",
-    reviewStatus: "approved",
-    feedback: [
-      {
-        id: "feedback/family-greeting/approved",
-        stewardName: "Local steward",
-        message: "Approved for local public browsing with community access notes preserved.",
-        createdAt: seedDate,
-        resolvedAt: seedDate
-      }
-    ],
-    submission: {
-      contentType: "phrase",
-      title: "teng bong",
-      body: "Teng bong, kumé bos?",
-      englishGloss: "good morning; how are you?",
-      provenance: "Family greeting practice cycle with private learner note and speaker check.",
-      consent: "Local prototype approval for public browsing only.",
-      access: "community",
-      attributionName: "Maria D.",
-      submittedAt: seedDate
-    },
-    publicEntryIds: ["local-approved-family-greeting"],
-    focus: ["teng bong", "kumé bos", "papiá"],
+    focus: ["janela"],
     createdAt: seedDate,
     updatedAt: seedDate
   }
@@ -141,7 +92,7 @@ export function getCycleProgress(cycle: LearningCycle) {
 
 export function getNextCycleAction(cycle: LearningCycle) {
   if (cycle.reviewStatus === "approved") {
-    return { label: "Public visibility", detail: "Approved local content is now visible in the lexicon.", href: "/lexicon" };
+    return { label: "Locally reviewed", detail: "This draft stays on this device until community governance is in place.", href: "/builder" };
   }
 
   if (cycle.reviewStatus === "changes-requested") {
@@ -149,11 +100,11 @@ export function getNextCycleAction(cycle: LearningCycle) {
   }
 
   if (!cycle.practiceReviewIds.length) {
-    return { label: "Complete practice", detail: "Run the audio-first prompt linked to this lesson.", href: "/practice" };
+    return { label: "Complete practice", detail: "Open the prompt linked to this lesson.", href: "/practice" };
   }
 
   if (!cycle.journalEntryIds.length) {
-    return { label: "Add private note", detail: "Capture family or usage context before sharing.", href: "/journal" };
+    return { label: "Add a note", detail: "Keep the context you want to remember.", href: "/journal" };
   }
 
   if (!cycle.personalLexiconEntryIds.length) {
@@ -243,12 +194,10 @@ export function markCycleRevised(cycle: LearningCycle) {
 }
 
 export function approveCycle(cycle: LearningCycle) {
-  const publicEntryId = `local-approved-${stableSlug(cycle.submission?.title || cycle.title)}`;
-
   return touchCycle({
     ...cycle,
     reviewStatus: "approved",
-    publicEntryIds: cycle.publicEntryIds.includes(publicEntryId) ? cycle.publicEntryIds : [publicEntryId, ...cycle.publicEntryIds],
+    publicEntryIds: [],
     feedback: cycle.feedback.map((item) => (item.resolvedAt ? item : { ...item, resolvedAt: new Date().toISOString() }))
   });
 }
@@ -257,7 +206,7 @@ export function buildContributionDraftFromCycle(cycle: LearningCycle): Contribut
   const lesson = lessonUnits.find((item) => item.id === cycle.lessonId);
   const prompt = practicePrompts.find((item) => cycle.practicePromptIds.includes(item.id));
   const contentType: ContentType = lesson?.kind === "culture" ? "note" : lesson?.kind ?? "phrase";
-  const access: AccessLevel = lesson?.access ?? "community";
+  const access: AccessLevel = lesson?.access ?? "restricted";
 
   return {
     id: cycle.contributionId,
@@ -273,37 +222,12 @@ export function buildContributionDraftFromCycle(cycle: LearningCycle): Contribut
       cycle.submission?.consent ??
       "Local prototype packet. Confirm speaker consent before publishing beyond this browser.",
     access,
-    attributionName: cycle.submission?.attributionName ?? "Maria D.",
+    attributionName: cycle.submission?.attributionName ?? "Local learner",
     reviewStatus: cycle.reviewStatus === "submitted" || cycle.reviewStatus === "approved" ? "submitted" : "draft",
     submittedBy: cycle.userId,
     createdAt: cycle.createdAt,
     updatedAt: cycle.updatedAt
   };
-}
-
-export function approvedCyclesToLexiconEntries(cycles: LearningCycle[]): LexicalEntry[] {
-  return cycles
-    .filter((cycle) => cycle.reviewStatus === "approved" && cycle.submission)
-    .map((cycle) => {
-      const submission = cycle.submission!;
-      const isDictionarySeed = cycle.lessonId === "shop-visit" || cycle.lessonId === "home-objects";
-
-      return {
-        id: cycle.publicEntryIds[0] ?? `local-approved-${stableSlug(submission.title)}`,
-        communityId: cycle.communityId,
-        headword: submission.title,
-        normalizedHeadword: submission.title.toLowerCase(),
-        englishGlosses: [submission.englishGloss || cycle.focus.join(", ") || "local approved entry"],
-        partOfSpeech: submission.contentType === "word" ? "word" : submission.contentType,
-        alternateSpellings: [],
-        example: submission.body,
-        source: isDictionarySeed ? dictionaryAttribution : communityAttribution,
-        access: submission.access,
-        reviewStatus: "approved",
-        hasAudio: cycle.speakerCheckIds.length > 0,
-        tags: ["local-approved", ...cycle.focus]
-      };
-    });
 }
 
 function touchCycle(cycle: LearningCycle): LearningCycle {

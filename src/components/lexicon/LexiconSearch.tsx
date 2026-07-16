@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Bookmark, Search, Volume2 } from "lucide-react";
+import { Search, Volume2 } from "lucide-react";
 import { AccessPill } from "@/components/ui/AccessPill";
 import { normalizeSearch } from "@/lib/access";
 import type { LexicalEntry } from "@/types/kambradu";
@@ -9,7 +9,6 @@ import type { LexicalEntry } from "@/types/kambradu";
 export function LexiconSearch({ entries }: { entries: LexicalEntry[] }) {
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState(entries[0]?.id ?? "");
-  const selected = entries.find((entry) => entry.id === selectedId) ?? entries[0];
 
   const results = useMemo(() => {
     const normalized = normalizeSearch(query);
@@ -32,6 +31,7 @@ export function LexiconSearch({ entries }: { entries: LexicalEntry[] }) {
       return haystack.includes(normalized);
     });
   }, [entries, query]);
+  const selected = results.find((entry) => entry.id === selectedId) ?? results[0];
 
   useEffect(() => {
     if (results.length && !results.some((entry) => entry.id === selectedId)) {
@@ -81,9 +81,9 @@ export function LexiconSearch({ entries }: { entries: LexicalEntry[] }) {
               <h2>{selected.headword}</h2>
               <p>{selected.englishGlosses.join(", ")}</p>
             </div>
-            <button className="sound-button" type="button" aria-label={`Play ${selected.headword}`}>
-              <Volume2 size={21} aria-hidden="true" />
-            </button>
+            {selected.hasAudio && selected.audioPath ? (
+              <audio controls preload="metadata" src={selected.audioPath} aria-label={`Listen to ${selected.headword}`} />
+            ) : null}
           </div>
 
           <div className="detail-meta">
@@ -91,6 +91,10 @@ export function LexiconSearch({ entries }: { entries: LexicalEntry[] }) {
             {selected.pronunciation ? <span>{selected.pronunciation}</span> : null}
             <AccessPill level={selected.access} />
           </div>
+
+          {!selected.hasAudio || !selected.audioPath ? (
+            <p className="practice-honesty-note"><Volume2 size={18} aria-hidden="true" />No reviewed recording is available.</p>
+          ) : null}
 
           {selected.alternateSpellings.length ? (
             <p className="detail-line">
@@ -113,13 +117,6 @@ export function LexiconSearch({ entries }: { entries: LexicalEntry[] }) {
             </span>
           </div>
 
-          <div className="detail-actions">
-            <button type="button">
-              <Bookmark size={18} aria-hidden="true" />
-              Save word
-            </button>
-            <a href="/contribute">Add pronunciation</a>
-          </div>
         </article>
       ) : (
         <article className="entry-detail">

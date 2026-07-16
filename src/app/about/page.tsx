@@ -12,12 +12,12 @@ export default function AboutPage() {
         </section>
 
         <section className="policy-panel">
-          <h2>Kristang-first public MVP</h2>
+          <h2>Built around Kristang</h2>
           <p>
-            Kambradu starts with approved Kristang material that anyone can browse. Signed-in learners can keep private
-            journals, save review words, record audio, and submit material. Nothing user-submitted becomes public until a
-            steward approves it.
+            Kambradu currently offers dictionary-listed Kristang words for learning and personal notes. It is independent
+            and is not endorsed by a Kristang community body.
           </p>
+          <p>Shared community material will require named partners, clear permissions and a review process they help define.</p>
         </section>
 
         <section className="policy-panel">
@@ -36,13 +36,14 @@ export default function AboutPage() {
         </section>
 
         <section className="policy-panel">
-          <h2>Content boundaries</h2>
+          <h2>Respecting sources and permissions</h2>
           <p>
-            Raw source PDFs and bulk extracted dictionary text are not part of the public code repo. Curated seed data
-            should be imported privately into Firestore with source, license, access, and review status fields.
+            Explore currently includes only a small set of traced dictionary-listed forms. No community story, recording
+            or personal contribution should appear publicly without a named source, appropriate permission and a review
+            process agreed with community partners.
           </p>
           <Link className="primary-link" href="/lexicon">
-            Browse approved entries
+            Browse dictionary-listed entries
           </Link>
         </section>
       </div>

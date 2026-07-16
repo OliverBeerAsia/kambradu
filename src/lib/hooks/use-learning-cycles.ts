@@ -14,8 +14,8 @@ import { useLocalStorageState } from "@/lib/hooks/use-local-storage-state";
 import type { ContributionDraft, LearningCycle } from "@/types/kambradu";
 
 export function useLearningCycles() {
-  const [cycles, setCycles] = useLocalStorageState<LearningCycle[]>(LEARNING_CYCLES_STORAGE_KEY, seedLearningCycles);
-  const [activeCycleId, setActiveCycleId] = useLocalStorageState(ACTIVE_LEARNING_CYCLE_STORAGE_KEY, seedLearningCycles[0].id);
+  const [cycles, setCycles, cyclesHydrated] = useLocalStorageState<LearningCycle[]>(LEARNING_CYCLES_STORAGE_KEY, seedLearningCycles);
+  const [activeCycleId, setActiveCycleId, activeCycleHydrated] = useLocalStorageState(ACTIVE_LEARNING_CYCLE_STORAGE_KEY, seedLearningCycles[0].id);
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId) ?? cycles[0] ?? seedLearningCycles[0];
 
   const updateCycle = useCallback(
@@ -85,6 +85,7 @@ export function useLearningCycles() {
     cycles,
     activeCycle,
     activeCycleId,
+    isHydrated: cyclesHydrated && activeCycleHydrated,
     activeContributionDraft,
     setCycles,
     setActiveCycle,
