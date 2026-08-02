@@ -21,7 +21,9 @@ jobs:
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
       - id: version
-        run: echo "tag=v$(node -p \"require('./package.json').version\")" >> "$GITHUB_OUTPUT"
+        run: |
+          version="$(node -p 'require("./package.json").version')"
+          echo "tag=v${version}" >> "$GITHUB_OUTPUT"
       - id: existing
         env:
           GH_TOKEN: ${{ github.token }}
