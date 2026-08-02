@@ -34,6 +34,15 @@ export type Attribution = {
   doi?: string;
   url?: string;
   license: string;
+  locator?: string;
+};
+
+export type EvidenceState = {
+  source_transcribed: boolean;
+  source_checked: boolean;
+  speaker_attested: boolean;
+  partner_reviewed: boolean;
+  public_use_allowed: boolean;
 };
 
 export type LexicalEntry = {
@@ -49,7 +58,7 @@ export type LexicalEntry = {
   exampleTranslation?: string;
   source: Attribution;
   access: AccessLevel;
-  reviewStatus: ReviewStatus;
+  evidence: EvidenceState;
   hasAudio: boolean;
   audioPath?: string;
   tags: string[];

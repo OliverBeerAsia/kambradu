@@ -1,173 +1,196 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
-test("public homepage offers one gentle next step", async ({ page }) => {
-  await page.goto("/");
-
-  await expect(page.getByRole("heading", { name: "Ready for some Kristang?" })).toBeVisible();
-  await expect(page.getByText(/meet a word and see where it takes you/i)).toBeVisible();
-  await expect(page.getByRole("link", { name: "Let's begin" })).toBeVisible();
-  await expect(page.getByText(/Saved on this device/i)).toBeVisible();
-});
-
-test("lexicon search filters by English gloss", async ({ page }) => {
-  await page.goto("/lexicon");
-
-  await page.getByPlaceholder("Search Kristang or English").fill("window");
-
-  await expect(page.getByRole("option", { name: /janela/i })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "janela" })).toBeVisible();
-});
-
-test("learn offers a short choice of traced words", async ({ page }) => {
-  await page.goto("/lessons");
-
-  await expect(page.getByRole("heading", { name: "Learn" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Meet sabang" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Home objects" })).toBeVisible();
-  await expect(page.getByText(/reviewed community audio is not yet available/i)).toBeVisible();
-});
-
-test("auth-gated pages redirect to sign in", async ({ page }) => {
-  await page.goto("/contribute");
-
-  await expect(page).toHaveURL(/\/sign-in\?next=%2Fcontribute/);
-  await expect(page.getByRole("heading", { name: /Shared work is not available yet/i })).toBeVisible();
-});
-
-test("learning plan toggles a local practice task", async ({ page }) => {
-  await page.goto("/lessons");
-  await page.getByRole("button", { name: /Start practice/i }).first().click();
-  await expect(page).toHaveURL(/\/practice/);
-  await expect(page.getByRole("heading", { name: "Meet sabang." })).toBeVisible();
-});
-
-test("practice session saves one gentle local learning moment", async ({ page }) => {
-  await page.goto("/practice");
-
-  await expect(page.getByRole("heading", { name: "Meet sabang." })).toBeVisible();
-  await expect(page.getByText(/No reviewed audio is available/i)).toBeVisible();
-  await expect(page.getByLabel("Speaker name")).toHaveCount(0);
-
-  await page.getByRole("button", { name: "Next", exact: true }).click();
-  await expect(page.getByRole("heading", { name: "Try sabang." })).toBeVisible();
+async function completeSabang(page: Page, keep = true) {
+  await page.goto("/practice?lesson=shop-visit");
+  await expect(page.getByRole("heading", { name: "sabang" })).toBeVisible();
+  await expect(page.getByText(/pronounce|say it|recording prompt/i)).toHaveCount(0);
   await page.getByRole("button", { name: "Continue" }).click();
+  await page.getByRole("button", { name: "soap", exact: true }).click();
+  await expect(page.getByRole("status")).toContainText("It means soap");
+  await page.getByRole("button", { name: "Continue" }).click();
+  await page.getByLabel("Your answer").fill("sabang");
+  await page.getByRole("button", { name: "Check" }).click();
+  await expect(page.getByRole("status")).toContainText("matches the dictionary form");
+  await page.getByRole("button", { name: "Got it" }).click();
+  await page.getByRole("button", { name: "Continue" }).click();
+  await page.getByRole("button", { name: "At home" }).click();
+  await page.getByRole("button", { name: "Continue" }).click();
+  await expect(page.getByRole("heading", { name: "Keep sabang in Memories?" })).toBeVisible();
+  await page.getByRole("button", { name: keep ? "Keep in Memories" : "Finish without saving" }).click();
+  await expect(page.getByRole("heading", { name: "You reviewed sabang." })).toBeVisible();
+}
 
-  await page.getByRole("button", { name: "With someone I know" }).click();
-  await page.getByRole("button", { name: "Next", exact: true }).click();
-  await expect(page.getByRole("heading", { name: "Keep this on your device?" })).toBeVisible();
-  await page.getByRole("button", { name: "Save on this device" }).click();
-
-  await expect(page.getByRole("heading", { name: "Practice complete." })).toBeVisible();
-  await expect(page.getByText(/Other people using this browser profile/i)).toBeVisible();
+test("the public shell has exactly three learner destinations", async ({ page }) => {
+  await page.goto("/");
+  const primary = page.getByRole("navigation", { name: "Primary navigation" });
+  await expect(primary.getByRole("link")).toHaveCount(3);
+  await expect(primary.getByRole("link").allTextContents()).resolves.toEqual(["Today", "Learn", "Memories"]);
+  await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
+  await expect(page.getByRole("link", { name: "Start" })).toBeVisible();
+  await expect(page.getByText("Saved in this browser")).toBeVisible();
 });
 
-test("memories combines private records and saves a gentle capture", async ({ page }) => {
-  await page.goto("/saved");
+test("Learn offers only the two source-checked text lessons", async ({ page }) => {
+  await page.goto("/learn");
+  await expect(page.getByRole("heading", { name: "Learn a word." })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Learn sabang" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Learn janela" })).toBeVisible();
+  await expect(page.locator(".lesson-card .evidence-label")).toHaveCount(2);
+  await expect(page.locator("audio")).toHaveCount(0);
+  await page.getByText("Sources", { exact: true }).click();
+  await expect(page.getByText(/Not yet checked with a speaker or community partner/i)).toBeVisible();
+});
 
-  await expect(page.getByRole("heading", { name: "My memories" })).toBeVisible();
-  await expect(page.getByText("Recently kept")).toBeVisible();
-  await expect(page.getByText("sabang", { exact: true }).first()).toBeVisible();
-
-  await page.getByRole("link", { name: "Add a memory" }).first().click();
-  await page.getByRole("button", { name: /Something someone said/i }).click();
-  await page.getByRole("textbox", { name: "What did you hear?" }).fill("A family saying I want to remember.");
-  await page.getByRole("button", { name: "Next", exact: true }).click();
-  await page.getByRole("textbox", { name: "Where did you hear or encounter it?" }).fill("A quiet conversation at home.");
-  await page.getByRole("button", { name: "Save on this device" }).click();
-
-  await expect(page.getByRole("heading", { name: "Saved on this device" })).toBeVisible();
+test("a complete written learning loop saves an editable memory", async ({ page }) => {
+  await completeSabang(page, true);
   await page.getByRole("link", { name: "Done" }).click();
-  await expect(page.getByText("A family saying I want to remember.")).toBeVisible();
+  await page.goto("/memories");
+  await expect(page.getByText("sabang", { exact: true })).toBeVisible();
+  await page.getByRole("link", { name: /sabang soap/i }).click();
+  await page.getByLabel("Personal context").fill("Beside the kitchen sink");
+  await page.getByRole("button", { name: "Save changes" }).click();
+  await expect(page.getByText("Saved in this browser.")).toBeVisible();
+  await expect(page.getByRole("link", { name: "Practise this word" })).toBeVisible();
 });
 
-test("lexicon builder saves a private local entry", async ({ page }) => {
-  await page.goto("/builder");
-
-  await page.getByLabel("Kristang word or phrase").fill("testu");
-  await page.getByLabel("Meaning in English").fill("test word");
-  await page.getByLabel("Where this came from").fill("Local smoke test note with source context.");
-  await page.getByRole("button", { name: "Save on this device" }).click();
-
-  await expect(page.getByRole("heading", { name: "testu" })).toBeVisible();
-  await expect(page.getByText(/Other people using this browser profile/i)).toBeVisible();
-});
-
-test("contribution form requires provenance and consent", async ({ page }) => {
-  await page.goto("/sign-in?next=/contribute");
-  await page.getByRole("button", { name: "Continue as local demo user" }).click();
-  await expect(page).toHaveURL(/\/contribute/);
-
-  await page.getByLabel("Title or headword").fill("");
-  await page.getByLabel("Provenance").fill("");
-  await page.getByLabel("Permission notes").fill("");
-  await page.getByRole("button", { name: "Keep draft for future review" }).click();
-
-  await expect(page.getByText("Title, content, provenance, and consent are required")).toBeVisible();
-});
-
-test("local review never leaks an unverified entry into Explore", async ({ page }) => {
-  test.setTimeout(90_000);
-
-  await page.goto("/sign-in?next=/lessons");
-  await page.getByRole("button", { name: "Continue as local demo user" }).click();
-  await expect(page).toHaveURL(/\/lessons/);
-
-  await page.getByRole("button", { name: "Start practice" }).first().click();
-
-  await page.goto("/practice");
-  await page.getByRole("button", { name: "Next", exact: true }).click();
+test("practice resumes the same lesson and step after reload", async ({ page }) => {
+  await page.goto("/practice?lesson=home-objects");
   await page.getByRole("button", { name: "Continue" }).click();
-  await page.getByRole("button", { name: "With someone I know" }).click();
-  await page.getByRole("button", { name: "Next", exact: true }).click();
-  await page.getByRole("button", { name: "Save on this device" }).click();
-  await expect(page.getByText(/Saved on this device/i)).toBeVisible();
-
-  await page.getByRole("button", { name: "Save a question" }).click();
-  await page.getByRole("button", { name: "Keep this question" }).click();
-  await expect(page.getByText(/Question saved on this device/i)).toBeVisible();
-
-  await page.goto("/builder");
-  await page.getByLabel("Kristang word or phrase").fill("sabang local");
-  await page.getByLabel("Meaning in English").fill("learner note");
-  await page.getByLabel("Your example or context").fill("A personal context note.");
-  await page.getByLabel("Where this came from").fill("Unverified learner note from this device.");
-  await page.getByRole("button", { name: "Save on this device" }).click();
-  await expect(page.getByRole("heading", { name: "sabang local" })).toBeVisible();
-
-  await page.goto("/contribute");
-  await expect(page.getByText(/practice reviews/i)).toBeVisible();
-  await page.getByLabel("Title or headword").fill("sabang local");
-  await page.getByLabel("English gloss").fill("learner note");
-  await page.getByRole("button", { name: "Keep draft for future review" }).click();
-  await expect(page.getByText(/has not been published/i)).toBeVisible();
-
-  await page.goto("/steward");
-  await page.getByRole("button", { name: /sabang local/i }).click();
-  await page.getByRole("button", { name: "Request changes" }).click();
-  await expect(page.getByText("Feedback sent to the learner cycle.")).toBeVisible();
-
-  await page.getByRole("button", { name: "Mark locally checked" }).click();
-  await expect(page.getByText(/It has not been published/i)).toBeVisible();
-
-  await page.goto("/lexicon");
-  await page.getByPlaceholder("Search Kristang or English").fill("sabang local");
-  await expect(page.getByRole("heading", { name: "No matching entries" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "What does janela mean?" })).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole("heading", { name: "What does janela mean?" })).toBeVisible();
 });
 
-test("mobile drawer exposes protected routes and closes with Escape", async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
+test("repeat practice works after completion without saving a memory", async ({ page }) => {
+  await completeSabang(page, false);
+  await page.getByRole("button", { name: "Practise again" }).click();
+  await expect(page.getByRole("heading", { name: "sabang" })).toBeVisible();
+  await page.goto("/memories");
+  await expect(page.getByRole("heading", { name: "No memories yet." })).toBeVisible();
+});
+
+test("Memories starts empty and supports add, edit, export and delete", async ({ page }) => {
+  await page.goto("/memories");
+  await expect(page.getByRole("heading", { name: "No memories yet." })).toBeVisible();
+  await page.getByRole("link", { name: "Add a memory" }).click();
+  await page.getByRole("button", { name: "A word" }).click();
+  await page.getByLabel("Word or phrase").fill("my word");
+  await page.getByLabel("Meaning").fill("my meaning");
+  await page.getByRole("button", { name: "Save in this browser" }).click();
+  await page.getByRole("link", { name: "Done" }).click();
+  await page.getByRole("link", { name: /my word my meaning/i }).click();
+  await page.getByLabel("Meaning").fill("edited meaning");
+  await page.getByRole("button", { name: "Save changes" }).click();
+  await page.getByRole("link", { name: "Memories" }).first().click();
+  await expect(page.getByText("edited meaning")).toBeVisible();
+
+  await page.getByText("Backup and browser data").click();
+  const downloadPromise = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Export backup" }).click();
+  const download = await downloadPromise;
+  expect(download.suggestedFilename()).toMatch(/^kambradu-backup-\d{4}-\d{2}-\d{2}\.json$/);
+
+  await page.getByRole("link", { name: /my word edited meaning/i }).click();
+  await page.getByRole("button", { name: "Delete memory" }).click();
+  await page.getByRole("button", { name: "Yes, delete" }).click();
+  await expect(page.getByRole("heading", { name: "Memory deleted." })).toBeVisible();
+});
+
+test("malformed browser data is preserved for recovery", async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem("kambradu-local-data-v2", "{not valid json"));
+  await page.goto("/memories");
+  await expect(page.getByRole("heading", { name: "Stored data needs attention." })).toBeVisible();
+  const downloadPromise = page.waitForEvent("download");
+  await page.getByRole("button", { name: "Download unreadable data" }).click();
+  await downloadPromise;
+  expect(await page.evaluate(() => localStorage.getItem("kambradu-local-data-v2"))).toBe("{not valid json");
+});
+
+test("a validated backup can be restored and all data can be cleared", async ({ page }) => {
+  const timestamp = "2026-08-02T04:00:00.000Z";
+  const backup = {
+    version: 2,
+    memories: [{ id: "restored-note", kind: "note", title: "Restored note", detail: "A kept detail", context: "At home", createdAt: timestamp, updatedAt: timestamp }],
+    reviews: [],
+    activeSession: null,
+    updatedAt: timestamp
+  };
+  await page.goto("/memories");
+  await page.getByText("Backup and browser data").click();
+  await page.locator('input[type="file"]').setInputFiles({ name: "backup.json", mimeType: "application/json", buffer: Buffer.from(JSON.stringify(backup)) });
+  await expect(page.getByText("Restored note")).toBeVisible();
+  await page.getByRole("button", { name: "Clear all" }).click();
+  await page.getByRole("button", { name: "Yes, clear all" }).click();
+  await expect(page.getByRole("heading", { name: "No memories yet." })).toBeVisible();
+});
+
+test("quota failure keeps the learner's entry on screen", async ({ page }) => {
+  await page.addInitScript(() => {
+    Storage.prototype.setItem = () => { throw new DOMException("Quota exceeded", "QuotaExceededError"); };
+  });
+  await page.goto("/memories/new");
+  await page.getByLabel("Short title").fill("Do not lose this");
+  await page.getByLabel("What do you want to remember?").fill("The text must remain in the form.");
+  await page.getByRole("button", { name: "Save in this browser" }).click();
+  await expect(page.locator('p.error-notice[role="alert"]')).toContainText("still on screen");
+  await expect(page.getByLabel("Short title")).toHaveValue("Do not lose this");
+});
+
+test("advanced public routes are closed in the production server", async ({ page }) => {
+  for (const route of ["/builder", "/contribute", "/steward", "/sign-in"]) {
+    const response = await page.goto(route);
+    expect(response?.status(), route).toBe(404);
+    await expect(page.getByRole("heading", { name: "This page is not available." })).toBeVisible();
+  }
+});
+
+test("release status exposes the build fingerprint", async ({ request }) => {
+  const response = await request.get("/status");
+  expect(response.ok()).toBeTruthy();
+  const status = await response.json();
+  expect(status.release).toMatch(/^[a-f0-9]{40}$/);
+  expect(status.boundary).toBe("Kristang-only, web-only, text-only, local-first");
+  expect(response.headers()["x-kambradu-release"]).toBe(status.release);
+});
+
+test("core screens reflow with large controls across target widths", async ({ page }) => {
+  const viewports = [
+    { width: 320, height: 568 },
+    { width: 390, height: 844 },
+    { width: 820, height: 1180 },
+    { width: 960, height: 900 },
+    { width: 1440, height: 900 }
+  ];
+  for (const viewport of viewports) {
+    await page.setViewportSize(viewport);
+    await page.goto("/learn");
+    const metrics = await page.evaluate(() => ({
+      overflow: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      h1s: document.querySelectorAll("main h1").length,
+      smallTargets: [...document.querySelectorAll<HTMLElement>("main button, main a[href]")]
+        .filter((element) => element.getClientRects().length && (element.getBoundingClientRect().height < 44 || element.getBoundingClientRect().width < 44))
+        .map((element) => element.textContent?.trim())
+    }));
+    expect(metrics.overflow, `${viewport.width}px overflow`).toBeLessThanOrEqual(0);
+    expect(metrics.h1s, `${viewport.width}px H1 count`).toBe(1);
+    expect(metrics.smallTargets, `${viewport.width}px small targets`).toEqual([]);
+  }
+});
+
+test("keyboard focus and Kristang language markup are present", async ({ page }) => {
+  await page.goto("/learn");
+  await expect(page.locator('[lang="mcm"]')).toHaveCount(6);
+  await page.keyboard.press("Tab");
+  await expect(page.locator(".skip-link")).toBeFocused();
+  const bodyText = await page.locator("body").innerText();
+  expect(bodyText).not.toContain("—");
+});
+
+test("desktop and mobile release screenshots can be captured", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto("/");
-
-  await page.getByRole("button", { name: "Open navigation drawer" }).click();
-  const drawer = page.getByRole("dialog", { name: "Kambradu navigation" });
-  await expect(drawer).toBeVisible();
-  await expect(drawer.getByRole("link", { name: "Memories" })).toBeVisible();
-
-  await page.keyboard.press("Escape");
-  await expect(drawer).toBeHidden();
-
-  const quickNavigation = page.getByRole("navigation", { name: "Quick navigation" });
-  await expect(quickNavigation).toBeVisible();
-  await expect(quickNavigation.getByRole("link", { name: "Learn" })).toBeVisible();
-  await expect(quickNavigation.getByRole("link", { name: "Explore" })).toBeVisible();
+  await page.screenshot({ path: "output/playwright/public-prototype-desktop.png", fullPage: true });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/learn");
+  await page.screenshot({ path: "output/playwright/public-prototype-mobile.png", fullPage: true });
 });

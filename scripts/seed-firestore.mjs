@@ -23,6 +23,10 @@ const payload = JSON.parse(await readFile(seedPath, "utf8"));
 const now = FieldValue.serverTimestamp();
 const batch = db.batch();
 
+if (seedPath.includes("quarantine")) {
+  throw new Error("Quarantined seed files must never be deployed.");
+}
+
 if (!payload.community?.id) {
   throw new Error("Seed file must include community.id");
 }
@@ -41,6 +45,14 @@ for (const entry of payload.lexicalEntries ?? []) {
     throw new Error("Every lexical entry needs an id");
   }
 
+  if (!entry.source?.locator || entry.evidence?.source_checked !== true || entry.evidence?.public_use_allowed !== true) {
+    throw new Error(`Entry ${entry.id} needs an exact source locator and public source-checked evidence.`);
+  }
+
+  if (entry.reviewStatus || entry.pronunciation || entry.example || entry.exampleTranslation || entry.hasAudio) {
+    throw new Error(`Entry ${entry.id} contains fields outside the text-only public prototype boundary.`);
+  }
+
   batch.set(
     db.collection("lexicalEntries").doc(entry.id),
     {
@@ -53,6 +65,7 @@ for (const entry of payload.lexicalEntries ?? []) {
 }
 
 for (const story of payload.stories ?? []) {
+  throw new Error(`Stories are not seedable in the current public prototype (${story.id ?? "missing id"}).`);
   if (!story.id) {
     throw new Error("Every story needs an id");
   }

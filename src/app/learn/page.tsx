@@ -1,5 +1,10 @@
-import { redirect } from "next/navigation";
+import { AppShell } from "@/components/layout/AppShell";
+import { LearnHome } from "@/components/learn/LearnHome";
 
 export default function LearnPage() {
-  redirect("/lessons");
+  return (
+    <AppShell activePath="/learn">
+      <LearnHome />
+    </AppShell>
+  );
 }
