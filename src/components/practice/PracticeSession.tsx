@@ -1,268 +1,224 @@
 "use client";
 
 import Link from "next/link";
-import { Check, ChevronLeft, LockKeyhole, MessageCircleQuestion, Volume2 } from "lucide-react";
+import { Check, ChevronLeft } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { practicePrompts } from "@/data/kristang";
-import { useLearningCycles } from "@/lib/hooks/use-learning-cycles";
-import { useLocalStorageState } from "@/lib/hooks/use-local-storage-state";
-import { useMemoriesData } from "@/lib/hooks/use-memories-data";
-import { formatReviewDate, scheduleNextPracticeReview } from "@/lib/practice-scheduler";
-import type { PracticeReview, SpeakerCheck } from "@/types/kambradu";
+import { HegelCompanion } from "@/components/ui/HegelCompanion";
+import { lessonUnits, practicePrompts } from "@/data/kristang";
+import { useKambraduData } from "@/lib/hooks/use-kambradu-data";
+import { findLatestReview, type LocalPracticeSession, type LocalReview } from "@/lib/local-data";
+import { scheduleNextPracticeReview } from "@/lib/practice-scheduler";
 
-type PracticeStep = "hear" | "try" | "use" | "keep" | "done";
+type Step = LocalPracticeSession["step"] | "done";
+type Confidence = LocalReview["confidence"];
 
-const stepOrder: PracticeStep[] = ["hear", "try", "use", "keep", "done"];
-const stepLabels: Record<PracticeStep, string> = {
-  hear: "Meet",
-  try: "Try",
-  use: "Connect",
-  keep: "Keep",
-  done: "Done"
-};
-const initialReflections: Record<string, string> = {};
-const initialReviews: PracticeReview[] = [];
-const initialSpeakerChecks: SpeakerCheck[] = [];
-const contextChoices = ["At home", "With someone I know", "Just for me"];
+const steps: Array<Exclude<Step, "done">> = ["meet", "meaning", "recall", "connect", "keep"];
+const contexts = ["At home", "With someone I know", "Somewhere in Melaka"];
 
-export function PracticeSession() {
-  const { activeCycle, attachPracticeReview, attachSpeakerCheck, isHydrated: cyclesReady } = useLearningCycles();
-  const { keepSavedWord, savedWords, isHydrated: memoriesReady } = useMemoriesData();
-  const [activeStep, setActiveStep, stepReady] = useLocalStorageState<PracticeStep>("kambradu-practice-step-v2", "hear");
-  const [reviews, setReviews, reviewsReady] = useLocalStorageState<PracticeReview[]>("kambradu-practice-reviews-v1", initialReviews);
-  const [, setSpeakerChecks, speakerChecksReady] = useLocalStorageState<SpeakerCheck[]>("kambradu-speaker-checks-v1", initialSpeakerChecks);
-  const [reflections, setReflections, reflectionsReady] = useLocalStorageState<Record<string, string>>("kambradu-practice-reflections-v1", initialReflections);
-  const [askSomeone, setAskSomeone] = useState(false);
-  const [message, setMessage] = useState("");
+export function PracticeSession({ requestedLessonId }: { requestedLessonId?: string }) {
+  const validLessonId = lessonUnits.some((lesson) => lesson.id === requestedLessonId) ? requestedLessonId as string : lessonUnits[0].id;
+  const prompt = practicePrompts.find((item) => item.lessonId === validLessonId) ?? practicePrompts[0];
+  const { data, isHydrated, completeReview, setActiveSession, saveStatus } = useKambraduData();
+  const [step, setStep] = useState<Step>("meet");
+  const [meaningChoice, setMeaningChoice] = useState("");
+  const [recall, setRecall] = useState("");
+  const [recallChecked, setRecallChecked] = useState(false);
+  const [confidence, setConfidence] = useState<Confidence | null>(null);
+  const [context, setContext] = useState("");
+  const [writeOwnContext, setWriteOwnContext] = useState(false);
+  const [saved, setSaved] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const didMount = useRef(false);
-  const activePrompt = useMemo(() => {
-    const cyclePrompt = practicePrompts.find((prompt) => activeCycle.practicePromptIds.includes(prompt.id));
-    return cyclePrompt ?? practicePrompts[0];
-  }, [activeCycle.practicePromptIds]);
-  const reflection = reflections[activePrompt.id] ?? "";
-  const currentIndex = stepOrder.indexOf(activeStep);
-  const hasPlayableAudio = Boolean(activePrompt.audioPath);
-  const isDictionaryListed = activePrompt.source.label === "Baxter and de Silva Kristang dictionary";
-  const isReady = cyclesReady && memoriesReady && stepReady && reviewsReady && speakerChecksReady && reflectionsReady;
+  const initialized = useRef(false);
+
+  const meaningOptions = useMemo(
+    () => prompt.lexicalEntryId === "sabang" ? ["window", "soap", "table"] : ["soap", "door", "window"],
+    [prompt.lexicalEntryId]
+  );
+  const meaningCorrect = meaningChoice === prompt.englishGloss;
+  const recallCorrect = recall.trim().toLowerCase() === prompt.headword.toLowerCase();
+  const currentIndex = step === "done" ? steps.length : steps.indexOf(step);
 
   useEffect(() => {
-    if (!didMount.current) {
-      didMount.current = true;
-      return;
+    if (!isHydrated || initialized.current) return;
+    initialized.current = true;
+    const existing = data.activeSession?.lessonId === validLessonId ? data.activeSession : null;
+    if (existing) {
+      setStep(existing.step);
+      setMeaningChoice(existing.meaningChoice ?? "");
+      setRecall(existing.recall ?? "");
+      setRecallChecked(existing.recallChecked ?? false);
+      setConfidence(existing.confidence ?? null);
+      setContext(existing.context ?? "");
+      setWriteOwnContext(Boolean(existing.context && !contexts.includes(existing.context)));
+    } else {
+      setActiveSession({ lessonId: validLessonId, step: "meet", startedAt: new Date().toISOString() });
     }
+  }, [data.activeSession, isHydrated, setActiveSession, validLessonId]);
 
+  useEffect(() => {
     headingRef.current?.focus();
-  }, [activeStep, askSomeone]);
+  }, [step]);
 
-  function goTo(step: PracticeStep) {
-    setMessage("");
-    setAskSomeone(false);
-    setActiveStep(step);
+  function goTo(next: Exclude<Step, "done">) {
+    setStep(next);
+    setActiveSession({
+      lessonId: validLessonId,
+      step: next,
+      startedAt: data.activeSession?.lessonId === validLessonId ? data.activeSession.startedAt : new Date().toISOString(),
+      meaningChoice,
+      recall,
+      recallChecked,
+      confidence: confidence ?? undefined,
+      context
+    });
+  }
+
+  function saveDraft(values: Partial<LocalPracticeSession>) {
+    if (step === "done") return;
+    setActiveSession({
+      lessonId: validLessonId,
+      step,
+      startedAt: data.activeSession?.lessonId === validLessonId ? data.activeSession.startedAt : new Date().toISOString(),
+      meaningChoice,
+      recall,
+      recallChecked,
+      confidence: confidence ?? undefined,
+      context,
+      ...values
+    });
   }
 
   function goBack() {
-    const previous = stepOrder[Math.max(0, currentIndex - 1)];
+    const previous = steps[Math.max(0, currentIndex - 1)];
     goTo(previous);
   }
 
-  function chooseContext(value: string) {
-    setReflections((current) => ({ ...current, [activePrompt.id]: value }));
-  }
-
-  function saveReview() {
-    const previousReview = [...reviews].reverse().find((review) => review.promptId === activePrompt.id);
-    const schedule = scheduleNextPracticeReview("almost", previousReview?.intervalDays ?? 0);
-    const reviewedAt = new Date().toISOString();
-    const nextReview: PracticeReview = {
-      id: `users/demo/practiceReviews/practice-${activePrompt.id}-${Date.now()}`,
-      userId: "demo",
-      communityId: activePrompt.communityId,
-      promptId: activePrompt.id,
-      lexicalEntryId: activePrompt.lexicalEntryId,
-      lessonId: activePrompt.lessonId,
-      promptKind: activePrompt.promptKind,
-      confidence: "almost",
-      reflection,
+  function complete(keep: boolean) {
+    if (!confidence) return;
+    const previous = findLatestReview(data.reviews, validLessonId);
+    const schedule = scheduleNextPracticeReview(confidence, previous?.intervalDays ?? 0);
+    const review: LocalReview = {
+      id: `review-${validLessonId}-${Date.now()}`,
+      lessonId: validLessonId,
+      promptId: prompt.id,
+      lexicalEntryId: prompt.lexicalEntryId ?? prompt.id,
+      confidence,
+      reflection: context,
       ...schedule
     };
-    const existingWord = savedWords.find((word) => word.lexicalEntryId === activePrompt.lexicalEntryId);
-
-    setReviews((current) => [nextReview, ...current]);
-    attachPracticeReview(nextReview.id);
-    keepSavedWord({
-      id: existingWord?.id ?? `saved-${activePrompt.lexicalEntryId ?? activePrompt.id}`,
-      userId: "demo",
-      lexicalEntryId: activePrompt.lexicalEntryId ?? activePrompt.id,
-      headword: activePrompt.headword,
-      englishGloss: activePrompt.englishGloss,
-      nextReviewAt: formatReviewDate(schedule.nextReviewAt),
-      confidence: "learning",
-      lastReviewedAt: reviewedAt,
-      reviewCount: (existingWord?.reviewCount ?? 0) + 1,
-      hasAudio: hasPlayableAudio,
-      savedAt: existingWord?.savedAt ?? reviewedAt
-    });
-    setMessage("Saved on this device. Other people using this browser profile may be able to see it.");
-    setAskSomeone(false);
-    setActiveStep("done");
+    const entry = keep ? { id: prompt.lexicalEntryId ?? prompt.id, headword: prompt.headword, gloss: prompt.englishGloss } : undefined;
+    if (completeReview(review, entry, context)) {
+      setSaved(keep);
+      setStep("done");
+    }
   }
 
-  function finishWithoutSaving() {
-    setMessage("Nothing was saved.");
-    setAskSomeone(false);
-    setActiveStep("done");
+  function restart() {
+    setMeaningChoice("");
+    setRecall("");
+    setRecallChecked(false);
+    setConfidence(null);
+    setContext("");
+    setWriteOwnContext(false);
+    setSaved(false);
+    goTo("meet");
   }
 
-  function keepQuestion() {
-    const check: SpeakerCheck = {
-      id: `users/demo/speakerChecks/speaker-check-${activePrompt.id}-${Date.now()}`,
-      userId: "demo",
-      communityId: activePrompt.communityId,
-      linkedEntryId: activePrompt.lexicalEntryId,
-      question: activePrompt.speakerQuestion,
-      speakerDisplayName: "Someone I trust",
-      relationship: "",
-      consentStatus: "not-asked",
-      access: "restricted",
-      status: "private-draft",
-      createdAt: new Date().toISOString()
-    };
-
-    setSpeakerChecks((current) => [check, ...current]);
-    attachSpeakerCheck(check.id);
-    setMessage("Question saved on this device.");
-    setAskSomeone(false);
-  }
-
-  const progress = (
-    <div className="gentle-progress" aria-hidden="true">
-      {stepOrder.map((step, index) => <span className={index <= currentIndex ? "filled" : ""} key={step} />)}
-    </div>
-  );
-
-  if (!isReady) {
-    return <section className="gentle-practice practice-loading" aria-label="Practice"><p role="status">Preparing practice...</p></section>;
+  if (!isHydrated) {
+    return <section className="practice-card" aria-label="Practice"><p role="status">Preparing your word.</p></section>;
   }
 
   return (
-    <section className="gentle-practice" aria-labelledby="practice-step-heading">
-      <div className="practice-progress-row">
-        <span>Step {currentIndex + 1} of {stepOrder.length}</span>
-        {progress}
-      </div>
-      <p className="sr-only" role="status" aria-live="polite" aria-atomic="true">
-        Step {currentIndex + 1} of {stepOrder.length}: {stepLabels[activeStep]}
-      </p>
-
-      {currentIndex > 0 && activeStep !== "done" ? (
-        <button className="practice-back" type="button" onClick={goBack}>
-          <ChevronLeft size={18} aria-hidden="true" />
-          Back
-        </button>
+    <section className="practice-card" aria-labelledby="practice-heading">
+      {step !== "done" ? (
+        <div className="practice-progress" aria-label={`Step ${currentIndex + 1} of ${steps.length}`}>
+          <span>Step {currentIndex + 1} of {steps.length}</span>
+          <progress max={steps.length} value={currentIndex + 1}>{currentIndex + 1} of {steps.length}</progress>
+        </div>
       ) : null}
 
-      {activeStep === "hear" ? (
+      {currentIndex > 0 && step !== "done" ? <button className="back-button" type="button" onClick={goBack}><ChevronLeft size={18} aria-hidden="true" />Back</button> : null}
+      {saveStatus?.kind === "error" ? <p className="error-notice" role="alert">{saveStatus.message}</p> : null}
+
+      {step === "meet" ? (
         <div className="practice-stage">
           <header>
-            <h1 id="practice-step-heading" ref={headingRef} tabIndex={-1}>
-              {hasPlayableAudio ? "Hear" : "Meet"} <span lang="mcm">{activePrompt.headword}</span>.
-            </h1>
-            <p>
-              {hasPlayableAudio
-                ? "Listen when you are ready. Replay as often as you like."
-                : isDictionaryListed
-                  ? "Dictionary-listed. No reviewed audio is available."
-                  : "This learning note has not been checked."}
-            </p>
+            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}><span lang="mcm">{prompt.headword}</span></h1>
+            <p>{prompt.englishGloss}</p>
           </header>
+          <details className="source-note"><summary>Source</summary><p>Checked against the Baxter and de Silva dictionary. No reviewed audio is available.</p></details>
+          <button className="primary-action" type="button" onClick={() => goTo("meaning")}>Continue</button>
+        </div>
+      ) : null}
 
-          <div className="practice-word-card">
-            <span lang="mcm">{activePrompt.headword}</span>
-            <strong>{activePrompt.englishGloss}</strong>
-            <small>{hasPlayableAudio ? "Checked audio available" : "Read for now"}</small>
+      {step === "meaning" ? (
+        <div className="practice-stage">
+          <header>
+            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>What does <span lang="mcm">{prompt.headword}</span> mean?</h1>
+          </header>
+          <div className="answer-grid" role="group" aria-label="Meaning choices">
+            {meaningOptions.map((option) => <button aria-pressed={meaningChoice === option} key={option} type="button" onClick={() => { setMeaningChoice(option); saveDraft({ meaningChoice: option }); }}>{option}</button>)}
           </div>
+          {meaningChoice ? <p className={`plain-feedback ${meaningCorrect ? "correct" : ""}`} role="status">{meaningCorrect ? `Yes. It means ${prompt.englishGloss}.` : `${prompt.headword} means ${prompt.englishGloss}.`}</p> : null}
+          <button className="primary-action" type="button" disabled={!meaningChoice} onClick={() => goTo("recall")}>Continue</button>
+        </div>
+      ) : null}
 
-          {hasPlayableAudio ? (
-            <audio className="practice-audio" controls preload="metadata" src={activePrompt.audioPath} aria-label={`Listen to ${activePrompt.headword}`} />
-          ) : (
-            <p className="practice-honesty-note"><Volume2 size={18} aria-hidden="true" />A reviewed recording has not been added.</p>
+      {step === "recall" ? (
+        <div className="practice-stage">
+          <header>
+            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>What is the Kristang word for {prompt.englishGloss}?</h1>
+          </header>
+          <label className="recall-field"><span>Your answer</span><input lang="mcm" autoComplete="off" value={recall} onChange={(event) => { const value = event.target.value; setRecall(value); setRecallChecked(false); setConfidence(null); saveDraft({ recall: value, recallChecked: false, confidence: undefined }); }} /></label>
+          {!recallChecked ? <button className="primary-action" type="button" disabled={!recall.trim()} onClick={() => { setRecallChecked(true); saveDraft({ recallChecked: true }); }}>Check</button> : (
+            <>
+              <p className={`plain-feedback ${recallCorrect ? "correct" : ""}`} role="status">{recallCorrect ? "That matches the dictionary form." : `The dictionary form is ${prompt.headword}.`}</p>
+              <fieldset className="confidence-choices">
+                <legend>How did that feel?</legend>
+                {(["again", "almost", "got-it"] as Confidence[]).map((value) => <button aria-pressed={confidence === value} key={value} type="button" onClick={() => { setConfidence(value); saveDraft({ confidence: value }); }}>{value === "got-it" ? "Got it" : value[0].toUpperCase() + value.slice(1)}</button>)}
+              </fieldset>
+              <button className="primary-action" type="button" disabled={!confidence} onClick={() => goTo("connect")}>Continue</button>
+            </>
           )}
-
-          <button className="primary-action practice-primary" type="button" onClick={() => goTo("try")}>Next</button>
         </div>
       ) : null}
 
-      {activeStep === "try" ? (
+      {step === "connect" ? (
         <div className="practice-stage">
           <header>
-            <h1 id="practice-step-heading" ref={headingRef} tabIndex={-1}>Try <span lang="mcm">{activePrompt.headword}</span>.</h1>
-            <p>Say it quietly, read it, or continue without speaking.</p>
+            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>Where could <span lang="mcm">{prompt.headword}</span> fit in your life?</h1>
+            <p>Choose a place or write your own.</p>
           </header>
-          <div className="try-bubble" lang="mcm">{activePrompt.headword}</div>
-          <button className="primary-action practice-primary" type="button" onClick={() => goTo("use")}>Continue</button>
-          <button className="quiet-action" type="button" onClick={() => goTo("use")}>Skip speaking</button>
-        </div>
-      ) : null}
-
-      {activeStep === "use" ? (
-        <div className="practice-stage">
-          <header>
-            <h1 id="practice-step-heading" ref={headingRef} tabIndex={-1}>Where might <span lang="mcm">{activePrompt.headword}</span> fit?</h1>
-            <p>Choose a context that fits, or skip.</p>
-          </header>
-          <div className="context-choice-grid" role="group" aria-label={`Where ${activePrompt.headword} might fit`}>
-            {contextChoices.map((choice) => (
-              <button aria-pressed={reflection === choice} className={reflection === choice ? "selected" : ""} key={choice} type="button" onClick={() => chooseContext(choice)}>{choice}</button>
-            ))}
+          <div className="context-choices" role="group" aria-label="Personal context">
+            {contexts.map((value) => <button aria-pressed={!writeOwnContext && context === value} key={value} type="button" onClick={() => { setWriteOwnContext(false); setContext(value); saveDraft({ context: value }); }}>{value}</button>)}
+            <button aria-pressed={writeOwnContext} type="button" onClick={() => { setWriteOwnContext(true); setContext(""); saveDraft({ context: "" }); }}>Write my own</button>
           </div>
-          <button className="primary-action practice-primary" type="button" onClick={() => goTo("keep")} disabled={!reflection}>Next</button>
+          {writeOwnContext ? <label className="context-field"><span>Short note</span><textarea rows={3} value={context} onChange={(event) => { const value = event.target.value; setContext(value); saveDraft({ context: value }); }} /></label> : null}
+          <button className="primary-action" type="button" disabled={!context.trim()} onClick={() => goTo("keep")}>Continue</button>
           <button className="quiet-action" type="button" onClick={() => goTo("keep")}>Skip this</button>
         </div>
       ) : null}
 
-      {activeStep === "keep" ? (
+      {step === "keep" ? (
         <div className="practice-stage">
           <header>
-            <h1 id="practice-step-heading" ref={headingRef} tabIndex={-1}>Keep this on your device?</h1>
-            <p>Other people using this browser profile may be able to see it.</p>
+            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>Keep <span lang="mcm">{prompt.headword}</span> in Memories?</h1>
+            <p>You can edit, export or delete it later.</p>
           </header>
-          <div className="keep-preview">
-            <span lang="mcm">{activePrompt.headword}</span>
-            <strong>{activePrompt.englishGloss}</strong>
-            {reflection ? <small>{reflection}</small> : null}
-          </div>
-          <button className="primary-action practice-primary" type="button" onClick={saveReview}>
-            <LockKeyhole size={18} aria-hidden="true" />
-            Save on this device
-          </button>
-          <button className="quiet-action" type="button" onClick={finishWithoutSaving}>Not today</button>
+          <div className="keep-card"><strong lang="mcm">{prompt.headword}</strong><span>{prompt.englishGloss}</span>{context ? <small>{context}</small> : null}</div>
+          <button className="primary-action" type="button" onClick={() => complete(true)}>Keep in Memories</button>
+          <button className="quiet-action" type="button" onClick={() => complete(false)}>Finish without saving</button>
         </div>
       ) : null}
 
-      {activeStep === "done" && askSomeone ? (
-        <div className="practice-stage practice-finish">
-          <span className="finish-icon question" aria-hidden="true"><MessageCircleQuestion size={31} /></span>
-          <header>
-            <h1 id="practice-step-heading" ref={headingRef} tabIndex={-1}>Save a question for later?</h1>
-            <p>Keep this if you would like to ask a Kristang speaker later.</p>
-          </header>
-          <blockquote className="ask-question">{activePrompt.speakerQuestion}</blockquote>
-          <button className="primary-action practice-primary" type="button" onClick={keepQuestion}>Keep this question</button>
-          <button className="quiet-action" type="button" onClick={() => setAskSomeone(false)}>Not now</button>
-        </div>
-      ) : null}
-
-      {activeStep === "done" && !askSomeone ? (
-        <div className="practice-stage practice-finish">
-          <span className="finish-icon" aria-hidden="true"><Check size={31} /></span>
-          <header>
-            <h1 id="practice-step-heading" ref={headingRef} tabIndex={-1}>Practice complete.</h1>
-            <p>You can return to this word from Memories.</p>
-          </header>
-          {message ? <p className="practice-message" role="status" aria-live="polite">{message}</p> : null}
-          <Link className="primary-action practice-primary" href="/">Finish</Link>
-          <button className="quiet-action" type="button" onClick={() => setAskSomeone(true)}>Save a question</button>
+      {step === "done" ? (
+        <div className="practice-stage completion-stage">
+          <HegelCompanion compact>
+            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>You reviewed <span lang="mcm">{prompt.headword}</span>.</h1>
+            <p>{saved ? "The word is also saved in this browser." : "Nothing was added to Memories."}</p>
+          </HegelCompanion>
+          <Link className="primary-action" href="/"><Check size={18} aria-hidden="true" />Done</Link>
+          <button className="quiet-action" type="button" onClick={restart}>Practise again</button>
         </div>
       ) : null}
     </section>

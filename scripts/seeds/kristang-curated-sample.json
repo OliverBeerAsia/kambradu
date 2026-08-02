@@ -1,82 +1,70 @@
 {
   "community": {
     "id": "kristang-melaka",
-    "name": "Kristang / Melaka",
+    "name": "Kristang",
     "languageName": "Kristang",
     "region": "Melaka, Malaysia",
-    "defaultAccess": "community"
+    "defaultAccess": "restricted"
   },
   "lexicalEntries": [
     {
-      "id": "loja",
+      "id": "sabang",
       "communityId": "kristang-melaka",
-      "headword": "loja",
-      "normalizedHeadword": "loja",
-      "englishGlosses": ["shop", "store"],
+      "headword": "sabang",
+      "normalizedHeadword": "sabang",
+      "englishGlosses": ["soap"],
       "partOfSpeech": "noun",
-      "pronunciation": "LO-zha",
       "alternateSpellings": [],
-      "example": "Nha mae bai loja kompra sabang.",
-      "exampleTranslation": "My mother went to the shop to buy soap.",
       "source": {
-        "label": "Baxter and de Silva Kristang dictionary",
+        "label": "A Dictionary of Kristang (Malacca Creole Portuguese)",
         "authors": "Alan N. Baxter and Patrick de Silva",
         "publisher": "Pacific Linguistics, The Australian National University",
         "year": "2005; online edition 2015",
         "doi": "10.15144/PL-564.cover",
         "url": "https://doi.org/10.15144/PL-564.cover",
-        "license": "CC BY-SA 4.0"
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword entry: sabang"
       },
       "access": "open",
-      "reviewStatus": "approved",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
       "hasAudio": false,
-      "tags": ["place", "daily life"]
+      "tags": ["dictionary-listed"]
     },
     {
-      "id": "balcao",
+      "id": "janela",
       "communityId": "kristang-melaka",
-      "headword": "balcao",
-      "normalizedHeadword": "balcao",
-      "englishGlosses": ["counter", "shop counter"],
+      "headword": "janela",
+      "normalizedHeadword": "janela",
+      "englishGlosses": ["window"],
       "partOfSpeech": "noun",
-      "alternateSpellings": ["balkau"],
+      "alternateSpellings": [],
       "source": {
-        "label": "Baxter and de Silva Kristang dictionary",
+        "label": "A Dictionary of Kristang (Malacca Creole Portuguese)",
         "authors": "Alan N. Baxter and Patrick de Silva",
         "publisher": "Pacific Linguistics, The Australian National University",
         "year": "2005; online edition 2015",
         "doi": "10.15144/PL-564.cover",
         "url": "https://doi.org/10.15144/PL-564.cover",
-        "license": "CC BY-SA 4.0"
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword entry: janela"
       },
       "access": "open",
-      "reviewStatus": "approved",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
       "hasAudio": false,
-      "tags": ["shop", "objects"]
+      "tags": ["dictionary-listed"]
     }
   ],
-  "stories": [
-    {
-      "id": "shop-phrase",
-      "communityId": "kristang-melaka",
-      "title": "At the shop",
-      "summary": "A phrase card built around everyday buying and greeting language.",
-      "kind": "phrase",
-      "body": "Nha mae bai loja kompra sabang.",
-      "translation": "My mother went to the shop to buy soap.",
-      "contributor": "Kambradu seed set",
-      "access": "open",
-      "reviewStatus": "approved",
-      "source": {
-        "label": "Baxter and de Silva Kristang dictionary",
-        "authors": "Alan N. Baxter and Patrick de Silva",
-        "publisher": "Pacific Linguistics, The Australian National University",
-        "year": "2005; online edition 2015",
-        "doi": "10.15144/PL-564.cover",
-        "url": "https://doi.org/10.15144/PL-564.cover",
-        "license": "CC BY-SA 4.0"
-      },
-      "tags": ["phrase", "daily life"]
-    }
-  ]
+  "stories": []
 }

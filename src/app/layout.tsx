@@ -6,21 +6,20 @@ export const metadata: Metadata = {
     default: "Kambradu",
     template: "%s | Kambradu"
   },
-  description: "An independent prototype for learning Kristang and keeping personal language memories.",
+  description: "Learn a Kristang word. Connect it to your life. Keep what matters.",
   icons: {
     icon: "/icon.svg",
     apple: "/icon.svg"
   },
-  manifest: "/manifest.webmanifest",
-  appleWebApp: {
-    capable: true,
-    title: "Kambradu",
-    statusBarStyle: "default"
+  other: {
+    "kambradu-release": process.env.KAMBRADU_RELEASE_SHA ?? "development",
+    "kambradu-built-at": process.env.KAMBRADU_BUILD_DATE ?? "development",
+    "kambradu-environment": process.env.KAMBRADU_RELEASE_ENV ?? "local"
   }
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1E1B18",
+  themeColor: "#FFF9F2",
   width: "device-width",
   initialScale: 1
 };

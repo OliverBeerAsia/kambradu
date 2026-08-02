@@ -30,8 +30,17 @@ export const dictionaryAttribution: Attribution = {
   year: "2005; online edition 2015",
   doi: "10.15144/PL-564.cover",
   url: "https://doi.org/10.15144/PL-564.cover",
-  license: "CC BY-SA 4.0"
+  license: "CC BY-SA 4.0",
+  locator: "Dictionary entry for the headword"
 };
+
+const sourceCheckedEvidence = {
+  source_transcribed: true,
+  source_checked: true,
+  speaker_attested: false,
+  partner_reviewed: false,
+  public_use_allowed: true
+} as const;
 
 export const publicLexiconEntries: LexicalEntry[] = [
   {
@@ -44,7 +53,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     alternateSpellings: [],
     source: dictionaryAttribution,
     access: "open",
-    reviewStatus: "approved",
+    evidence: sourceCheckedEvidence,
     hasAudio: false,
     tags: ["daily life", "dictionary-listed"]
   },
@@ -58,7 +67,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     alternateSpellings: [],
     source: dictionaryAttribution,
     access: "open",
-    reviewStatus: "approved",
+    evidence: sourceCheckedEvidence,
     hasAudio: false,
     tags: ["home", "dictionary-listed"]
   }
@@ -66,42 +75,9 @@ export const publicLexiconEntries: LexicalEntry[] = [
 
 export const publicStories: Story[] = [];
 
-export const starterSavedWords: SavedWord[] = [
-  {
-    id: "saved-sabang",
-    userId: "demo",
-    lexicalEntryId: "sabang",
-    headword: "sabang",
-    englishGloss: "soap",
-    nextReviewAt: "Today",
-    confidence: "learning",
-    savedAt: "2026-05-19T00:00:00.000Z"
-  },
-  {
-    id: "saved-janela",
-    userId: "demo",
-    lexicalEntryId: "janela",
-    headword: "janela",
-    englishGloss: "window",
-    nextReviewAt: "Friday",
-    confidence: "steady",
-    savedAt: "2026-05-18T00:00:00.000Z"
-  }
-];
+export const starterSavedWords: SavedWord[] = [];
 
-export const starterJournalEntries: JournalEntry[] = [
-  {
-    id: "users/demo/journalEntries/shop-visit-starter",
-    userId: "demo",
-    communityId: kristangCommunity.id,
-    title: "Words from the shop",
-    body: "A place on this device to remember a word, where it came from, and what you want to check.",
-    tags: ["shop", "memory"],
-    linkedEntryIds: [],
-    isPrivate: true,
-    createdAt: "2026-05-17T00:00:00.000Z"
-  }
-];
+export const starterJournalEntries: JournalEntry[] = [];
 
 export const starterGoals: Goal[] = [
   {
@@ -124,21 +100,7 @@ export const starterGoals: Goal[] = [
   }
 ];
 
-export const starterBuilderEntries: PersonalLexiconEntry[] = [
-  {
-    id: "personal-sabang",
-    userId: "demo",
-    communityId: kristangCommunity.id,
-    headword: "sabang",
-    englishGloss: "soap",
-    alternateSpellings: "",
-    example: "",
-    sourceNote: "Dictionary-listed word. No reviewed audio or usage note is attached.",
-    access: "restricted",
-    status: "private",
-    createdAt: "2026-05-17"
-  }
-];
+export const starterBuilderEntries: PersonalLexiconEntry[] = [];
 
 export const starterLearningTasks: LearningTask[] = [
   {
@@ -192,13 +154,13 @@ export const practicePrompts: PracticePrompt[] = [
     title: "Keep a shop word",
     headword: "sabang",
     englishGloss: "soap",
-    promptKind: "listen-recall",
-    listenCue: "This word is listed in the reference dictionary. Checked community audio is not available yet.",
+    promptKind: "meaning-recall",
+    listenCue: "This word is listed in the reference dictionary.",
     hasAudio: false,
     access: "open",
     source: dictionaryAttribution,
     focus: ["sabang"],
-    speakerQuestion: "How do you use or pronounce sabang?"
+    speakerQuestion: "How is sabang used today?"
   },
   {
     id: "meaning-janela",
@@ -214,7 +176,7 @@ export const practicePrompts: PracticePrompt[] = [
     access: "open",
     source: dictionaryAttribution,
     focus: ["home", "objects"],
-    speakerQuestion: "How do you use or pronounce janela?"
+    speakerQuestion: "How is janela used today?"
   }
 ];
 
@@ -226,18 +188,18 @@ export const lessonUnits: LessonUnit[] = [
     level: "starter",
     summary: "Meet a dictionary-listed Kristang word and decide what you want to remember.",
     focus: ["sabang"],
-    estimatedMinutes: 12,
+    estimatedMinutes: 3,
     source: dictionaryAttribution,
     access: "open"
   },
   {
     id: "home-objects",
-    title: "Home objects",
+    title: "Meet janela",
     kind: "word",
     level: "starter",
     summary: "Meet a dictionary-listed home word and keep your own context note.",
     focus: ["janela"],
-    estimatedMinutes: 10,
+    estimatedMinutes: 3,
     source: dictionaryAttribution,
     access: "open"
   }

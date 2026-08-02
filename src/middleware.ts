@@ -11,6 +11,10 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  if (process.env.NODE_ENV !== "development") {
+    return NextResponse.next();
+  }
+
   const hasDemoSession = demoAuthEnabled && request.cookies.get("kambradu_demo_user")?.value === "true";
 
   if (hasDemoSession) {

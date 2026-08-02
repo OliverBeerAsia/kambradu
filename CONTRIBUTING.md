@@ -1,22 +1,54 @@
-# Contributing
+# Contributing to Kambradu
 
-Kambradu accepts code, documentation, and curated content workflow improvements.
+Kambradu is currently an independent public prototype. Code contributions are welcome for the existing text-only, local-first boundary. New language material, recordings, uploads, accounts, sharing and publishing are not open contribution areas yet.
 
-## Development
+## Local setup
 
-1. Install dependencies with `npm install`.
-2. Run `npm run dev`.
-3. Verify with `npm run type-check`, `npm run build`, and `npm run test:smoke -- --project=chromium`.
+Requirements:
 
-## Content Contributions
+- Node.js 22
+- npm 10
 
-- Do not commit source PDFs, raw OCR, bulk dictionary extraction, private recordings, or consent records.
-- Use curated JSON or Firestore writes that include attribution, source, license, review status, access level, and consent/provenance fields.
-- User-submitted material must enter `draft` or `submitted` review status. Only stewards can approve publication.
-- Restricted or community-only material must not be indexed or cached as public content.
+Install and run:
 
-## Pull Requests
+```bash
+npm ci
+npm run dev
+```
 
-- Keep changes scoped and explain any Firestore or Storage rule impact.
-- Include screenshots for visible UI changes.
-- Add or update tests for routing, contribution validation, review behavior, or rules changes.
+## Required checks
+
+```bash
+npm run type-check
+npm run test:unit
+npm run build
+npm run test:smoke
+```
+
+The smoke suite builds the site, starts it with `next start`, then tests the public routes in Chromium. If the environment cannot bind a local port, record that limitation separately from build and unit-test results.
+
+## Public build safety
+
+Production builds fail when either demo-auth flag is `true`:
+
+- `KAMBRADU_DEMO_AUTH_ENABLED`
+- `NEXT_PUBLIC_KAMBRADU_DEMO_AUTH_ENABLED`
+
+Builder, contribution, steward and sign-in demonstrations are development-only. Do not expose them from a production build.
+
+The Firebase CLI version is pinned in npm scripts. Firestore is not the learner data store for this milestone.
+
+## Copy and interface review
+
+Every public change must follow [docs/product-principles.md](docs/product-principles.md). Keep the writing warm, adult and direct. Remove repeated explanations, internal product language, canned praise, inflated claims and em dashes.
+
+## Language content
+
+Do not add a teaching item without:
+
+- an exact source locator;
+- a compatible licence or permission record;
+- the evidence fields in [docs/content-policy.md](docs/content-policy.md);
+- a named reviewer for any claim beyond source transcription and checking.
+
+Never seed a file under `scripts/seeds/quarantine/`.

@@ -1,12 +1,12 @@
 import { AppShell } from "@/components/layout/AppShell";
-import { UserMenu } from "@/components/layout/UserMenu";
 import { PracticeSession } from "@/components/practice/PracticeSession";
 
-export default function PracticePage() {
+export default async function PracticePage({ searchParams }: { searchParams: Promise<{ lesson?: string }> }) {
+  const { lesson } = await searchParams;
   return (
-    <AppShell activePath="/practice" authSlot={<UserMenu />} immersive>
-      <div className="route-page gentle-practice-page">
-        <PracticeSession />
+    <AppShell activePath="/learn" immersive>
+      <div className="page practice-page">
+        <PracticeSession requestedLessonId={lesson} />
       </div>
     </AppShell>
   );

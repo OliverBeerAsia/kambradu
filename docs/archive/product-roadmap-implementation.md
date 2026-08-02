@@ -1,3 +1,5 @@
+> Historical roadmap. It is not the active product plan. Use `docs/roadmap.md`.
+
 # Product Roadmap Implementation Notes
 
 This implementation translates the local roadmap sources into a Firebase-ready local MVP without committing the source PDF or research markdown.

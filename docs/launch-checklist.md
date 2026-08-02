@@ -1,36 +1,72 @@
-# Launch Checklist
+# Public prototype launch checklist
 
-## Local MVP
+## 1. Establish live truth
 
-- `npm ci`
+- Record the current `kambradu.web.app` route map.
+- Capture desktop and mobile screenshots.
+- Capture response headers and `/status` if present.
+- Identify the exact deployed commit or record that it is unknown.
+- Confirm the rollback release and tag.
+
+## 2. Freeze an exact candidate
+
+- Review the working tree and preserve unrelated changes.
+- Commit the intended paths.
+- Record the commit SHA and build date.
+- Confirm both demo-auth flags are unset or false.
+- Run `npm ci` from the committed lockfile.
+- Confirm Next.js is at or above the current patched 15.x security release.
+- Run a current production dependency audit.
+
+## 3. Verify locally
+
 - `npm run type-check`
+- `npm run test:unit`
 - `npm run build`
-- `npm run test:smoke -- --project=chromium`
-- `npm run test:smoke -- --project=mobile`
-- Manual desktop and mobile viewport check for `/`, `/lexicon`, `/lessons`, `/learn`, `/practice`, `/builder`, `/contribute`, and `/steward`
-- Confirm the interface still follows the five-zone IA: `Today`, `Browse`, `Practice`, `Build`, `Review`
+- `npm run test:smoke`
+- Confirm the smoke suite uses `next start`.
+- Confirm a fresh browser has zero memories.
+- Complete save and no-save learning paths.
+- Reload at each practice step.
+- Test edit, practise, delete, export, restore and clear all.
+- Test malformed storage and quota failure.
+- Confirm advanced routes return 404 in production.
+- Confirm `/status` matches the candidate commit.
 
-## Firebase
+## 4. Accessibility and responsive checks
 
-- Create Firebase project.
-- Enable Firebase Auth email/password and optional Google sign-in.
-- Enable Firestore and Storage.
-- Deploy Firestore and Storage rules.
-- Run emulators for rules validation.
-- Install Firebase CLI locally before running `npm run test:rules`.
-- Seed only curated JSON with attribution and review/access fields.
+- One H1 per learner screen.
+- Navigation is exactly Today, Learn and Memories.
+- Complete the loop by keyboard.
+- Complete a VoiceOver and Safari pass.
+- Run automated accessibility scanning with no serious or critical findings.
+- Check 320, 390, 820, 960 and 1440 pixel widths.
+- Check a short mobile height and landscape.
+- Check 200 percent zoom and text spacing.
+- Check reduced motion.
+- Confirm no horizontal scrolling or obscured focus.
 
-## Hosting and Domain
+## 5. Content and copy review
 
-- Deploy Firebase Hosting preview first.
-- Deploy production only after smoke checks pass.
-- Add `kambradu.oliverwoods.net` in Firebase Hosting.
-- Add Firebase-provided DNS verification/hosting record for `kambradu.oliverwoods.net`.
-- Verify HTTPS, PWA manifest, service worker, public browsing, auth, upload path, review path, and no restricted content in public cache.
+- Only `sabang` and `janela` are public.
+- Every Kristang item uses `lang="mcm"`.
+- No pronunciation or speaking request appears.
+- Evidence says “Checked against the dictionary,” not “approved.”
+- No community endorsement, rescue or save-a-language claim appears.
+- Copy meets [product-principles.md](product-principles.md).
 
-## GitHub
+## 6. Preview and promotion
 
-- Confirm `.gitignore` excludes PDFs, raw extracts, build output, env files, service accounts, and node modules.
-- Commit code and docs.
-- Create public repo `OliverBeerAsia/kambradu`.
-- Push `main`.
+- Deploy a Firebase preview from the exact candidate commit.
+- Verify the preview route map, screenshots, headers and release ID.
+- Run synthetic checks against Today, Learn, Memories, About and closed routes.
+- Promote the same verified artifact.
+- Do not rebuild between preview and production.
+
+## 7. Live verification and rollback
+
+- Confirm the live release ID matches the candidate SHA.
+- Repeat core learning and memory smoke checks.
+- Confirm advanced routes remain closed.
+- Preserve the previous Firebase release and Git tag.
+- Roll back immediately if release identity, storage recovery or route closure differs from the verified preview.

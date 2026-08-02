@@ -1,4 +1,4 @@
-import type { ReviewConfidence } from "@/types/kambradu";
+type SchedulableConfidence = "again" | "almost" | "got-it";
 
 type ReviewSchedule = {
   reviewedAt: string;
@@ -14,7 +14,7 @@ function addDays(date: Date, days: number) {
 }
 
 export function scheduleNextPracticeReview(
-  confidence: Exclude<ReviewConfidence, "new">,
+  confidence: SchedulableConfidence,
   previousIntervalDays = 0,
   fromDate = new Date()
 ): ReviewSchedule {
