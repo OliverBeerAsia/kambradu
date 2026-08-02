@@ -35,7 +35,7 @@ test("Learn offers only the two source-checked text lessons", async ({ page }) =
   await expect(page.getByRole("heading", { name: "Learn a word." })).toBeVisible();
   await expect(page.getByRole("link", { name: "Learn sabang" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Learn janela" })).toBeVisible();
-  await expect(page.getByText("Checked against the dictionary")).toHaveCount(2);
+  await expect(page.locator(".lesson-card .evidence-label")).toHaveCount(2);
   await expect(page.locator("audio")).toHaveCount(0);
   await page.getByText("Sources", { exact: true }).click();
   await expect(page.getByText(/Not yet checked with a speaker or community partner/i)).toBeVisible();
@@ -132,7 +132,7 @@ test("quota failure keeps the learner's entry on screen", async ({ page }) => {
   await page.getByLabel("Short title").fill("Do not lose this");
   await page.getByLabel("What do you want to remember?").fill("The text must remain in the form.");
   await page.getByRole("button", { name: "Save in this browser" }).click();
-  await expect(page.getByRole("alert")).toContainText("still on screen");
+  await expect(page.locator('p.error-notice[role="alert"]')).toContainText("still on screen");
   await expect(page.getByLabel("Short title")).toHaveValue("Do not lose this");
 });
 
