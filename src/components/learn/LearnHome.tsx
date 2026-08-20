@@ -6,6 +6,7 @@ import type { Language, LexicalEntry } from "@/types/kambradu";
 
 const themes = [
   { tag: "greetings", label: "Greetings" },
+  { tag: "numbers", label: "Numbers" },
   { tag: "family", label: "Family" },
   { tag: "home", label: "Home" },
   { tag: "food", label: "Food" },
@@ -13,7 +14,9 @@ const themes = [
   { tag: "body", label: "The body" },
   { tag: "weather", label: "Weather" },
   { tag: "animals", label: "Animals" },
-  { tag: "people", label: "People" }
+  { tag: "people", label: "People" },
+  { tag: "verbs", label: "Doing things" },
+  { tag: "describing", label: "Describing things" }
 ];
 
 function grouped(entries: LexicalEntry[]): Array<{ label: string; entries: LexicalEntry[] }> {

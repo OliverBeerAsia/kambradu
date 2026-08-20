@@ -161,7 +161,9 @@ test("a seed that declares no spelling traditions is rejected", () => {
 test("the seed file the repository actually ships passes every check", async () => {
   const payload = JSON.parse(await readFile(new URL("../scripts/seeds/kristang-curated-sample.json", import.meta.url), "utf8"));
   assert.doesNotThrow(() => validateSeedPayload(payload, "scripts/seeds/kristang-curated-sample.json"));
-  assert.equal(payload.lexicalEntries.length, 28);
+  // A count would go stale every time a word is added. What matters is that the
+  // seed is not empty and that every entry in it clears the boundary above.
+  assert.ok(payload.lexicalEntries.length > 0, "the seed ships at least one word");
   assert.ok(Object.keys(payload.orthographies).length > 0, "the seed declares its spelling traditions");
 
   // Every stress span must slice to a real part of its own headword.

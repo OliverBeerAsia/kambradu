@@ -1374,6 +1374,4346 @@
         "home",
         "dictionary-listed"
       ]
+    },
+    {
+      "id": "dozi",
+      "communityId": "kristang-melaka",
+      "headword": "dozi",
+      "normalizedHeadword": "dozi",
+      "glosses": [
+        "twelve"
+      ],
+      "partOfSpeech": "numeral",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "dozi ora anoti",
+          "gloss": "midnight"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword dozi, page 28",
+        "page": 28,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "numbers",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "oitu",
+      "communityId": "kristang-melaka",
+      "headword": "oitu",
+      "normalizedHeadword": "oitu",
+      "glosses": [
+        "eight"
+      ],
+      "partOfSpeech": "numeral",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword oitu, page 67",
+        "page": 67,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "numbers",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "singku",
+      "communityId": "kristang-melaka",
+      "headword": "singku",
+      "normalizedHeadword": "singku",
+      "glosses": [
+        "five"
+      ],
+      "partOfSpeech": "numeral",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 4
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword singku, page 82",
+        "page": 82,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "numbers",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "singkuenta",
+      "communityId": "kristang-melaka",
+      "headword": "singkuenta",
+      "normalizedHeadword": "singkuenta",
+      "glosses": [
+        "fifty"
+      ],
+      "partOfSpeech": "numeral",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 4,
+        "end": 8
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword singkuenta, page 82",
+        "page": 82,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "numbers",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "subrinya",
+      "communityId": "kristang-melaka",
+      "headword": "subrinya",
+      "normalizedHeadword": "subrinya",
+      "glosses": [
+        "niece"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword subrinya, page 85",
+        "page": 85,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "family",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "subrinyu",
+      "communityId": "kristang-melaka",
+      "headword": "subrinyu",
+      "normalizedHeadword": "subrinyu",
+      "glosses": [
+        "nephew"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword subrinyu, page 85",
+        "page": 85,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "family",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "bangku",
+      "communityId": "kristang-melaka",
+      "headword": "bangku",
+      "normalizedHeadword": "bangku",
+      "glosses": [
+        "bench seat",
+        "stool"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 4
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword bangku, page 12",
+        "page": 12,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "home",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "garfu",
+      "communityId": "kristang-melaka",
+      "headword": "garfu",
+      "normalizedHeadword": "garfu",
+      "glosses": [
+        "fork"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword garfu, page 36",
+        "page": 36,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "home",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "jarding",
+      "communityId": "kristang-melaka",
+      "headword": "jarding",
+      "normalizedHeadword": "jarding",
+      "glosses": [
+        "garden"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 7
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword jarding, page 41",
+        "page": 41,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "home",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "ketal",
+      "communityId": "kristang-melaka",
+      "headword": "ketal",
+      "normalizedHeadword": "ketal",
+      "glosses": [
+        "kettle"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword ketal, page 48",
+        "page": 48,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "home",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "lampu",
+      "communityId": "kristang-melaka",
+      "headword": "lampu",
+      "normalizedHeadword": "lampu",
+      "glosses": [
+        "lamp"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword lampu, page 55",
+        "page": 55,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "home",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "lensu",
+      "communityId": "kristang-melaka",
+      "headword": "lensu",
+      "normalizedHeadword": "lensu",
+      "glosses": [
+        "handkerchief"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword lensu, page 56",
+        "page": 56,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "home",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "lenya",
+      "communityId": "kristang-melaka",
+      "headword": "lenya",
+      "normalizedHeadword": "lenya",
+      "glosses": [
+        "firewood"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword lenya, page 56",
+        "page": 56,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "home",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "sestu",
+      "communityId": "kristang-melaka",
+      "headword": "sestu",
+      "normalizedHeadword": "sestu",
+      "glosses": [
+        "basket"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword sestu, page 81",
+        "page": 81,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "home",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "tinta",
+      "communityId": "kristang-melaka",
+      "headword": "tinta",
+      "normalizedHeadword": "tinta",
+      "glosses": [
+        "paint",
+        "ink"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword tinta, page 87",
+        "page": 87,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "home",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "tuala",
+      "communityId": "kristang-melaka",
+      "headword": "tuala",
+      "normalizedHeadword": "tuala",
+      "glosses": [
+        "towel"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword tuala, page 89",
+        "page": 89,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "home",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "azedu",
+      "communityId": "kristang-melaka",
+      "headword": "azedu",
+      "normalizedHeadword": "azedu",
+      "glosses": [
+        "sour"
+      ],
+      "partOfSpeech": "adjective",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 1,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword azedu, page 10",
+        "page": 10,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "food",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "bredu",
+      "communityId": "kristang-melaka",
+      "headword": "bredu",
+      "normalizedHeadword": "bredu",
+      "glosses": [
+        "vegetable"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "bredu botor",
+          "gloss": "four-angled bean"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword bredu, page 19",
+        "page": 19,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "food",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "jambua",
+      "communityId": "kristang-melaka",
+      "headword": "jambua",
+      "normalizedHeadword": "jambua",
+      "glosses": [
+        "pomelo"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword jambua, page 41",
+        "page": 41,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "food",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "kaska",
+      "communityId": "kristang-melaka",
+      "headword": "kaska",
+      "normalizedHeadword": "kaska",
+      "glosses": [
+        "shell",
+        "peel",
+        "husk"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword kaska, page 46",
+        "page": 46,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "food",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "kezu",
+      "communityId": "kristang-melaka",
+      "headword": "kezu",
+      "normalizedHeadword": "kezu",
+      "glosses": [
+        "cheese"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword kezu, page 48",
+        "page": 48,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "food",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "kobis",
+      "communityId": "kristang-melaka",
+      "headword": "kobis",
+      "normalizedHeadword": "kobis",
+      "glosses": [
+        "cabbage"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword kobis, page 49",
+        "page": 49,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "food",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "krua",
+      "communityId": "kristang-melaka",
+      "headword": "krua",
+      "normalizedHeadword": "krua",
+      "glosses": [
+        "raw"
+      ],
+      "partOfSpeech": "adjective",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "panu krua",
+          "gloss": "unsown cloth"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword krua, page 52",
+        "page": 52,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "food",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "posta",
+      "communityId": "kristang-melaka",
+      "headword": "posta",
+      "normalizedHeadword": "posta",
+      "glosses": [
+        "heap",
+        "chunk"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword posta, page 74",
+        "page": 74,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "food",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "sabrozu",
+      "communityId": "kristang-melaka",
+      "headword": "sabrozu",
+      "normalizedHeadword": "sabrozu",
+      "glosses": [
+        "tasty",
+        "delicious"
+      ],
+      "partOfSpeech": "adjective",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword sabrozu, page 79",
+        "page": 79,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "food",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "tambrinyu",
+      "communityId": "kristang-melaka",
+      "headword": "tambrinyu",
+      "normalizedHeadword": "tambrinyu",
+      "glosses": [
+        "tamarind"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword tambrinyu, page 86",
+        "page": 86,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "food",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "bairu",
+      "communityId": "kristang-melaka",
+      "headword": "bairu",
+      "normalizedHeadword": "bairu",
+      "glosses": [
+        "hamlet",
+        "village"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword bairu, page 11",
+        "page": 11,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "daily life",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "bridu",
+      "communityId": "kristang-melaka",
+      "headword": "bridu",
+      "normalizedHeadword": "bridu",
+      "glosses": [
+        "glass",
+        "hour"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "dos bridu",
+          "gloss": "two hours"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword bridu, page 19",
+        "page": 19,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "daily life",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "dia",
+      "communityId": "kristang-melaka",
+      "headword": "dia",
+      "normalizedHeadword": "dia",
+      "glosses": [
+        "day"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "dia di Natal",
+          "gloss": "Christmas day"
+        },
+        {
+          "form": "dia di anu nubu",
+          "gloss": "New Year's day"
+        },
+        {
+          "form": "dia di kazamintu",
+          "gloss": "wedding day"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword dia, page 25",
+        "page": 25,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "daily life",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "kalsang",
+      "communityId": "kristang-melaka",
+      "headword": "kalsang",
+      "normalizedHeadword": "kalsang",
+      "glosses": [
+        "trousers"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 7
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "kalsang kumpridu",
+          "gloss": "long trousers"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword kalsang, page 44",
+        "page": 44,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "daily life",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "kazadu",
+      "communityId": "kristang-melaka",
+      "headword": "kazadu",
+      "normalizedHeadword": "kazadu",
+      "glosses": [
+        "married"
+      ],
+      "partOfSpeech": "adjective",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 4
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword kazadu, page 47",
+        "page": 47,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "daily life",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "kazamintu",
+      "communityId": "kristang-melaka",
+      "headword": "kazamintu",
+      "normalizedHeadword": "kazamintu",
+      "glosses": [
+        "marriage"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 4,
+        "end": 7
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword kazamintu, page 47",
+        "page": 47,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "daily life",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "lembransa",
+      "communityId": "kristang-melaka",
+      "headword": "lembransa",
+      "normalizedHeadword": "lembransa",
+      "glosses": [
+        "thought",
+        "memory",
+        "souvenir"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 7
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword lembransa, page 56",
+        "page": 56,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "daily life",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "midia",
+      "communityId": "kristang-melaka",
+      "headword": "midia",
+      "normalizedHeadword": "midia",
+      "glosses": [
+        "midday",
+        "noon"
+      ],
+      "partOfSpeech": "adverb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 4
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword midia, page 61",
+        "page": 61,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "daily life",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "ospital",
+      "communityId": "kristang-melaka",
+      "headword": "ospital",
+      "normalizedHeadword": "ospital",
+      "glosses": [
+        "hospital"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 4,
+        "end": 7
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword ospital, page 68",
+        "page": 68,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "daily life",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "parang",
+      "communityId": "kristang-melaka",
+      "headword": "parang",
+      "normalizedHeadword": "parang",
+      "glosses": [
+        "machete"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword parang, page 70",
+        "page": 70,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "daily life",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "rekadu",
+      "communityId": "kristang-melaka",
+      "headword": "rekadu",
+      "normalizedHeadword": "rekadu",
+      "glosses": [
+        "message",
+        "regards"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 4
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword rekadu, page 77",
+        "page": 77,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "daily life",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "besu",
+      "communityId": "kristang-melaka",
+      "headword": "bêsu",
+      "normalizedHeadword": "besu",
+      "glosses": [
+        "lip",
+        "rim of a cup or plate"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword bêsu, page 15",
+        "page": 15,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "body",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "garganta",
+      "communityId": "kristang-melaka",
+      "headword": "garganta",
+      "normalizedHeadword": "garganta",
+      "glosses": [
+        "throat",
+        "neck"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword garganta, page 36",
+        "page": 36,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "body",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "perna",
+      "communityId": "kristang-melaka",
+      "headword": "perna",
+      "normalizedHeadword": "perna",
+      "glosses": [
+        "thigh"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword perna, page 72",
+        "page": 72,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "body",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "testa",
+      "communityId": "kristang-melaka",
+      "headword": "testa",
+      "normalizedHeadword": "testa",
+      "glosses": [
+        "forehead"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword testa, page 87",
+        "page": 87,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "body",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "braza",
+      "communityId": "kristang-melaka",
+      "headword": "braza",
+      "normalizedHeadword": "braza",
+      "glosses": [
+        "embers",
+        "burning coals"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword braza, page 19",
+        "page": 19,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "weather",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "kalor",
+      "communityId": "kristang-melaka",
+      "headword": "kalor",
+      "normalizedHeadword": "kalor",
+      "glosses": [
+        "heat",
+        "warmth"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword kalor, page 44",
+        "page": 44,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "weather",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "sinza",
+      "communityId": "kristang-melaka",
+      "headword": "sinza",
+      "normalizedHeadword": "sinza",
+      "glosses": [
+        "ash"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword sinza, page 82",
+        "page": 82,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "weather",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "baka",
+      "communityId": "kristang-melaka",
+      "headword": "baka",
+      "normalizedHeadword": "baka",
+      "glosses": [
+        "bovine"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "baka femi",
+          "gloss": "cow"
+        },
+        {
+          "form": "baka machu",
+          "gloss": "bull"
+        },
+        {
+          "form": "kandri di baka",
+          "gloss": "beef"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword baka, page 11",
+        "page": 11,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "animals",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "biadu",
+      "communityId": "kristang-melaka",
+      "headword": "biadu",
+      "normalizedHeadword": "biadu",
+      "glosses": [
+        "deer"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword biadu, page 15",
+        "page": 15,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "animals",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "kalkun",
+      "communityId": "kristang-melaka",
+      "headword": "kalkun",
+      "normalizedHeadword": "kalkun",
+      "glosses": [
+        "turkey"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword kalkun, page 44",
+        "page": 44,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "animals",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "kobra",
+      "communityId": "kristang-melaka",
+      "headword": "kobra",
+      "normalizedHeadword": "kobra",
+      "glosses": [
+        "snake"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "kobra kapelu",
+          "gloss": "cobra"
+        },
+        {
+          "form": "kobra madera",
+          "gloss": "python"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword kobra, page 49",
+        "page": 49,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "animals",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "letang",
+      "communityId": "kristang-melaka",
+      "headword": "letang",
+      "normalizedHeadword": "letang",
+      "glosses": [
+        "piglet"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword letang, page 56",
+        "page": 56,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "animals",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "manduku",
+      "communityId": "kristang-melaka",
+      "headword": "manduku",
+      "normalizedHeadword": "manduku",
+      "glosses": [
+        "toad"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword manduku, page 58",
+        "page": 58,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "animals",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "porku",
+      "communityId": "kristang-melaka",
+      "headword": "porku",
+      "normalizedHeadword": "porku",
+      "glosses": [
+        "pig"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "porku di matu",
+          "gloss": "wild boar"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword porku, page 74",
+        "page": 74,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "animals",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "tratuga",
+      "communityId": "kristang-melaka",
+      "headword": "tratuga",
+      "normalizedHeadword": "tratuga",
+      "glosses": [
+        "turtle"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword tratuga, page 88",
+        "page": 88,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "animals",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "bispu",
+      "communityId": "kristang-melaka",
+      "headword": "bispu",
+      "normalizedHeadword": "bispu",
+      "glosses": [
+        "bishop"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword bispu, page 16",
+        "page": 16,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "people",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "bobu",
+      "communityId": "kristang-melaka",
+      "headword": "bobu",
+      "normalizedHeadword": "bobu",
+      "glosses": [
+        "clown"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword bobu, page 17",
+        "page": 17,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "people",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "dokta",
+      "communityId": "kristang-melaka",
+      "headword": "dokta",
+      "normalizedHeadword": "dokta",
+      "glosses": [
+        "doctor"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword dokta, page 28",
+        "page": 28,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "people",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "donu",
+      "communityId": "kristang-melaka",
+      "headword": "donu",
+      "normalizedHeadword": "donu",
+      "glosses": [
+        "owner",
+        "master"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "donu di kaza",
+          "gloss": "owner of the house"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword donu, page 28",
+        "page": 28,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "people",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "femi",
+      "communityId": "kristang-melaka",
+      "headword": "femi",
+      "normalizedHeadword": "femi",
+      "glosses": [
+        "female",
+        "woman"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword femi, page 31",
+        "page": 31,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "people",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "skribang",
+      "communityId": "kristang-melaka",
+      "headword": "skribang",
+      "normalizedHeadword": "skribang",
+      "glosses": [
+        "clerk"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 4,
+        "end": 8
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword skribang, page 83",
+        "page": 83,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "people",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "soldadu",
+      "communityId": "kristang-melaka",
+      "headword": "soldadu",
+      "normalizedHeadword": "soldadu",
+      "glosses": [
+        "soldier"
+      ],
+      "partOfSpeech": "noun",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword soldadu, page 83",
+        "page": 83,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "people",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "bareh",
+      "communityId": "kristang-melaka",
+      "headword": "bareh",
+      "normalizedHeadword": "bareh",
+      "glosses": [
+        "to sweep"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword bareh, page 12",
+        "page": 12,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "buskah",
+      "communityId": "kristang-melaka",
+      "headword": "buskah",
+      "normalizedHeadword": "buskah",
+      "glosses": [
+        "to seek",
+        "to earn money"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword buskah, page 20",
+        "page": 20,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "chupah",
+      "communityId": "kristang-melaka",
+      "headword": "chupah",
+      "normalizedHeadword": "chupah",
+      "glosses": [
+        "to suck"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "chupah dedu",
+          "gloss": "to suck one's thumb"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword chupah, page 23",
+        "page": 23,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "churah",
+      "communityId": "kristang-melaka",
+      "headword": "churah",
+      "normalizedHeadword": "churah",
+      "glosses": [
+        "to cry",
+        "to weep"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword churah, page 23",
+        "page": 23,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "diseh",
+      "communityId": "kristang-melaka",
+      "headword": "diseh",
+      "normalizedHeadword": "diseh",
+      "glosses": [
+        "to descend"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword diseh, page 26",
+        "page": 26,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "gastah",
+      "communityId": "kristang-melaka",
+      "headword": "gastah",
+      "normalizedHeadword": "gastah",
+      "glosses": [
+        "to spend"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword gastah, page 36",
+        "page": 36,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "kansah",
+      "communityId": "kristang-melaka",
+      "headword": "kansah",
+      "normalizedHeadword": "kansah",
+      "glosses": [
+        "to tire",
+        "to labour"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword kansah, page 45",
+        "page": 45,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "kantah",
+      "communityId": "kristang-melaka",
+      "headword": "kantah",
+      "normalizedHeadword": "kantah",
+      "glosses": [
+        "to sing"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword kantah, page 45",
+        "page": 45,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "kebrah",
+      "communityId": "kristang-melaka",
+      "headword": "kebrah",
+      "normalizedHeadword": "kebrah",
+      "glosses": [
+        "to break",
+        "to fracture"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword kebrah, page 47",
+        "page": 47,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "kulpah",
+      "communityId": "kristang-melaka",
+      "headword": "kulpah",
+      "normalizedHeadword": "kulpah",
+      "glosses": [
+        "to accuse",
+        "to blame"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword kulpah, page 53",
+        "page": 53,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "lambeh",
+      "communityId": "kristang-melaka",
+      "headword": "lambeh",
+      "normalizedHeadword": "lambeh",
+      "glosses": [
+        "to lick"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword lambeh, page 55",
+        "page": 55,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "lembrah",
+      "communityId": "kristang-melaka",
+      "headword": "lembrah",
+      "normalizedHeadword": "lembrah",
+      "glosses": [
+        "to remember",
+        "to think"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 7
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "lembrah ku kabesa",
+          "gloss": "to think carefully"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword lembrah, page 56",
+        "page": 56,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "les",
+      "communityId": "kristang-melaka",
+      "headword": "les",
+      "normalizedHeadword": "les",
+      "glosses": [
+        "to read"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "les fosa-fosa",
+          "gloss": "to read aloud"
+        },
+        {
+          "form": "les skribeh",
+          "gloss": "to read and write"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword les, page 56",
+        "page": 56,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "midih",
+      "communityId": "kristang-melaka",
+      "headword": "midih",
+      "normalizedHeadword": "midih",
+      "glosses": [
+        "to measure"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword midih, page 61",
+        "page": 61,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "olah",
+      "communityId": "kristang-melaka",
+      "headword": "olah",
+      "normalizedHeadword": "olah",
+      "glosses": [
+        "to see",
+        "to look"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 1,
+        "end": 4
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword olah, page 67",
+        "page": 67,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "parseh",
+      "communityId": "kristang-melaka",
+      "headword": "parseh",
+      "normalizedHeadword": "parseh",
+      "glosses": [
+        "to seem",
+        "to appear"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword parseh, page 70",
+        "page": 70,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "pindurah",
+      "communityId": "kristang-melaka",
+      "headword": "pindurah",
+      "normalizedHeadword": "pindurah",
+      "glosses": [
+        "to hang",
+        "to suspend"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 5,
+        "end": 8
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword pindurah, page 73",
+        "page": 73,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "rabentah",
+      "communityId": "kristang-melaka",
+      "headword": "rabentah",
+      "normalizedHeadword": "rabentah",
+      "glosses": [
+        "to burst",
+        "to explode"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 5,
+        "end": 8
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword rabentah, page 76",
+        "page": 76,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "rolah",
+      "communityId": "kristang-melaka",
+      "headword": "rolah",
+      "normalizedHeadword": "rolah",
+      "glosses": [
+        "to roll"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword rolah, page 78",
+        "page": 78,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "sintih",
+      "communityId": "kristang-melaka",
+      "headword": "sintih",
+      "normalizedHeadword": "sintih",
+      "glosses": [
+        "to feel"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword sintih, page 82",
+        "page": 82,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "skuleh",
+      "communityId": "kristang-melaka",
+      "headword": "skuleh",
+      "normalizedHeadword": "skuleh",
+      "glosses": [
+        "to choose",
+        "to sort"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "skuleh aros",
+          "gloss": "to pick the husks out of rice"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword skuleh, page 83",
+        "page": 83,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "soltah",
+      "communityId": "kristang-melaka",
+      "headword": "soltah",
+      "normalizedHeadword": "soltah",
+      "glosses": [
+        "to loosen",
+        "to free"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword soltah, page 83",
+        "page": 83,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "tapah",
+      "communityId": "kristang-melaka",
+      "headword": "tapah",
+      "normalizedHeadword": "tapah",
+      "glosses": [
+        "to block",
+        "to cover"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "tapah boka",
+          "gloss": "to silence someone"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword tapah, page 86",
+        "page": 86,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "tratah",
+      "communityId": "kristang-melaka",
+      "headword": "tratah",
+      "normalizedHeadword": "tratah",
+      "glosses": [
+        "to treat",
+        "to behave towards"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword tratah, page 88",
+        "page": 88,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "trukah",
+      "communityId": "kristang-melaka",
+      "headword": "trukah",
+      "normalizedHeadword": "trukah",
+      "glosses": [
+        "to exchange",
+        "to replace"
+      ],
+      "partOfSpeech": "verb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 6
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "trukah lugah",
+          "gloss": "to change places"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword trukah, page 89",
+        "page": 89,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "verbs",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "inchadu",
+      "communityId": "kristang-melaka",
+      "headword": "inchadu",
+      "normalizedHeadword": "inchadu",
+      "glosses": [
+        "bloated"
+      ],
+      "partOfSpeech": "adjective",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword inchadu, page 39",
+        "page": 39,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "describing",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "koitadu",
+      "communityId": "kristang-melaka",
+      "headword": "koitadu",
+      "normalizedHeadword": "koitadu",
+      "glosses": [
+        "poor",
+        "pitiful"
+      ],
+      "partOfSpeech": "adjective",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword koitadu, page 49",
+        "page": 49,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "describing",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "kruel",
+      "communityId": "kristang-melaka",
+      "headword": "kruel",
+      "normalizedHeadword": "kruel",
+      "glosses": [
+        "cruel"
+      ],
+      "partOfSpeech": "adjective",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 3,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword kruel, page 52",
+        "page": 52,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "describing",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "lonzi",
+      "communityId": "kristang-melaka",
+      "headword": "lonzi",
+      "normalizedHeadword": "lonzi",
+      "glosses": [
+        "far",
+        "afar"
+      ],
+      "partOfSpeech": "adverb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "di lonzi",
+          "gloss": "from afar"
+        },
+        {
+          "form": "lonzi di bista",
+          "gloss": "out of sight"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword lonzi, page 57",
+        "page": 57,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "describing",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "rachadu",
+      "communityId": "kristang-melaka",
+      "headword": "rachadu",
+      "normalizedHeadword": "rachadu",
+      "glosses": [
+        "cracked"
+      ],
+      "partOfSpeech": "adjective",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 2,
+        "end": 5
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword rachadu, page 76",
+        "page": 76,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "describing",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "riba",
+      "communityId": "kristang-melaka",
+      "headword": "riba",
+      "normalizedHeadword": "riba",
+      "glosses": [
+        "above",
+        "up"
+      ],
+      "partOfSpeech": "adverb",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [
+        {
+          "form": "na riba",
+          "gloss": "at the top"
+        },
+        {
+          "form": "na riba di",
+          "gloss": "on top of"
+        }
+      ],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword riba, page 78",
+        "page": 78,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "describing",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "riku",
+      "communityId": "kristang-melaka",
+      "headword": "riku",
+      "normalizedHeadword": "riku",
+      "glosses": [
+        "rich",
+        "wealthy"
+      ],
+      "partOfSpeech": "adjective",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword riku, page 78",
+        "page": 78,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "describing",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "skuru",
+      "communityId": "kristang-melaka",
+      "headword": "skuru",
+      "normalizedHeadword": "skuru",
+      "glosses": [
+        "dark"
+      ],
+      "partOfSpeech": "adjective",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 3
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword skuru, page 83",
+        "page": 83,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "describing",
+        "dictionary-listed"
+      ]
+    },
+    {
+      "id": "tezu",
+      "communityId": "kristang-melaka",
+      "headword": "tezu",
+      "normalizedHeadword": "tezu",
+      "glosses": [
+        "tight"
+      ],
+      "partOfSpeech": "adjective",
+      "orthography": "baxter-2005",
+      "stress": {
+        "start": 0,
+        "end": 2
+      },
+      "alternateSpellings": [],
+      "variants": [],
+      "collocations": [],
+      "examples": [],
+      "source": {
+        "label": "Baxter and de Silva Kristang dictionary",
+        "authors": "Alan N. Baxter and Patrick de Silva",
+        "publisher": "Pacific Linguistics, The Australian National University",
+        "year": "2005; online edition 2015",
+        "doi": "10.15144/PL-564.cover",
+        "url": "https://doi.org/10.15144/PL-564.cover",
+        "license": "CC BY-SA 4.0",
+        "locator": "Headword tezu, page 87",
+        "page": 87,
+        "checkedBy": "Oliver",
+        "checkedAt": "2026-08-20"
+      },
+      "access": "open",
+      "evidence": {
+        "source_transcribed": true,
+        "source_checked": true,
+        "speaker_attested": false,
+        "partner_reviewed": false,
+        "public_use_allowed": true
+      },
+      "hasAudio": false,
+      "tags": [
+        "describing",
+        "dictionary-listed"
+      ]
     }
   ],
   "stories": []
