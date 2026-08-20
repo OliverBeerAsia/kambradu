@@ -20,6 +20,9 @@ ui-debug.log
 
 # source/reference material not for the public repo
 *.pdf
+# Extracted dictionary text. The PDF is ignored above, and the text pulled out of
+# it must be too: it is a local reference for checking words, not repo content.
+tmp/
 deep-research-report*.md
 raw/
 extracted/
@@ -27,6 +30,8 @@ private/
 
 # test output
 test-results/
+output/
+.playwright-cli/
 playwright-report/
 coverage/
 
