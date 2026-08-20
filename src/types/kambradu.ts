@@ -35,6 +35,73 @@ export type Attribution = {
   url?: string;
   license: string;
   locator?: string;
+  /** Printed page in the cited source. Required by docs/content-policy.md. */
+  page?: number;
+  /** Who transcribed and checked this against the source, and when. */
+  checkedBy?: string;
+  checkedAt?: string;
+};
+
+/**
+ * Kristang has competing spelling systems. Baxter and de Silva use a Malay-based
+ * orthography after Hancock (1973) and Marbeck (1995); other community materials
+ * differ, most visibly over the final -h that marks final-syllable stress.
+ * Entries name the system they are written in so variants can sit side by side
+ * without one being presented as the correct form.
+ */
+/**
+ * An id into a community's own set of spelling traditions.
+ *
+ * Deliberately a plain string, not a union of the Kristang profiles. Every
+ * language Kambradu takes on brings its own traditions, and a union would have
+ * to be edited to admit each one. The valid values are whatever that community
+ * declares, which is checked against its registry rather than against this type.
+ */
+export type OrthographyProfileId = string;
+
+export type OrthographyProfile = {
+  id: OrthographyProfileId;
+  label: string;
+  description: string;
+  basedOn: string;
+};
+
+/**
+ * How a variant differs from the headword.
+ *
+ * Pinchah Kristang draws this line deliberately: spellings that sound the same
+ * can be treated as one word, but forms that sound different are tied to who is
+ * speaking and must not be merged away (Morgado da Costa 2020, section 4.4).
+ */
+export type VariantKind =
+  /** Same word, same sound, different spelling tradition. */
+  | "spelling"
+  /** A different form of the word, not merely a different spelling. */
+  | "form";
+
+export type FormVariant = {
+  form: string;
+  orthography: OrthographyProfileId;
+  kind: VariantKind;
+  note?: string;
+  source?: Attribution;
+};
+
+/** A multi-word form attested under a headword, e.g. `agu di sabang` "soap suds". */
+export type Collocation = {
+  form: string;
+  gloss: string;
+};
+
+/** An example sentence copied from the source. Never composed. */
+export type SourceExample = {
+  /** The sentence in the language being learned. */
+  text: string;
+  /** The sentence in the language the learner already reads. */
+  translation: string;
+  /** Headword the sentence appears under, when not the entry's own. */
+  headword?: string;
+  page: number;
 };
 
 export type EvidenceState = {
@@ -43,6 +110,23 @@ export type EvidenceState = {
   speaker_attested: boolean;
   partner_reviewed: boolean;
   public_use_allowed: boolean;
+};
+
+/**
+ * Which characters of a headword carry the main stress.
+ *
+ * Baxter and de Silva underline the stressed *syllable* in each main entry
+ * (Introduction, section 4), and mark stress on a final vowel with an
+ * unpronounced final h. Underlining does not survive plain text, so the span is
+ * carried here as character offsets into the headword. It is a transcription of
+ * what the page shows, not an analysis of it: monosyllables are unmarked in the
+ * source and stay unmarked here.
+ */
+export type StressMark = {
+  /** Index of the first underlined character. */
+  start: number;
+  /** Index just past the last underlined character. */
+  end: number;
 };
 
 export type LexicalEntry = {
@@ -56,6 +140,14 @@ export type LexicalEntry = {
   alternateSpellings: string[];
   example?: string;
   exampleTranslation?: string;
+  /** Spelling system this headword is written in. */
+  orthography: OrthographyProfileId;
+  /** Where the main stress falls. Absent when the source leaves it unmarked. */
+  stress?: StressMark;
+  /** Same word in other spelling systems. Never a correction. */
+  variants: FormVariant[];
+  collocations: Collocation[];
+  examples: SourceExample[];
   source: Attribution;
   access: AccessLevel;
   evidence: EvidenceState;

@@ -40,7 +40,7 @@ export function MemoryEditor({ memoryId }: { memoryId: string }) {
         <button className="primary-action" type="submit">Save changes</button>
       </form>
       {saveStatus ? <p className={saveStatus.kind === "error" ? "error-notice" : "save-notice"} role="status">{saveStatus.message}</p> : null}
-      {memory.linkedEntryId ? <Link className="secondary-action" href={`/practice?lesson=${memory.linkedEntryId === "janela" ? "home-objects" : "shop-visit"}`}>Practise this word</Link> : null}
+      {memory.linkedEntryId ? <Link className="secondary-action" href={`/practice?lesson=${memory.linkedEntryId}`}>Practise this word</Link> : null}
       {!confirmDelete ? <button className="delete-link" type="button" onClick={() => setConfirmDelete(true)}><Trash2 size={18} aria-hidden="true" />Delete memory</button> : (
         <div className="delete-confirm"><p>Delete this memory from this browser?</p><button className="danger-button" type="button" onClick={() => { deleteMemory(memory.id); setDeleted(true); }}>Yes, delete</button><button type="button" onClick={() => setConfirmDelete(false)}>Cancel</button></div>
       )}

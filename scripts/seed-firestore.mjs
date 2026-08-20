@@ -1,9 +1,15 @@
 import { readFile } from "node:fs/promises";
 import { initializeApp, applicationDefault, cert } from "firebase-admin/app";
 import { getFirestore, FieldValue } from "firebase-admin/firestore";
+import { validateSeedPayload } from "./validate-seed.mjs";
 
 const seedPath = process.argv[2] || "scripts/seeds/kristang-curated-sample.json";
 const projectId = process.env.FIREBASE_PROJECT_ID || process.env.GCLOUD_PROJECT || "kambradu";
+
+// Fail before credentials are loaded or the file is even read.
+if (seedPath.includes("quarantine")) {
+  throw new Error("Quarantined seed files must never be deployed.");
+}
 
 function getCredential() {
   if (process.env.FIREBASE_SERVICE_ACCOUNT_JSON) {
@@ -23,13 +29,7 @@ const payload = JSON.parse(await readFile(seedPath, "utf8"));
 const now = FieldValue.serverTimestamp();
 const batch = db.batch();
 
-if (seedPath.includes("quarantine")) {
-  throw new Error("Quarantined seed files must never be deployed.");
-}
-
-if (!payload.community?.id) {
-  throw new Error("Seed file must include community.id");
-}
+validateSeedPayload(payload, seedPath);
 
 batch.set(
   db.collection("communities").doc(payload.community.id),
@@ -41,39 +41,10 @@ batch.set(
 );
 
 for (const entry of payload.lexicalEntries ?? []) {
-  if (!entry.id) {
-    throw new Error("Every lexical entry needs an id");
-  }
-
-  if (!entry.source?.locator || entry.evidence?.source_checked !== true || entry.evidence?.public_use_allowed !== true) {
-    throw new Error(`Entry ${entry.id} needs an exact source locator and public source-checked evidence.`);
-  }
-
-  if (entry.reviewStatus || entry.pronunciation || entry.example || entry.exampleTranslation || entry.hasAudio) {
-    throw new Error(`Entry ${entry.id} contains fields outside the text-only public prototype boundary.`);
-  }
-
   batch.set(
     db.collection("lexicalEntries").doc(entry.id),
     {
       ...entry,
-      seededAt: now,
-      updatedAt: now
-    },
-    { merge: true }
-  );
-}
-
-for (const story of payload.stories ?? []) {
-  throw new Error(`Stories are not seedable in the current public prototype (${story.id ?? "missing id"}).`);
-  if (!story.id) {
-    throw new Error("Every story needs an id");
-  }
-
-  batch.set(
-    db.collection("stories").doc(story.id),
-    {
-      ...story,
       seededAt: now,
       updatedAt: now
     },

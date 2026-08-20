@@ -2,46 +2,67 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { lessonUnits, publicLexiconEntries } from "@/data/kristang";
+import { dictionaryAttribution, publicLexiconEntries } from "@/data/kristang";
+import type { LexicalEntry } from "@/types/kambradu";
+import { LANGUAGE_TAG } from "@/lib/language";
+
+const themes = [
+  { tag: "greetings", label: "Greetings" },
+  { tag: "family", label: "Family" },
+  { tag: "home", label: "Home" },
+  { tag: "food", label: "Food" },
+  { tag: "daily life", label: "Daily life" },
+  { tag: "body", label: "The body" },
+  { tag: "weather", label: "Weather" },
+  { tag: "animals", label: "Animals" },
+  { tag: "people", label: "People" }
+];
+
+function grouped(): Array<{ label: string; entries: LexicalEntry[] }> {
+  const seen = new Set<string>();
+  const groups = themes.map(({ tag, label }) => {
+    const entries = publicLexiconEntries.filter((entry) => entry.tags.includes(tag) && !seen.has(entry.id));
+    for (const entry of entries) seen.add(entry.id);
+    return { label, entries };
+  });
+  return groups.filter((group) => group.entries.length > 0);
+}
 
 export function LearnHome() {
+  const groups = grouped();
+
   return (
     <div className="page learn-page">
       <header className="page-heading">
         <h1>Learn a word.</h1>
-        <p>Start with <span lang="mcm">sabang</span> or <span lang="mcm">janela</span>.</p>
+        <p>{publicLexiconEntries.length} words from the reference dictionary, grouped by where you might use them.</p>
       </header>
 
-      <section className="lesson-list" aria-label="Learning moments">
-        {lessonUnits.map((lesson) => {
-          const entry = publicLexiconEntries.find((item) => lesson.focus.includes(item.id));
-          return (
-            <article className="lesson-card" key={lesson.id}>
-              <div>
-                <p className="evidence-label">Checked against the dictionary</p>
-                <h2 lang="mcm">{entry?.headword}</h2>
-                <p>{entry?.englishGlosses.join(", ")}</p>
-              </div>
-              <Link href={`/practice?lesson=${lesson.id}`}>
-                Learn {entry?.headword}
-                <ArrowRight size={18} aria-hidden="true" />
-              </Link>
-            </article>
-          );
-        })}
-      </section>
+      {groups.map((group) => (
+        <section className="theme-group" key={group.label}>
+          <h2>{group.label}</h2>
+          <ul className="word-list">
+            {group.entries.map((entry) => (
+              <li key={entry.id}>
+                <Link href={`/practice?lesson=${entry.id}`}>
+                  <span>
+                    <strong lang={LANGUAGE_TAG}>{entry.headword}</strong>
+                    <small>{entry.englishGlosses.join(", ")}</small>
+                  </span>
+                  <ArrowRight size={18} aria-hidden="true" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
 
       <details className="dictionary-reference">
         <summary>Sources</summary>
         <div className="dictionary-inner">
-          <ul className="dictionary-results">
-            {publicLexiconEntries.map((entry) => (
-              <li key={entry.id}>
-                <span><strong lang="mcm">{entry.headword}</strong> {entry.englishGlosses.join(", ")}</span>
-              </li>
-            ))}
-          </ul>
-          <p>{publicLexiconEntries[0].source.authors}, <cite>{publicLexiconEntries[0].source.label}</cite>. {publicLexiconEntries[0].source.license}.</p>
+          <p>
+            {dictionaryAttribution.authors}, <cite>{dictionaryAttribution.label}</cite>. {dictionaryAttribution.license}.
+          </p>
           <p>Checked against the dictionary. Not yet checked with a speaker or community partner.</p>
         </div>
       </details>
