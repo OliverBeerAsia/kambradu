@@ -7,10 +7,10 @@ The active milestone is one honest text-learning loop and learner-controlled bro
 Implemented locally:
 
 - Today, Learn and Memories navigation;
-- `sabang` and `janela` only;
+- 28 dictionary-attested words with page-level citations, grouped by theme;
 - Meet, Meaning, Recall, Connect and Keep;
 - lesson-scoped session recovery and ISO review dates;
-- Again, Almost and Got it scheduling;
+- Again, Almost and Got it scheduling with per-word ease, lapses and graduation;
 - empty fresh profiles;
 - edit, practise, delete, export, restore and clear-all controls;
 - malformed-data recovery;
@@ -32,14 +32,15 @@ Still required before release:
 
 The following require a named community relationship and agreed rules before design or implementation:
 
-- additional teaching material;
-- contemporary usage guidance;
-- pronunciation and audio;
+- contemporary usage guidance and preferred forms;
+- pronunciation, and any recording of another person's voice;
 - language naming and variation;
 - consent and withdrawal;
 - uploads or contributions;
 - community review and publication;
 - access rules for sensitive material.
+
+Adding Tier A dictionary-attested reference words is **not** gated. It rests on the source licence and a checking record. See `docs/content-policy.md`.
 
 ## Later technical work
 

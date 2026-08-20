@@ -23,20 +23,22 @@ Kambradu starts with one modest response: make the next learning step clear, the
 There are three places:
 
 - **Today** offers one next step.
-- **Learn** contains two dictionary-listed Kristang words.
+- **Learn** contains dictionary-listed Kristang words, grouped by theme.
 - **Memories** keeps words and notes in the current browser.
 
 Each learning moment follows the same rhythm:
 
-`Meet -> Meaning -> Recall -> Connect -> Keep`
+`Meet -> Meaning -> Recall -> Try -> Connect -> Keep`
 
-The learner sees the word, checks its meaning, recalls it in writing, connects it to their life, then chooses whether to keep it.
+The learner sees the word, checks its meaning, recalls it in writing, optionally says it aloud, connects it to their life, then chooses whether to keep it.
 
 ## What works now
 
-- text learning for `sabang` and `janela`;
+- 28 dictionary-attested words, each cited to a printed page;
+- attested collocations and example sentences copied from the source;
 - immediate written feedback;
-- `Again`, `Almost` and `Got it` review choices;
+- `Again`, `Almost` and `Got it` review choices, with per-word ease and lapse tracking;
+- optional private voice recording, kept in the browser;
 - one due review at a time;
 - browser-saved memories;
 - edit, practise, delete, export, restore and clear-all controls;
@@ -46,7 +48,7 @@ The learner sees the word, checks its meaning, recalls it in writing, connects i
 
 ## What is not available
 
-There is no reviewed audio, pronunciation teaching, account, cloud sync, upload, public contribution, sharing or community publishing.
+There is no reviewed speaker audio, pronunciation teaching, account, cloud sync, upload, public contribution, sharing or community publishing. You can record your own voice while practising; it stays in your browser and is never scored or sent anywhere.
 
 Memories are saved in the current browser profile. Other people using that profile may be able to see them. Export a backup before clearing browser data.
 
