@@ -69,7 +69,7 @@ export function MemoriesHome() {
         <ul className="memory-list">
           {sortedMemories.map((memory) => (
             <li key={memory.id}>
-              <Link className="memory-link" href={`/memories/${encodeURIComponent(memory.id)}`}>
+              <Link className="memory-link" href={`/memories/edit?id=${encodeURIComponent(memory.id)}`}>
                 <span>
                   <small>{memory.kind === "word" ? "Word" : "Note"}</small>
                   <strong lang={memory.linkedEntryId ? LANGUAGE_TAG : undefined}>{memory.title}</strong>

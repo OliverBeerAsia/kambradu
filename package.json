@@ -1,12 +1,12 @@
 {
   "name": "kambradu",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "node scripts/build.mjs",
     "build:next": "next build",
-    "start": "next start",
+    "start": "node scripts/serve-static.mjs",
     "type-check": "tsc --noEmit",
     "test:smoke": "npm run build && playwright test",
     "test:unit": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/local-data.test.ts tests/validate-seed.test.mjs tests/languages.test.mjs",

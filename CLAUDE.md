@@ -83,6 +83,12 @@ Part 1 that Part 2 contradicts.
 
 - **Web, not an installed app.** There is no service worker and no web manifest. Offline
   use is not supported. Treat any PWA reference in older documents as out of date.
+- **Static files, no server.** The site builds with `output: "export"` to plain HTML, CSS
+  and JavaScript. Nothing runs server-side, because nothing needs to: the words are bundled
+  at build time and everything a learner creates stays in their browser. This is why there
+  is no middleware and no dynamic route. A consequence worth remembering: a page that ships
+  is public, so anything that should not be public has to be absent from the build rather
+  than gated at request time.
 - **No streaks, points, leaderboards or loss warnings.** `docs/product-principles.md`
   forbids them. "Habit Formation" above means a gentle rhythm, not streak tracking.
 - **No accounts, no sync, no uploads, no sharing.** Everything a learner creates lives in

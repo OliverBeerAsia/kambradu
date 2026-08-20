@@ -1,5 +1,12 @@
 import { NextResponse } from "next/server";
 
+/**
+ * The build fingerprint, as a plain file.
+ *
+ * This ships as a static file, so it carries no response headers of its own.
+ * Anything a reader needs is in the body.
+ */
+
 export const dynamic = "force-static";
 
 export function GET() {
@@ -8,11 +15,6 @@ export function GET() {
     release: process.env.KAMBRADU_RELEASE_SHA ?? "development",
     builtAt: process.env.KAMBRADU_BUILD_DATE ?? "development",
     environment: process.env.KAMBRADU_RELEASE_ENV ?? "local",
-    boundary: "Kristang-only, web-only, text-only, local-first"
-  }, {
-    headers: {
-      "Cache-Control": "public, max-age=60, s-maxage=300",
-      "X-Kambradu-Release": process.env.KAMBRADU_RELEASE_SHA ?? "development"
-    }
+    boundary: "web-only, local-first, no accounts, no uploads"
   });
 }
