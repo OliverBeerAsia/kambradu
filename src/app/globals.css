@@ -1365,3 +1365,8 @@ textarea {
   display: block;
   margin-top: 0.15rem;
 }
+
+/* The language chooser reuses the word list, with room for a second line. */
+.language-list .language-count {
+  color: var(--muted);
+}

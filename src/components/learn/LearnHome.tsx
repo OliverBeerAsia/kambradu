@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { dictionaryAttribution, publicLexiconEntries } from "@/data/kristang";
-import type { LexicalEntry } from "@/types/kambradu";
-import { LANGUAGE_TAG } from "@/lib/language";
+import type { Language, LexicalEntry } from "@/types/kambradu";
 
 const themes = [
   { tag: "greetings", label: "Greetings" },
@@ -18,24 +16,26 @@ const themes = [
   { tag: "people", label: "People" }
 ];
 
-function grouped(): Array<{ label: string; entries: LexicalEntry[] }> {
+function grouped(entries: LexicalEntry[]): Array<{ label: string; entries: LexicalEntry[] }> {
   const seen = new Set<string>();
   const groups = themes.map(({ tag, label }) => {
-    const entries = publicLexiconEntries.filter((entry) => entry.tags.includes(tag) && !seen.has(entry.id));
-    for (const entry of entries) seen.add(entry.id);
-    return { label, entries };
+    const matching = entries.filter((entry) => entry.tags.includes(tag) && !seen.has(entry.id));
+    for (const entry of matching) seen.add(entry.id);
+    return { label, entries: matching };
   });
   return groups.filter((group) => group.entries.length > 0);
 }
 
-export function LearnHome() {
-  const groups = grouped();
+export function LearnHome({ language }: { language: Language }) {
+  const groups = grouped(language.entries);
 
   return (
     <div className="page learn-page">
       <header className="page-heading">
         <h1>Learn a word.</h1>
-        <p>{publicLexiconEntries.length} words from the reference dictionary, grouped by where you might use them.</p>
+        <p>
+          {language.entries.length} {language.name} words, grouped by where you might use them.
+        </p>
       </header>
 
       {groups.map((group) => (
@@ -46,8 +46,8 @@ export function LearnHome() {
               <li key={entry.id}>
                 <Link href={`/practice?lesson=${entry.id}`}>
                   <span>
-                    <strong lang={LANGUAGE_TAG}>{entry.headword}</strong>
-                    <small>{entry.englishGlosses.join(", ")}</small>
+                    <strong lang={language.tag}>{entry.headword}</strong>
+                    <small>{entry.glosses.join(", ")}</small>
                   </span>
                   <ArrowRight size={18} aria-hidden="true" />
                 </Link>
@@ -61,9 +61,10 @@ export function LearnHome() {
         <summary>Sources</summary>
         <div className="dictionary-inner">
           <p>
-            {dictionaryAttribution.authors}, <cite>{dictionaryAttribution.label}</cite>. {dictionaryAttribution.license}.
+            {language.attribution.authors ? `${language.attribution.authors}, ` : null}
+            <cite>{language.attribution.label}</cite>. {language.attribution.license}.
           </p>
-          <p>Checked against the dictionary. Not yet checked with a speaker or community partner.</p>
+          <p>{language.evidenceNote}</p>
         </div>
       </details>
     </div>

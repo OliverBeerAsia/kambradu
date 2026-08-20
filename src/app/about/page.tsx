@@ -1,5 +1,5 @@
 import { AppShell } from "@/components/layout/AppShell";
-import { dictionaryAttribution } from "@/data/kristang";
+import { dictionaryAttribution } from "@/data/languages/kristang";
 import { LANGUAGE_TAG } from "@/lib/language";
 
 export default function AboutPage() {

@@ -7,11 +7,11 @@ import { HegelCompanion } from "@/components/ui/HegelCompanion";
 import { TryRecorder } from "@/components/practice/TryRecorder";
 import { Headword, stressHint } from "@/components/ui/Headword";
 import { VariantNote } from "@/components/ui/VariantNote";
-import { lessonUnits, practicePrompts, publicLexiconEntries, resolveLessonId } from "@/data/kristang";
+import { languageForLesson, lessonsFor, promptsFor, resolveLessonId } from "@/data/languages";
+import type { LexicalEntry } from "@/types/kambradu";
 import { useKambraduData } from "@/lib/hooks/use-kambradu-data";
 import { findLatestReview, type LocalPracticeSession, type LocalReview } from "@/lib/local-data";
 import { formatReviewDate, gradeFromAnswer, scheduleNextPracticeReview } from "@/lib/practice-scheduler";
-import { LANGUAGE_TAG } from "@/lib/language";
 
 type Step = LocalPracticeSession["step"] | "done";
 type Confidence = LocalReview["confidence"];
@@ -26,10 +26,10 @@ function seedFrom(value: string): number {
   return hash;
 }
 
-function buildMeaningOptions(entryId: string, correctGloss: string): string[] {
-  const entry = publicLexiconEntries.find((item) => item.id === entryId);
-  const candidates = publicLexiconEntries
-    .filter((item) => item.id !== entryId && item.englishGlosses[0] !== correctGloss)
+function buildMeaningOptions(entries: LexicalEntry[], entryId: string, correctGloss: string): string[] {
+  const entry = entries.find((item) => item.id === entryId);
+  const candidates = entries
+    .filter((item) => item.id !== entryId && item.glosses[0] !== correctGloss)
     .sort((a, b) => {
       const samePos = (item: typeof a) => (item.partOfSpeech === entry?.partOfSpeech ? 0 : 1);
       return samePos(a) - samePos(b) || a.id.localeCompare(b.id);
@@ -38,13 +38,13 @@ function buildMeaningOptions(entryId: string, correctGloss: string): string[] {
   const seed = seedFrom(entryId);
   const distractors = [candidates[seed % candidates.length], candidates[(seed * 7 + 3) % candidates.length]]
     .filter(Boolean)
-    .map((item) => item.englishGlosses[0]);
+    .map((item) => item.glosses[0]);
 
   const unique = [...new Set(distractors)];
   // Guarantee two distractors even if the pair collided.
   for (const item of candidates) {
     if (unique.length >= 2) break;
-    if (!unique.includes(item.englishGlosses[0])) unique.push(item.englishGlosses[0]);
+    if (!unique.includes(item.glosses[0])) unique.push(item.glosses[0]);
   }
 
   const options = [correctGloss, ...unique.slice(0, 2)];
@@ -54,7 +54,12 @@ function buildMeaningOptions(entryId: string, correctGloss: string): string[] {
 }
 
 export function PracticeSession({ requestedLessonId }: { requestedLessonId?: string }) {
-  const validLessonId = resolveLessonId(requestedLessonId) ?? lessonUnits[0].id;
+  // A lesson id belongs to exactly one language, so the language follows from
+  // the word rather than needing to be carried through the url separately.
+  const language = languageForLesson(requestedLessonId);
+  const lessonUnits = lessonsFor(language);
+  const practicePrompts = promptsFor(language);
+  const validLessonId = resolveLessonId(language, requestedLessonId) ?? lessonUnits[0].id;
   const prompt = practicePrompts.find((item) => item.lessonId === validLessonId) ?? practicePrompts[0];
   const { data, isHydrated, completeReview, setActiveSession, saveStatus } = useKambraduData();
   const [step, setStep] = useState<Step>("meet");
@@ -73,8 +78,8 @@ export function PracticeSession({ requestedLessonId }: { requestedLessonId?: str
   // their order is derived from the entry id so it is stable per word but not
   // always the same position.
   const entryId = prompt.lexicalEntryId ?? prompt.id;
-  const entry = publicLexiconEntries.find((item) => item.id === entryId);
-  const meaningOptions = useMemo(() => buildMeaningOptions(entryId, prompt.englishGloss), [entryId, prompt.englishGloss]);
+  const entry = language.entries.find((item) => item.id === entryId);
+  const meaningOptions = useMemo(() => buildMeaningOptions(language.entries, entryId, prompt.englishGloss), [language, entryId, prompt.englishGloss]);
   const meaningCorrect = meaningChoice === prompt.englishGloss;
   const recallCorrect = recall.trim().toLowerCase() === prompt.headword.toLowerCase();
   const currentIndex = step === "done" ? steps.length : steps.indexOf(step);
@@ -194,18 +199,18 @@ export function PracticeSession({ requestedLessonId }: { requestedLessonId?: str
       {step === "meet" ? (
         <div className="practice-stage">
           <header>
-            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}><Headword form={prompt.headword} stress={entry?.stress} /></h1>
+            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}><Headword form={prompt.headword} stress={entry?.stress} lang={language.tag} /></h1>
             <p>{prompt.englishGloss}</p>
             {stressHint(prompt.headword, entry?.stress) ? (
               <p className="stress-hint">{stressHint(prompt.headword, entry?.stress)}</p>
             ) : null}
-            <VariantNote variants={entry?.variants ?? []} />
+            <VariantNote variants={entry?.variants ?? []} lang={language.tag} />
           </header>
           {entry?.collocations.length ? (
             <dl className="attested-list">
               {entry.collocations.map((item) => (
                 <div key={item.form}>
-                  <dt lang={LANGUAGE_TAG}>{item.form}</dt>
+                  <dt lang={language.tag}>{item.form}</dt>
                   <dd>{item.gloss}</dd>
                 </div>
               ))}
@@ -213,7 +218,7 @@ export function PracticeSession({ requestedLessonId }: { requestedLessonId?: str
           ) : null}
           {entry?.examples.length ? (
             <blockquote className="attested-example">
-              <p lang={LANGUAGE_TAG}>{entry.examples[0].text}</p>
+              <p lang={language.tag}>{entry.examples[0].text}</p>
               <p>{entry.examples[0].translation}</p>
             </blockquote>
           ) : null}
@@ -228,7 +233,7 @@ export function PracticeSession({ requestedLessonId }: { requestedLessonId?: str
       {step === "meaning" ? (
         <div className="practice-stage">
           <header>
-            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>What does <span lang={LANGUAGE_TAG}>{prompt.headword}</span> mean?</h1>
+            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>What does <span lang={language.tag}>{prompt.headword}</span> mean?</h1>
           </header>
           <div className="answer-grid" role="group" aria-label="Meaning choices">
             {meaningOptions.map((option) => <button aria-pressed={meaningChoice === option} key={option} type="button" onClick={() => { setMeaningChoice(option); saveDraft({ meaningChoice: option }); }}>{option}</button>)}
@@ -243,7 +248,7 @@ export function PracticeSession({ requestedLessonId }: { requestedLessonId?: str
           <header>
             <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>What is the Kristang word for {prompt.englishGloss}?</h1>
           </header>
-          <label className="recall-field"><span>Your answer</span><input lang={LANGUAGE_TAG} autoComplete="off" value={recall} onChange={(event) => { const value = event.target.value; setRecall(value); setRecallChecked(false); setConfidence(null); saveDraft({ recall: value, recallChecked: false, confidence: undefined }); }} /></label>
+          <label className="recall-field"><span>Your answer</span><input lang={language.tag} autoComplete="off" value={recall} onChange={(event) => { const value = event.target.value; setRecall(value); setRecallChecked(false); setConfidence(null); saveDraft({ recall: value, recallChecked: false, confidence: undefined }); }} /></label>
           {!recallChecked ? <button className="primary-action" type="button" disabled={!recall.trim()} onClick={() => { setRecallChecked(true); saveDraft({ recallChecked: true }); }}>Check</button> : (
             <>
               <p className={`plain-feedback ${recallCorrect ? "correct" : ""}`} role="status">{recallCorrect ? "That matches the dictionary form." : `The dictionary form is ${prompt.headword}.`}</p>
@@ -260,7 +265,7 @@ export function PracticeSession({ requestedLessonId }: { requestedLessonId?: str
       {step === "try" ? (
         <div className="practice-stage">
           <header>
-            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>Say <Headword form={prompt.headword} stress={entry?.stress} /> out loud.</h1>
+            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>Say <Headword form={prompt.headword} stress={entry?.stress} lang={language.tag} /> out loud.</h1>
             <p>Record it if you want to hear yourself. This stays in your browser.</p>
             {stressHint(prompt.headword, entry?.stress) ? (
               <p className="stress-hint">{stressHint(prompt.headword, entry?.stress)}</p>
@@ -274,7 +279,7 @@ export function PracticeSession({ requestedLessonId }: { requestedLessonId?: str
       {step === "connect" ? (
         <div className="practice-stage">
           <header>
-            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>Where could <span lang={LANGUAGE_TAG}>{prompt.headword}</span> fit in your life?</h1>
+            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>Where could <span lang={language.tag}>{prompt.headword}</span> fit in your life?</h1>
             <p>Choose a place or write your own.</p>
           </header>
           <div className="context-choices" role="group" aria-label="Personal context">
@@ -290,10 +295,10 @@ export function PracticeSession({ requestedLessonId }: { requestedLessonId?: str
       {step === "keep" ? (
         <div className="practice-stage">
           <header>
-            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>Keep <span lang={LANGUAGE_TAG}>{prompt.headword}</span> in Memories?</h1>
+            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>Keep <span lang={language.tag}>{prompt.headword}</span> in Memories?</h1>
             <p>You can edit, export or delete it later.</p>
           </header>
-          <div className="keep-card"><strong lang={LANGUAGE_TAG}>{prompt.headword}</strong><span>{prompt.englishGloss}</span>{context ? <small>{context}</small> : null}</div>
+          <div className="keep-card"><strong lang={language.tag}>{prompt.headword}</strong><span>{prompt.englishGloss}</span>{context ? <small>{context}</small> : null}</div>
           <button className="primary-action" type="button" onClick={() => complete(true)}>Keep in Memories</button>
           <button className="quiet-action" type="button" onClick={() => complete(false)}>Finish without saving</button>
         </div>
@@ -302,7 +307,7 @@ export function PracticeSession({ requestedLessonId }: { requestedLessonId?: str
       {step === "done" ? (
         <div className="practice-stage completion-stage">
           <HegelCompanion compact>
-            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>You reviewed <span lang={LANGUAGE_TAG}>{prompt.headword}</span>.</h1>
+            <h1 id="practice-heading" ref={headingRef} tabIndex={-1}>You reviewed <span lang={language.tag}>{prompt.headword}</span>.</h1>
             <p>{saved ? "The word is also saved in this browser." : "Nothing was added to Memories."}</p>
             {nextDue ? <p>Next review {formatReviewDate(nextDue)}.</p> : null}
           </HegelCompanion>

@@ -9,7 +9,7 @@
     "start": "next start",
     "type-check": "tsc --noEmit",
     "test:smoke": "npm run build && playwright test",
-    "test:unit": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/local-data.test.ts tests/validate-seed.test.mjs",
+    "test:unit": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/local-data.test.ts tests/validate-seed.test.mjs tests/languages.test.mjs",
     "test:rules": "npx --yes firebase-tools@15.24.0 emulators:exec --only firestore \"node --test tests/firestore-rules.test.mjs\"",
     "seed:firestore": "node scripts/seed-firestore.mjs",
     "firebase:emulators": "npx --yes firebase-tools@15.24.0 emulators:start --only auth,firestore,storage,hosting"

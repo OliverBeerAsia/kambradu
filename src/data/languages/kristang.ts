@@ -1,4 +1,5 @@
 import type {
+  Language,
   AccessLevel,
   Attribution,
   ContributionDraft,
@@ -75,7 +76,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "agu",
     normalizedHeadword: "agu",
-    englishGlosses: ["water"],
+    glosses: ["water"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 0, end: 1 },
@@ -94,7 +95,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "aros",
     normalizedHeadword: "aros",
-    englishGlosses: ["rice"],
+    glosses: ["rice"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 1, end: 4 },
@@ -113,7 +114,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "bong",
     normalizedHeadword: "bong",
-    englishGlosses: ["good", "well"],
+    glosses: ["good", "well"],
     partOfSpeech: "adjective",
     orthography: "baxter-2005",
     alternateSpellings: [],
@@ -134,7 +135,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "chua",
     normalizedHeadword: "chua",
-    englishGlosses: ["rain"],
+    glosses: ["rain"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 0, end: 3 },
@@ -155,7 +156,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "fila",
     normalizedHeadword: "fila",
-    englishGlosses: ["daughter"],
+    glosses: ["daughter"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 0, end: 2 },
@@ -174,7 +175,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "filu",
     normalizedHeadword: "filu",
-    englishGlosses: ["son"],
+    glosses: ["son"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 0, end: 2 },
@@ -193,7 +194,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "galinya",
     normalizedHeadword: "galinya",
-    englishGlosses: ["hen"],
+    glosses: ["hen"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 2, end: 4 },
@@ -214,7 +215,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "gatu",
     normalizedHeadword: "gatu",
-    englishGlosses: ["cat"],
+    glosses: ["cat"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 0, end: 2 },
@@ -233,7 +234,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "irmang",
     normalizedHeadword: "irmang",
-    englishGlosses: ["sibling"],
+    glosses: ["sibling"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 2, end: 6 },
@@ -254,7 +255,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "kabesa",
     normalizedHeadword: "kabesa",
-    englishGlosses: ["head"],
+    glosses: ["head"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 2, end: 4 },
@@ -273,7 +274,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "kadera",
     normalizedHeadword: "kadera",
-    englishGlosses: ["chair"],
+    glosses: ["chair"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 2, end: 4 },
@@ -294,7 +295,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "kambradu",
     normalizedHeadword: "kambradu",
-    englishGlosses: ["friend"],
+    glosses: ["friend"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 3, end: 6 },
@@ -316,7 +317,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "kandri",
     normalizedHeadword: "kandri",
-    englishGlosses: ["meat", "flesh"],
+    glosses: ["meat", "flesh"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 0, end: 3 },
@@ -342,7 +343,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "kaza",
     normalizedHeadword: "kaza",
-    englishGlosses: ["house", "home"],
+    glosses: ["house", "home"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 0, end: 2 },
@@ -361,7 +362,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "krensa",
     normalizedHeadword: "krensa",
-    englishGlosses: ["baby", "child"],
+    glosses: ["baby", "child"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 0, end: 4 },
@@ -380,7 +381,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "mai",
     normalizedHeadword: "mai",
-    englishGlosses: ["mother"],
+    glosses: ["mother"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     alternateSpellings: [],
@@ -398,7 +399,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "mang",
     normalizedHeadword: "mang",
-    englishGlosses: ["hand"],
+    glosses: ["hand"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     alternateSpellings: [],
@@ -418,7 +419,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "meza",
     normalizedHeadword: "meza",
-    englishGlosses: ["table"],
+    glosses: ["table"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 0, end: 2 },
@@ -439,7 +440,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "pai",
     normalizedHeadword: "pai",
-    englishGlosses: ["father"],
+    glosses: ["father"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     alternateSpellings: [],
@@ -457,7 +458,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "pang",
     normalizedHeadword: "pang",
-    englishGlosses: ["bread"],
+    glosses: ["bread"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     alternateSpellings: [],
@@ -478,7 +479,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "papiah",
     normalizedHeadword: "papiah",
-    englishGlosses: ["to speak"],
+    glosses: ["to speak"],
     partOfSpeech: "verb",
     orthography: "baxter-2005",
     stress: { start: 4, end: 6 },
@@ -497,7 +498,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "pesi",
     normalizedHeadword: "pesi",
-    englishGlosses: ["fish"],
+    glosses: ["fish"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 0, end: 2 },
@@ -516,7 +517,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "porta",
     normalizedHeadword: "porta",
-    englishGlosses: ["door"],
+    glosses: ["door"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 0, end: 3 },
@@ -545,7 +546,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "ropa",
     normalizedHeadword: "ropa",
-    englishGlosses: ["clothing"],
+    glosses: ["clothing"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 0, end: 2 },
@@ -566,7 +567,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "sol",
     normalizedHeadword: "sol",
-    englishGlosses: ["sun"],
+    glosses: ["sun"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     alternateSpellings: [],
@@ -586,7 +587,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "teng",
     normalizedHeadword: "teng",
-    englishGlosses: ["to be"],
+    glosses: ["to be"],
     partOfSpeech: "verb",
     orthography: "baxter-2005",
     alternateSpellings: [],
@@ -606,7 +607,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "sabang",
     normalizedHeadword: "sabang",
-    englishGlosses: ["soap"],
+    glosses: ["soap"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 2, end: 6 },
@@ -628,7 +629,7 @@ export const publicLexiconEntries: LexicalEntry[] = [
     communityId: kristangCommunity.id,
     headword: "janela",
     normalizedHeadword: "janela",
-    englishGlosses: ["window"],
+    glosses: ["window"],
     partOfSpeech: "noun",
     orthography: "baxter-2005",
     stress: { start: 2, end: 4 },
@@ -661,53 +662,24 @@ export const starterJournalEntries: JournalEntry[] = [];
 export const starterBuilderEntries: PersonalLexiconEntry[] = [];
 
 
-/**
- * Lessons and prompts are derived from the lexicon so that adding a word does
- * not mean hand-writing a lesson, a prompt and a route for it.
- * The lesson id is the entry id.
- */
-export const practicePrompts: PracticePrompt[] = publicLexiconEntries.map((entry) => ({
-  id: entry.id,
-  communityId: entry.communityId,
-  lexicalEntryId: entry.id,
-  lessonId: entry.id,
-  title: `Meet ${entry.headword}`,
-  headword: entry.headword,
-  englishGloss: entry.englishGlosses[0],
-  promptKind: "meaning-recall",
-  listenCue: "This word is listed in the reference dictionary.",
-  hasAudio: false,
-  access: entry.access,
-  source: entry.source,
-  focus: [entry.id],
-  speakerQuestion: `How is ${entry.headword} used today?`
-}));
-
-export const lessonUnits: LessonUnit[] = publicLexiconEntries.map((entry) => ({
-  id: entry.id,
-  title: `Meet ${entry.headword}`,
-  kind: "word",
-  level: "starter",
-  summary: `Meet a dictionary-listed Kristang word and decide what you want to remember.`,
-  focus: [entry.id],
-  estimatedMinutes: 3,
-  source: entry.source,
-  access: entry.access
-}));
-
-/**
- * The first two lessons shipped under different ids. Keep them resolvable so
- * saved reviews and any shared links still work.
- */
-export const legacyLessonIds: Record<string, string> = {
-  "shop-visit": "sabang",
-  "home-objects": "janela"
-};
-
-export function resolveLessonId(requested?: string): string | undefined {
-  if (!requested) return undefined;
-  const mapped = legacyLessonIds[requested] ?? requested;
-  return lessonUnits.some((lesson) => lesson.id === mapped) ? mapped : undefined;
-}
-
 export const reviewQueueSeed: ContributionDraft[] = [];
+
+/**
+ * Kristang, as a language a learner can choose.
+ *
+ * Everything language-specific is gathered here so a second language is a new
+ * file rather than a change to shared code.
+ */
+export const kristang: Language = {
+  id: "kristang",
+  name: "Kristang",
+  tag: "mcm",
+  glossTag: "en",
+  vitality: "endangered",
+  summary: "A Portuguese and Malay creole from Melaka, with around a thousand speakers left.",
+  community: kristangCommunity,
+  orthographies: orthographyProfiles,
+  attribution: dictionaryAttribution,
+  evidenceNote: "Checked against the dictionary. Not yet checked with a speaker or community partner.",
+  entries: publicLexiconEntries
+};

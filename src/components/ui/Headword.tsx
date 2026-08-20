@@ -1,16 +1,14 @@
 import type { StressMark } from "@/types/kambradu";
-import { LANGUAGE_TAG } from "@/lib/language";
 
 /**
- * A Kristang headword, showing where the main stress falls.
+ * A headword in the language being learned, showing where the stress falls.
  *
- * The printed dictionary underlines the stressed syllable, so that is what is
- * drawn here. Words the source leaves unmarked, including every monosyllable,
+ * Where a source marks stress, that mark is drawn here. Words the source leaves unmarked, including every monosyllable,
  * are shown plain rather than guessed at.
  */
-export function Headword({ form, stress }: { form: string; stress?: StressMark }) {
+export function Headword({ form, stress, lang }: { form: string; stress?: StressMark; lang: string }) {
   if (!stress || stress.start >= stress.end || stress.end > form.length) {
-    return <span lang={LANGUAGE_TAG}>{form}</span>;
+    return <span lang={lang}>{form}</span>;
   }
 
   const before = form.slice(0, stress.start);
@@ -18,7 +16,7 @@ export function Headword({ form, stress }: { form: string; stress?: StressMark }
   const after = form.slice(stress.end);
 
   return (
-    <span lang={LANGUAGE_TAG}>
+    <span lang={lang}>
       {before}
       <b className="stressed-syllable">{stressed}</b>
       {after}

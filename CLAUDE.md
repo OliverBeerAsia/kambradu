@@ -87,7 +87,14 @@ Part 1 that Part 2 contradicts.
   forbids them. "Habit Formation" above means a gentle rhythm, not streak tracking.
 - **No accounts, no sync, no uploads, no sharing.** Everything a learner creates lives in
   their own browser and can be exported.
-- **Kristang only.** Multi-language expansion is out of scope for this milestone.
+- **Two languages.** Kristang is the reason the project exists and is the default.
+  Malay sits beside it as a bridge: it is what Kristang's spelling is built on, and most
+  learners here already read it. Malay is *not* endangered, and the interface says so on
+  the chooser rather than implying the two carry the same urgency. Kambradu is not the
+  right place to preserve Malay, and no effort goes into it beyond serving Kristang.
+- **Malay words are transcribed, not checked.** They come from Wiktionary with a per-entry
+  address and are marked `source_checked: false`, so the content guard refuses to seed
+  them. That is the guard working, not a bug to route around.
 - **Audio.** There is no community or speaker audio, and adding any is gated on a named
   community relationship. A learner recording their *own* voice privately is a different
   thing and is not gated, because it involves nobody else's consent.

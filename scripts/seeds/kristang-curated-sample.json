@@ -26,7 +26,7 @@
       "communityId": "kristang-melaka",
       "headword": "agu",
       "normalizedHeadword": "agu",
-      "englishGlosses": [
+      "glosses": [
         "water"
       ],
       "partOfSpeech": "noun",
@@ -71,7 +71,7 @@
       "communityId": "kristang-melaka",
       "headword": "aros",
       "normalizedHeadword": "aros",
-      "englishGlosses": [
+      "glosses": [
         "rice"
       ],
       "partOfSpeech": "noun",
@@ -116,7 +116,7 @@
       "communityId": "kristang-melaka",
       "headword": "bong",
       "normalizedHeadword": "bong",
-      "englishGlosses": [
+      "glosses": [
         "good",
         "well"
       ],
@@ -167,7 +167,7 @@
       "communityId": "kristang-melaka",
       "headword": "chua",
       "normalizedHeadword": "chua",
-      "englishGlosses": [
+      "glosses": [
         "rain"
       ],
       "partOfSpeech": "noun",
@@ -217,7 +217,7 @@
       "communityId": "kristang-melaka",
       "headword": "fila",
       "normalizedHeadword": "fila",
-      "englishGlosses": [
+      "glosses": [
         "daughter"
       ],
       "partOfSpeech": "noun",
@@ -262,7 +262,7 @@
       "communityId": "kristang-melaka",
       "headword": "filu",
       "normalizedHeadword": "filu",
-      "englishGlosses": [
+      "glosses": [
         "son"
       ],
       "partOfSpeech": "noun",
@@ -307,7 +307,7 @@
       "communityId": "kristang-melaka",
       "headword": "galinya",
       "normalizedHeadword": "galinya",
-      "englishGlosses": [
+      "glosses": [
         "hen"
       ],
       "partOfSpeech": "noun",
@@ -358,7 +358,7 @@
       "communityId": "kristang-melaka",
       "headword": "gatu",
       "normalizedHeadword": "gatu",
-      "englishGlosses": [
+      "glosses": [
         "cat"
       ],
       "partOfSpeech": "noun",
@@ -403,7 +403,7 @@
       "communityId": "kristang-melaka",
       "headword": "irmang",
       "normalizedHeadword": "irmang",
-      "englishGlosses": [
+      "glosses": [
         "sibling"
       ],
       "partOfSpeech": "noun",
@@ -453,7 +453,7 @@
       "communityId": "kristang-melaka",
       "headword": "kabesa",
       "normalizedHeadword": "kabesa",
-      "englishGlosses": [
+      "glosses": [
         "head"
       ],
       "partOfSpeech": "noun",
@@ -498,7 +498,7 @@
       "communityId": "kristang-melaka",
       "headword": "kadera",
       "normalizedHeadword": "kadera",
-      "englishGlosses": [
+      "glosses": [
         "chair"
       ],
       "partOfSpeech": "noun",
@@ -548,7 +548,7 @@
       "communityId": "kristang-melaka",
       "headword": "kambradu",
       "normalizedHeadword": "kambradu",
-      "englishGlosses": [
+      "glosses": [
         "friend"
       ],
       "partOfSpeech": "noun",
@@ -602,7 +602,7 @@
       "communityId": "kristang-melaka",
       "headword": "kandri",
       "normalizedHeadword": "kandri",
-      "englishGlosses": [
+      "glosses": [
         "meat",
         "flesh"
       ],
@@ -655,7 +655,7 @@
       "communityId": "kristang-melaka",
       "headword": "kaza",
       "normalizedHeadword": "kaza",
-      "englishGlosses": [
+      "glosses": [
         "house",
         "home"
       ],
@@ -701,7 +701,7 @@
       "communityId": "kristang-melaka",
       "headword": "krensa",
       "normalizedHeadword": "krensa",
-      "englishGlosses": [
+      "glosses": [
         "baby",
         "child"
       ],
@@ -747,7 +747,7 @@
       "communityId": "kristang-melaka",
       "headword": "mai",
       "normalizedHeadword": "mai",
-      "englishGlosses": [
+      "glosses": [
         "mother"
       ],
       "partOfSpeech": "noun",
@@ -788,7 +788,7 @@
       "communityId": "kristang-melaka",
       "headword": "mang",
       "normalizedHeadword": "mang",
-      "englishGlosses": [
+      "glosses": [
         "hand"
       ],
       "partOfSpeech": "noun",
@@ -834,7 +834,7 @@
       "communityId": "kristang-melaka",
       "headword": "meza",
       "normalizedHeadword": "meza",
-      "englishGlosses": [
+      "glosses": [
         "table"
       ],
       "partOfSpeech": "noun",
@@ -884,7 +884,7 @@
       "communityId": "kristang-melaka",
       "headword": "pai",
       "normalizedHeadword": "pai",
-      "englishGlosses": [
+      "glosses": [
         "father"
       ],
       "partOfSpeech": "noun",
@@ -925,7 +925,7 @@
       "communityId": "kristang-melaka",
       "headword": "pang",
       "normalizedHeadword": "pang",
-      "englishGlosses": [
+      "glosses": [
         "bread"
       ],
       "partOfSpeech": "noun",
@@ -975,7 +975,7 @@
       "communityId": "kristang-melaka",
       "headword": "papiah",
       "normalizedHeadword": "papiah",
-      "englishGlosses": [
+      "glosses": [
         "to speak"
       ],
       "partOfSpeech": "verb",
@@ -1020,7 +1020,7 @@
       "communityId": "kristang-melaka",
       "headword": "pesi",
       "normalizedHeadword": "pesi",
-      "englishGlosses": [
+      "glosses": [
         "fish"
       ],
       "partOfSpeech": "noun",
@@ -1065,7 +1065,7 @@
       "communityId": "kristang-melaka",
       "headword": "porta",
       "normalizedHeadword": "porta",
-      "englishGlosses": [
+      "glosses": [
         "door"
       ],
       "partOfSpeech": "noun",
@@ -1126,7 +1126,7 @@
       "communityId": "kristang-melaka",
       "headword": "ropa",
       "normalizedHeadword": "ropa",
-      "englishGlosses": [
+      "glosses": [
         "clothing"
       ],
       "partOfSpeech": "noun",
@@ -1176,7 +1176,7 @@
       "communityId": "kristang-melaka",
       "headword": "sol",
       "normalizedHeadword": "sol",
-      "englishGlosses": [
+      "glosses": [
         "sun"
       ],
       "partOfSpeech": "noun",
@@ -1222,7 +1222,7 @@
       "communityId": "kristang-melaka",
       "headword": "teng",
       "normalizedHeadword": "teng",
-      "englishGlosses": [
+      "glosses": [
         "to be"
       ],
       "partOfSpeech": "verb",
@@ -1269,7 +1269,7 @@
       "communityId": "kristang-melaka",
       "headword": "sabang",
       "normalizedHeadword": "sabang",
-      "englishGlosses": [
+      "glosses": [
         "soap"
       ],
       "partOfSpeech": "noun",
@@ -1323,7 +1323,7 @@
       "communityId": "kristang-melaka",
       "headword": "janela",
       "normalizedHeadword": "janela",
-      "englishGlosses": [
+      "glosses": [
         "window"
       ],
       "partOfSpeech": "noun",

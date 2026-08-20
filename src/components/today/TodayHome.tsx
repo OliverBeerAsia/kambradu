@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, HardDrive } from "lucide-react";
 import { HegelCompanion } from "@/components/ui/HegelCompanion";
-import { lessonUnits } from "@/data/kristang";
+import { defaultLanguage, languageForLesson, lessonsFor } from "@/data/languages";
 import { useKambraduData } from "@/lib/hooks/use-kambradu-data";
 import { findOneDueReview } from "@/lib/local-data";
 
@@ -11,13 +11,15 @@ export function TodayHome() {
   const { data, isHydrated } = useKambraduData();
   const due = findOneDueReview(data.reviews);
   const active = data.activeSession;
+  const language = languageForLesson(data.activeSession?.lessonId ?? findOneDueReview(data.reviews)?.lessonId) ?? defaultLanguage;
+  const lessonUnits = lessonsFor(language);
   const reviewedLessonIds = new Set(data.reviews.map((review) => review.lessonId));
   const nextLesson = lessonUnits.find((lesson) => !reviewedLessonIds.has(lesson.id)) ?? lessonUnits[0];
   const lessonId = active?.lessonId ?? due?.lessonId ?? nextLesson.id;
-  const lessonWord = lessonUnits.find((lesson) => lesson.id === lessonId)?.focus[0] ?? "Kristang";
+  const lessonWord = lessonUnits.find((lesson) => lesson.id === lessonId)?.focus[0] ?? language.name;
 
   const state = active ? "continue" : due ? "review" : "new";
-  const heading = state === "continue" ? "Ready to carry on?" : state === "review" ? `Time to review ${lessonWord}.` : data.reviews.length ? "Learn another Kristang word." : "Learn your first Kristang word.";
+  const heading = state === "continue" ? "Ready to carry on?" : state === "review" ? `Time to review ${lessonWord}.` : data.reviews.length ? `Learn another ${language.name} word.` : `Learn your first ${language.name} word.`;
   const support = state === "continue" ? `You were learning ${lessonWord}.` : state === "review" ? "A quick check to help it stick." : "One word, one quick check and a place to keep it.";
   const label = state === "continue" ? "Continue" : state === "review" ? "Review" : "Start";
 

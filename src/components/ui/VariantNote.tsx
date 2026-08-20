@@ -1,4 +1,3 @@
-import { LANGUAGE_TAG } from "@/lib/language";
 import type { FormVariant } from "@/types/kambradu";
 
 /**
@@ -13,7 +12,7 @@ import type { FormVariant } from "@/types/kambradu";
  * worded differently: one is about how the word is written, the other about how
  * it is said.
  */
-export function VariantNote({ variants }: { variants: FormVariant[] }) {
+export function VariantNote({ variants, lang }: { variants: FormVariant[]; lang: string }) {
   if (!variants.length) return null;
 
   return (
@@ -21,7 +20,7 @@ export function VariantNote({ variants }: { variants: FormVariant[] }) {
       {variants.map((variant) => (
         <span key={`${variant.orthography}-${variant.form}`}>
           {variant.kind === "form" ? "Also said " : "Also written "}
-          <span lang={LANGUAGE_TAG}>{variant.form}</span>.{" "}
+          <span lang={lang}>{variant.form}</span>.{" "}
         </span>
       ))}
       <span className="variant-caveat">No form here is more correct than another.</span>

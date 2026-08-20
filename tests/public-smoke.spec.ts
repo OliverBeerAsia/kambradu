@@ -35,7 +35,7 @@ test("the public shell has exactly three learner destinations", async ({ page })
 });
 
 test("Learn offers only source-checked text words", async ({ page }) => {
-  await page.goto("/learn");
+  await page.goto("/learn/kristang");
   await expect(page.getByRole("heading", { name: "Learn a word." })).toBeVisible();
   await expect(page.getByRole("link", { name: /^sabang/ })).toBeVisible();
   await expect(page.getByRole("link", { name: /^janela/ })).toBeVisible();
@@ -185,7 +185,7 @@ test("core screens reflow with large controls across target widths", async ({ pa
 });
 
 test("keyboard focus and Kristang language markup are present", async ({ page }) => {
-  await page.goto("/learn");
+  await page.goto("/learn/kristang");
   // Every Kristang headword on the page carries the language tag.
   const headwords = page.locator(".word-list strong");
   const tagged = page.locator('.word-list strong[lang="mcm"]');
@@ -220,7 +220,7 @@ test("the printed stress mark is shown, and never invented", async ({ page }) =>
 });
 
 /** Learner-facing screens. Dev-only routes are closed in production. */
-const LEARNER_ROUTES = ["/", "/learn", "/memories", "/about", "/practice?lesson=sabang"];
+const LEARNER_ROUTES = ["/", "/learn", "/learn/kristang", "/learn/malay", "/memories", "/about", "/practice?lesson=sabang"];
 
 test("learner copy stays plain and free of generated filler", async ({ page }) => {
   // Machine-written padding, marketing inflation and typographic tells.

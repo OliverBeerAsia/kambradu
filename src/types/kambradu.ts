@@ -35,8 +35,14 @@ export type Attribution = {
   url?: string;
   license: string;
   locator?: string;
-  /** Printed page in the cited source. Required by docs/content-policy.md. */
+  /**
+   * Printed page in the cited source. Sources that have pages must give one;
+   * a source that has no pages, such as an online entry, gives `entryUrl`
+   * instead. One of the two is always required by docs/content-policy.md.
+   */
   page?: number;
+  /** Stable address of the entry in a source that has no printed pages. */
+  entryUrl?: string;
   /** Who transcribed and checked this against the source, and when. */
   checkedBy?: string;
   checkedAt?: string;
@@ -129,12 +135,57 @@ export type StressMark = {
   end: number;
 };
 
+/**
+ * Everything that is specific to one language a learner can study.
+ *
+ * Bundling it here is what allows a second language to be added as data rather
+ * than as a change to shared code. Nothing outside this record should name a
+ * language, a spelling tradition or a language tag.
+ */
+export type Language = {
+  /** Stable url-safe id, e.g. "kristang". */
+  id: string;
+  /** What the language calls itself, shown to the learner. */
+  name: string;
+  /** BCP 47 or ISO 639-3 tag used for `lang` attributes, e.g. "mcm". */
+  tag: string;
+  /** Tag for the language the meanings are written in, e.g. "en". */
+  glossTag: string;
+  /**
+   * Whether this language is endangered.
+   *
+   * Kambradu exists for languages that lack speakers and resources. A widely
+   * spoken language may be offered as a bridge or because a learner asked for
+   * it, but the interface should not imply it carries the same urgency.
+   */
+  vitality: "endangered" | "widely-spoken";
+  /** One plain sentence for the chooser. */
+  summary: string;
+  community: Community;
+  /** The spelling traditions this language recognises. */
+  orthographies: Record<OrthographyProfileId, OrthographyProfile>;
+  /** The main source the words come from. Shown to the learner. */
+  attribution: Attribution;
+  /**
+   * What the evidence actually amounts to, in the learner's words. Written per
+   * language because "checked against the dictionary" is a claim that has to be
+   * true of the language it is shown beside.
+   */
+  evidenceNote: string;
+  entries: LexicalEntry[];
+};
+
 export type LexicalEntry = {
   id: string;
   communityId: string;
   headword: string;
   normalizedHeadword: string;
-  englishGlosses: string[];
+  /**
+   * The meaning, in whatever language this course is taught in. Named `glosses`
+   * rather than `englishGlosses` because a learner in Malaysia may be reading
+   * Malay. The language they are written in is on the Language record.
+   */
+  glosses: string[];
   partOfSpeech?: string;
   pronunciation?: string;
   alternateSpellings: string[];
