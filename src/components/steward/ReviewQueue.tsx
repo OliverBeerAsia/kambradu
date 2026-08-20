@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Check, Download, X } from "lucide-react";
 import { AccessPill } from "@/components/ui/AccessPill";
 import { LedgerStrip, WorkbenchHeader, cycleLedgerItems } from "@/components/ui/Workbench";
-import { reviewQueueSeed } from "@/data/kristang";
+import { reviewQueueSeed } from "@/data/languages/kristang";
 import { approveCycle, requestCycleChanges } from "@/lib/learning-cycles";
 import { useLearningCycles } from "@/lib/hooks/use-learning-cycles";
 import type { ContributionDraft, LearningCycle } from "@/types/kambradu";

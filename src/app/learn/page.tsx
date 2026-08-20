@@ -1,10 +1,11 @@
 import { AppShell } from "@/components/layout/AppShell";
-import { LearnHome } from "@/components/learn/LearnHome";
+import { LanguageChooser } from "@/components/learn/LanguageChooser";
+import { languages } from "@/data/languages";
 
 export default function LearnPage() {
   return (
     <AppShell activePath="/learn">
-      <LearnHome />
+      <LanguageChooser languages={languages} />
     </AppShell>
   );
 }

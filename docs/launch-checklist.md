@@ -50,7 +50,8 @@
 
 - Only `sabang` and `janela` are public.
 - Every Kristang item uses `lang="mcm"`.
-- No pronunciation or speaking request appears.
+- No pronunciation teaching, respelling, accent scoring or speaker recording appears.
+- The optional Try step records only the learner's own voice, keeps it in their browser, and never scores or compares it.
 - Evidence says “Checked against the dictionary,” not “approved.”
 - No community endorsement, rescue or save-a-language claim appears.
 - Copy meets [product-principles.md](product-principles.md).

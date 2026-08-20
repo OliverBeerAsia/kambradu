@@ -5,11 +5,14 @@
   font-weight: 900;
 }
 
+/* Inter ships here as a variable font: one file carries the whole 100-900 axis.
+   Declaring a single weight pinned every paragraph to bold. */
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/inter-700-latin.woff2") format("woff2");
+  src: url("/fonts/inter-variable-latin.woff2") format("woff2");
   font-display: swap;
-  font-weight: 700;
+  font-weight: 100 900;
+  font-style: normal;
 }
 
 :root {
@@ -19,7 +22,7 @@
   --ink: #26231f;
   --muted: #655f58;
   --line: #ded7ce;
-  --line-strong: #9f978d;
+  --line-strong: #8a8177;
   --action: #b63f29;
   --action-hover: #92301f;
   --action-soft: #fbe2d8;
@@ -27,6 +30,13 @@
   --success-soft: #e4f3eb;
   --danger: #a2262b;
   --focus: #1759bd;
+  --focus-on-dark: #fff1df;
+  /* Type scale. Nothing below --text-sm ships: 16px is the floor for any text a
+     learner has to read, and body copy sits at the 18px the contract asks for. */
+  --text-sm: 1rem;
+  --text-base: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
   --content: 68rem;
   --reading: 40rem;
   --radius: 18px;
@@ -50,7 +60,9 @@ body {
   background: var(--page);
   color: var(--ink);
   font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 18px;
+  font-size: var(--text-base);
+  font-weight: 400;
+  font-optical-sizing: auto;
   line-height: 1.55;
 }
 
@@ -162,7 +174,7 @@ h2 {
 
 .brand strong {
   font-family: Montserrat, Inter, sans-serif;
-  font-size: 1.25rem;
+  font-size: var(--text-lg);
 }
 
 .brand-mark {
@@ -213,7 +225,7 @@ h2 {
   padding: 0 16px;
   border-radius: 14px;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: var(--text-sm);
   text-decoration: none;
 }
 
@@ -238,7 +250,7 @@ h2 {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 14px;
   background: var(--surface);
   font-weight: 700;
@@ -273,7 +285,7 @@ h2 {
   min-height: 56px;
   align-items: center;
   justify-content: space-between;
-  font-size: 1.2rem;
+  font-size: var(--text-lg);
 }
 
 .drawer-heading button {
@@ -298,7 +310,7 @@ h2 {
   align-items: center;
   margin-top: 22px;
   color: var(--muted);
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
 }
 
 .site-footer {
@@ -311,7 +323,7 @@ h2 {
   padding: 16px 28px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.84rem;
+  font-size: var(--text-sm);
 }
 
 .bottom-nav {
@@ -405,7 +417,7 @@ main {
   justify-items: center;
   gap: 28px;
   padding: clamp(28px, 5vw, 52px);
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 26px;
   background: var(--surface);
   box-shadow: var(--shadow);
@@ -459,7 +471,7 @@ main {
   gap: 7px;
   margin: -8px 0 0;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: var(--text-sm);
 }
 
 .learn-page {
@@ -476,7 +488,7 @@ main {
   display: grid;
   gap: 24px;
   padding: 26px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: var(--radius);
   background: var(--surface);
 }
@@ -494,7 +506,7 @@ main {
 .lesson-card .evidence-label {
   margin: 0;
   color: var(--success);
-  font-size: 0.76rem;
+  font-size: var(--text-sm);
 }
 
 .lesson-card a {
@@ -514,7 +526,7 @@ main {
 .about-disclosures details,
 .source-note {
   margin-top: 24px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 14px;
   background: var(--surface);
 }
@@ -557,7 +569,7 @@ main {
 .dictionary-inner > p {
   margin: 16px 0 0;
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: var(--text-sm);
 }
 
 .practice-page {
@@ -571,7 +583,7 @@ main {
 .practice-card {
   width: 100%;
   padding: clamp(22px, 5vw, 42px);
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 24px;
   background: var(--surface);
   box-shadow: var(--shadow);
@@ -583,10 +595,14 @@ main {
   gap: 16px;
   align-items: center;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: var(--text-sm);
 }
 
 .practice-progress progress {
+  /* Without appearance: none the browser paints its own green bar and ignores
+     the value colour below, putting a colour outside the palette on screen. */
+  appearance: none;
+  -webkit-appearance: none;
   width: 100%;
   height: 10px;
   overflow: hidden;
@@ -599,7 +615,14 @@ main {
   background: var(--line);
 }
 
-.practice-progress progress::-webkit-progress-value,
+/* These two must stay in separate rules. A browser drops a whole rule when any
+   selector in the list is unknown to it, so pairing the WebKit and Gecko
+   pseudo-elements left Chrome painting its default green bar. */
+.practice-progress progress::-webkit-progress-value {
+  background: var(--action);
+  border-radius: 999px;
+}
+
 .practice-progress progress::-moz-progress-bar {
   background: var(--action);
   border-radius: 999px;
@@ -643,7 +666,7 @@ main {
   justify-self: center;
   margin-top: 0;
   color: var(--muted);
-  font-size: 0.86rem;
+  font-size: var(--text-sm);
 }
 
 .answer-grid,
@@ -694,7 +717,7 @@ main {
   padding: 14px 16px;
   border-radius: 13px;
   background: var(--action-soft);
-  font-size: 0.92rem;
+  font-size: var(--text-sm);
   text-align: center;
 }
 
@@ -714,7 +737,7 @@ main {
 .memory-form label {
   display: grid;
   gap: 7px;
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
 }
 
 input,
@@ -725,7 +748,7 @@ textarea {
   border: 1.5px solid var(--line-strong);
   border-radius: 14px;
   background: var(--surface);
-  font-size: 18px;
+  font-size: var(--text-base);
   line-height: 1.5;
 }
 
@@ -748,7 +771,7 @@ textarea {
   grid-column: 1 / -1;
   margin-bottom: 4px;
   color: var(--muted);
-  font-size: 0.88rem;
+  font-size: var(--text-sm);
 }
 
 .keep-card {
@@ -765,7 +788,7 @@ textarea {
 
 .keep-card strong {
   font-family: Montserrat, Inter, sans-serif;
-  font-size: 2rem;
+  font-size: var(--text-xl);
 }
 
 .keep-card small {
@@ -808,7 +831,7 @@ textarea {
   justify-content: space-between;
   gap: 20px;
   padding: 14px 18px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 15px;
   background: var(--surface);
   text-decoration: none;
@@ -826,18 +849,18 @@ textarea {
 
 .memory-link small {
   color: var(--success);
-  font-size: 0.72rem;
+  font-size: var(--text-sm);
 }
 
 .memory-link strong {
-  font-size: 1.05rem;
+  font-size: var(--text-base);
 }
 
 .memory-link > span:first-child > span,
 .memory-link > span:last-child {
   overflow: hidden;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: var(--text-sm);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -848,7 +871,7 @@ textarea {
   justify-items: center;
   gap: 10px;
   padding: 34px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: var(--radius);
   background: var(--surface);
   text-align: center;
@@ -889,7 +912,7 @@ textarea {
   margin: 0;
   padding: 0 18px 18px;
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: var(--text-sm);
 }
 
 .danger-button,
@@ -912,7 +935,7 @@ textarea {
 
 .memory-form small {
   color: var(--muted);
-  font-size: 0.78rem;
+  font-size: var(--text-sm);
 }
 
 .kind-switch {
@@ -1010,7 +1033,7 @@ textarea {
   }
 
   .brand strong {
-    font-size: 1.08rem;
+    font-size: var(--text-base);
   }
 
   .primary-nav {
@@ -1046,11 +1069,17 @@ textarea {
     gap: 2px;
     padding: 5px 2px;
     color: rgba(255, 255, 255, 0.74);
-    font-size: 0.72rem;
+    font-size: var(--text-sm);
   }
 
   .bottom-nav a.active {
     background: var(--action);
+  }
+
+  /* The page focus blue reads at 2.3:1 on this bar and 1.2:1 on an active tab. */
+  .bottom-nav a:focus-visible {
+    outline-color: var(--focus-on-dark);
+    outline-offset: -3px;
   }
 
   .site-footer {
@@ -1139,7 +1168,7 @@ textarea {
 
 @media (max-width: 390px) {
   body {
-    font-size: 17px;
+    font-size: var(--text-base);
   }
 
   .site-header .brand strong {
@@ -1184,4 +1213,160 @@ textarea {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
+}
+
+.theme-group {
+  margin-bottom: 34px;
+}
+
+.theme-group h2 {
+  margin-bottom: 12px;
+  font-size: var(--text-lg);
+}
+
+.word-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  list-style: none;
+}
+
+.word-list a {
+  display: flex;
+  min-height: 60px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.word-list a:hover {
+  background: var(--surface-warm);
+}
+
+.word-list a > span {
+  display: grid;
+  gap: 1px;
+}
+
+.word-list strong {
+  color: var(--ink);
+  font-size: var(--text-base);
+  font-weight: 700;
+}
+
+.word-list small {
+  font-size: var(--text-sm);
+}
+
+.attested-list {
+  display: grid;
+  width: 100%;
+  margin: 0;
+  gap: 6px;
+}
+
+.attested-list > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+
+.attested-list dt {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.attested-list dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.attested-example {
+  width: 100%;
+  margin: 0;
+  padding: 12px 16px;
+  border-left: 3px solid var(--action);
+  background: var(--surface-warm);
+}
+
+.attested-example p {
+  margin: 0;
+}
+
+.attested-example p:first-child {
+  font-weight: 700;
+}
+
+.attested-example p:last-child {
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.try-recorder {
+  display: grid;
+  width: 100%;
+  justify-items: center;
+  gap: 12px;
+}
+
+.try-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+.try-playback {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+
+.try-playback audio {
+  width: min(100%, 22rem);
+  height: 44px;
+}
+
+/* The printed dictionary underlines the stressed syllable. Echoing that mark
+   teaches the page as well as the word. The action-coloured, thicker rule keeps
+   it from reading as a link, since links here underline in the ink colour. */
+.stressed-syllable {
+  /* The source marks stress with the underline alone. Inheriting the weight
+     keeps it from reading lighter than the heading it sits inside. */
+  font-weight: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--action);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.stress-hint {
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+/* Other forms of the same word. Variation is ordinary in a language with no
+   agreed written standard, so this sits quietly beside the word rather than
+   reading as a warning about it. */
+.variant-note {
+  margin-top: 0.25rem;
+  color: var(--muted);
+}
+
+.variant-caveat {
+  display: block;
+  margin-top: 0.15rem;
+}
+
+/* The language chooser reuses the word list, with room for a second line. */
+.language-list .language-count {
+  color: var(--muted);
 }

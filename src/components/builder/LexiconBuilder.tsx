@@ -3,7 +3,7 @@
 import type { FormEvent } from "react";
 import { FileText, Plus } from "lucide-react";
 import { useState } from "react";
-import { starterBuilderEntries } from "@/data/kristang";
+import { starterBuilderEntries } from "@/data/languages/kristang";
 import { useLearningCycles } from "@/lib/hooks/use-learning-cycles";
 import { MEMORY_STORAGE_KEYS } from "@/lib/hooks/use-memories-data";
 import { useLocalStorageState } from "@/lib/hooks/use-local-storage-state";

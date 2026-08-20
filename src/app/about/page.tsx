@@ -1,13 +1,14 @@
 import { AppShell } from "@/components/layout/AppShell";
-import { dictionaryAttribution } from "@/data/kristang";
+import { dictionaryAttribution } from "@/data/languages/kristang";
+import { LANGUAGE_TAG } from "@/lib/language";
 
 export default function AboutPage() {
   return (
     <AppShell activePath="/about">
       <div className="page about-page">
         <header className="page-heading">
-          <h1>Learn something useful. Keep what matters.</h1>
-          <p>Kambradu is an independent, text-only Kristang learning prototype.</p>
+          <h1><span lang={LANGUAGE_TAG}>Kambradu</span> is Kristang for friend.</h1>
+          <p>An independent, text-only place to learn a few Kristang words and keep what they mean to you.</p>
         </header>
 
         <div className="about-disclosures">
@@ -19,7 +20,7 @@ export default function AboutPage() {
           </details>
           <details>
             <summary>Permissions</summary>
-            <p>This prototype is not community endorsed. New teaching material, recordings and sharing require named partners, permission and review.</p>
+            <p>Kambradu is not community endorsed. New teaching material, recordings and sharing require named partners, permission and review.</p>
           </details>
           <details>
             <summary>Project status</summary>

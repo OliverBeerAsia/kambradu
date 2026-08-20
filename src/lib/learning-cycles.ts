@@ -1,8 +1,8 @@
-import {
-  kristangCommunity,
-  lessonUnits,
-  practicePrompts
-} from "@/data/kristang";
+import { kristang, kristangCommunity } from "@/data/languages/kristang";
+import { lessonsFor, promptsFor } from "@/data/languages";
+
+const lessonUnits = lessonsFor(kristang);
+const practicePrompts = promptsFor(kristang);
 import type {
   AccessLevel,
   ContentType,

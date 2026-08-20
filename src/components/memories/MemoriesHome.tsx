@@ -4,6 +4,8 @@ import Link from "next/link";
 import { BookHeart, Download, FileUp, Plus, RotateCcw, Trash2 } from "lucide-react";
 import { useRef, useState, type ChangeEvent } from "react";
 import { useKambraduData } from "@/lib/hooks/use-kambradu-data";
+import { clearRecordings, exportRecordings, importRecordings } from "@/lib/recordings";
+import { LANGUAGE_TAG } from "@/lib/language";
 
 export function MemoriesHome() {
   const { data, sortedMemories, isHydrated, corruptRaw, saveStatus, clearAll, restore, discardCorruptData } = useKambraduData();
@@ -19,11 +21,19 @@ export function MemoriesHome() {
     URL.revokeObjectURL(link.href);
   }
 
+  async function exportBackup() {
+    // Recordings live in IndexedDB, so the backup is assembled asynchronously.
+    const payload = { ...data, recordings: await exportRecordings() };
+    download(`kambradu-backup-${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(payload, null, 2));
+  }
+
   async function restoreBackup(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
     try {
-      restore(await file.text());
+      const text = await file.text();
+      restore(text);
+      await importRecordings((JSON.parse(text) as { recordings?: unknown }).recordings);
       setRestoreError("");
     } catch (error) {
       setRestoreError(error instanceof Error ? error.message : "That backup could not be restored.");
@@ -62,7 +72,7 @@ export function MemoriesHome() {
               <Link className="memory-link" href={`/memories/${encodeURIComponent(memory.id)}`}>
                 <span>
                   <small>{memory.kind === "word" ? "Word" : "Note"}</small>
-                  <strong lang={memory.linkedEntryId ? "mcm" : undefined}>{memory.title}</strong>
+                  <strong lang={memory.linkedEntryId ? LANGUAGE_TAG : undefined}>{memory.title}</strong>
                   <span>{memory.detail}</span>
                 </span>
                 <span>Open</span>
@@ -82,19 +92,19 @@ export function MemoriesHome() {
         <details className="data-controls">
           <summary>Backup and browser data</summary>
           <div className="data-control-grid">
-            <button type="button" onClick={() => download(`kambradu-backup-${new Date().toISOString().slice(0, 10)}.json`, JSON.stringify(data, null, 2))}><Download size={18} aria-hidden="true" />Export backup</button>
+            <button type="button" onClick={exportBackup}><Download size={18} aria-hidden="true" />Export backup</button>
             <button type="button" onClick={() => restoreRef.current?.click()}><FileUp size={18} aria-hidden="true" />Restore backup</button>
             <input ref={restoreRef} className="sr-only" type="file" accept="application/json,.json" onChange={restoreBackup} />
             {!confirmClear ? <button className="danger-button" type="button" onClick={() => setConfirmClear(true)}><Trash2 size={18} aria-hidden="true" />Clear all</button> : (
               <div className="clear-confirm">
-                <span>Clear every memory and review?</span>
-                <button className="danger-button" type="button" onClick={() => { clearAll(); setConfirmClear(false); }}>Yes, clear all</button>
+                <span>Clear every memory, review and recording?</span>
+                <button className="danger-button" type="button" onClick={() => { clearAll(); void clearRecordings(); setConfirmClear(false); }}>Yes, clear all</button>
                 <button type="button" onClick={() => setConfirmClear(false)}>Cancel</button>
               </div>
             )}
           </div>
           {restoreError ? <p className="error-notice" role="alert">{restoreError}</p> : null}
-          <p><RotateCcw size={15} aria-hidden="true" />Backups include memories, reviews and unfinished practice.</p>
+          <p><RotateCcw size={15} aria-hidden="true" />Backups include memories, reviews, recordings and unfinished practice.</p>
         </details>
       ) : null}
     </div>

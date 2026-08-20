@@ -6,7 +6,7 @@ export default function NotFound() {
     <AppShell>
       <div className="page completion-page">
         <h1>This page is not available.</h1>
-        <p>Return to the public Kristang learning prototype.</p>
+        <p>Your memories are still saved in this browser.</p>
         <Link className="primary-action" href="/">Go to Today</Link>
       </div>
     </AppShell>

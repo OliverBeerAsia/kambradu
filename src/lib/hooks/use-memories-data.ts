@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
-import { starterBuilderEntries, starterJournalEntries, starterSavedWords } from "@/data/kristang";
+import { starterBuilderEntries, starterJournalEntries, starterSavedWords } from "@/data/languages/kristang";
 import { useLocalStorageState } from "@/lib/hooks/use-local-storage-state";
 import type { JournalEntry, PersonalLexiconEntry, SavedWord } from "@/types/kambradu";
 

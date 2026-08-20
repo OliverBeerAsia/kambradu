@@ -18,8 +18,6 @@ export function AppShell({
 }: {
   children: ReactNode;
   activePath?: string;
-  authSlot?: ReactNode;
-  className?: string;
   immersive?: boolean;
 }) {
   const [drawerOpen, setDrawerOpen] = useState(false);

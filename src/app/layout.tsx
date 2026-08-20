@@ -6,10 +6,10 @@ export const metadata: Metadata = {
     default: "Kambradu",
     template: "%s | Kambradu"
   },
-  description: "Learn a Kristang word. Connect it to your life. Keep what matters.",
+  description: "Learn something useful. Connect it to a person, place or memory. Keep what matters.",
   icons: {
     icon: "/icon.svg",
-    apple: "/icon.svg"
+    apple: "/apple-touch-icon.png"
   },
   other: {
     "kambradu-release": process.env.KAMBRADU_RELEASE_SHA ?? "development",
@@ -27,6 +27,15 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          as="font"
+          crossOrigin=""
+          href="/fonts/inter-variable-latin.woff2"
+          rel="preload"
+          type="font/woff2"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

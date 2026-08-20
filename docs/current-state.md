@@ -1,6 +1,6 @@
 # Current state
 
-Updated: 2 August 2026
+Updated: 19 August 2026
 
 ## Source baseline
 
@@ -8,7 +8,7 @@ Updated: 2 August 2026
 - Baseline commit and tag: `d0bc0ad18b4ce222b09b96ef4e04fc019a67ee5d`, `v0.1.0`
 - Release candidate: `v0.2.0`, based on that commit.
 - Type-check, unit tests and a production build pass locally.
-- Browser smoke tests could not run in this environment because local port binding was denied.
+- Browser smoke tests now run locally: 14 Playwright tests pass against the production server.
 
 ## Production truth
 
@@ -19,7 +19,7 @@ Do not infer that the local build is deployed. Do not promote it until the live 
 ## Public routes in the local production build
 
 - `/`: Today
-- `/learn`: the two text learning choices and collapsed source details
+- `/learn`: dictionary-attested words grouped by theme, with collapsed source details
 - `/practice`: lesson-scoped Meet, Meaning, Recall, Connect and Keep flow
 - `/memories`: browser-saved memories and data controls
 - `/memories/new`: add a word or note
@@ -37,7 +37,7 @@ The public prototype uses one versioned browser record: `kambradu-local-data-v2`
 
 It contains memories, reviews and the unfinished practice session. Fresh browsers start empty. Exact historical demo fixtures are removed during migration, while edited or user-created records are retained. Malformed current data is left in place and offered for download before a learner can start fresh.
 
-There is no account, cloud sync, upload, audio, photograph, sharing or Firestore learner persistence.
+There is no account, cloud sync, upload, community audio, photograph, sharing or Firestore learner persistence.
 
 ## Content
 

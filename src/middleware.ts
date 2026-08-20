@@ -38,14 +38,8 @@ export function middleware(request: NextRequest) {
   });
 }
 
+// Only the routes this middleware actually guards. Learner routes ran through
+// it for nothing, and the list did not match protectedRoutes above.
 export const config = {
-  matcher: [
-    "/practice/:path*",
-    "/learn/:path*",
-    "/journal/:path*",
-    "/builder/:path*",
-    "/saved/:path*",
-    "/contribute/:path*",
-    "/steward/:path*"
-  ]
+  matcher: ["/contribute/:path*", "/steward/:path*"]
 };

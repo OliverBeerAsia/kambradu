@@ -24,11 +24,15 @@ export type LocalReview = {
   reviewedAt: string;
   nextReviewAt: string;
   intervalDays: number;
+  /** Per-item scheduling state. Optional so older saved reviews still load. */
+  ease?: number;
+  reps?: number;
+  lapses?: number;
 };
 
 export type LocalPracticeSession = {
   lessonId: string;
-  step: "meet" | "meaning" | "recall" | "connect" | "keep";
+  step: "meet" | "meaning" | "recall" | "try" | "connect" | "keep";
   startedAt: string;
   meaningChoice?: string;
   recall?: string;
@@ -107,22 +111,27 @@ export function parseImportedLocalData(raw: string): LocalData {
   return parsed;
 }
 
-export function findLatestReview(reviews: LocalReview[], lessonId: string) {
+/**
+ * Scheduling state belongs to the word, not the lesson that introduced it.
+ * The lesson id is still accepted so older saved reviews keep matching.
+ */
+export function findLatestReview(reviews: LocalReview[], entryId: string) {
   return reviews
-    .filter((review) => review.lessonId === lessonId)
+    .filter((review) => review.lexicalEntryId === entryId || review.lessonId === entryId)
     .sort((a, b) => Date.parse(b.reviewedAt) - Date.parse(a.reviewedAt))[0];
 }
 
 export function findOneDueReview(reviews: LocalReview[], now = new Date()) {
-  const latestByLesson = new Map<string, LocalReview>();
+  const latestByEntry = new Map<string, LocalReview>();
   for (const review of reviews) {
-    const latest = latestByLesson.get(review.lessonId);
+    const key = review.lexicalEntryId || review.lessonId;
+    const latest = latestByEntry.get(key);
     if (!latest || Date.parse(review.reviewedAt) > Date.parse(latest.reviewedAt)) {
-      latestByLesson.set(review.lessonId, review);
+      latestByEntry.set(key, review);
     }
   }
 
-  return [...latestByLesson.values()]
+  return [...latestByEntry.values()]
     .filter((review) => Date.parse(review.nextReviewAt) <= now.getTime())
     .sort((a, b) => Date.parse(a.nextReviewAt) - Date.parse(b.nextReviewAt))[0];
 }
@@ -197,12 +206,15 @@ function isLocalReview(value: unknown): value is LocalReview {
   return typeof value.id === "string" && typeof value.lessonId === "string" && typeof value.promptId === "string" &&
     typeof value.lexicalEntryId === "string" && ["again", "almost", "got-it"].includes(String(value.confidence)) &&
     typeof value.reflection === "string" && isIsoDate(value.reviewedAt) && isIsoDate(value.nextReviewAt) &&
-    typeof value.intervalDays === "number";
+    typeof value.intervalDays === "number" &&
+    (value.ease === undefined || typeof value.ease === "number") &&
+    (value.reps === undefined || typeof value.reps === "number") &&
+    (value.lapses === undefined || typeof value.lapses === "number");
 }
 
 function isLocalPracticeSession(value: unknown): value is LocalPracticeSession {
   if (!isRecord(value)) return false;
-  return typeof value.lessonId === "string" && ["meet", "meaning", "recall", "connect", "keep"].includes(String(value.step)) &&
+  return typeof value.lessonId === "string" && ["meet", "meaning", "recall", "try", "connect", "keep"].includes(String(value.step)) &&
     isIsoDate(value.startedAt) && (value.meaningChoice === undefined || typeof value.meaningChoice === "string") &&
     (value.recall === undefined || typeof value.recall === "string") &&
     (value.recallChecked === undefined || typeof value.recallChecked === "boolean") &&
