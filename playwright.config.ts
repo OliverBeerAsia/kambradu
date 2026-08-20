@@ -14,7 +14,8 @@ export default defineConfig({
     ...devices["Desktop Chrome"]
   },
   webServer: {
-    command: "npm run start -- --hostname 127.0.0.1 --port 3217",
+    // Serve the exported files, not a Next.js server. Production has no server.
+    command: "node scripts/serve-static.mjs 3217",
     url: "http://127.0.0.1:3217/status",
     reuseExistingServer: false,
     timeout: 120_000

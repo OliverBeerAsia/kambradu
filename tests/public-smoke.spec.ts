@@ -143,11 +143,12 @@ test("quota failure keeps the learner's entry on screen", async ({ page }) => {
   await expect(page.getByLabel("Short title")).toHaveValue("Do not lose this");
 });
 
-test("advanced public routes are closed in the production server", async ({ page }) => {
+test("the contributor and steward screens are not in the build at all", async ({ page }) => {
+  // The site ships as static files, so there is no server to gate a route on.
+  // A page that should not be public therefore has to be absent, not hidden.
   for (const route of ["/builder", "/contribute", "/steward", "/sign-in"]) {
     const response = await page.goto(route);
     expect(response?.status(), route).toBe(404);
-    await expect(page.getByRole("heading", { name: "This page is not available." })).toBeVisible();
   }
 });
 
@@ -156,8 +157,8 @@ test("release status exposes the build fingerprint", async ({ request }) => {
   expect(response.ok()).toBeTruthy();
   const status = await response.json();
   expect(status.release).toMatch(/^[a-f0-9]{40}$/);
-  expect(status.boundary).toBe("Kristang-only, web-only, text-only, local-first");
-  expect(response.headers()["x-kambradu-release"]).toBe(status.release);
+  // The boundary is a claim about the product, so it has to stay true of it.
+  expect(status.boundary).toBe("web-only, local-first, no accounts, no uploads");
 });
 
 test("core screens reflow with large controls across target widths", async ({ page }) => {
