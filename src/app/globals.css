@@ -1402,3 +1402,53 @@ textarea {
 .language-list .language-count {
   color: var(--muted);
 }
+
+/* The story page: one reading column, sections with room between them. */
+.story-page {
+  max-width: 48rem;
+}
+
+.story-section {
+  margin-bottom: 36px;
+}
+
+.story-section h2 {
+  margin-bottom: 10px;
+}
+
+.story-section p {
+  max-width: 62ch;
+  margin: 0 0 12px;
+}
+
+.story-word {
+  display: grid;
+  gap: 2px;
+  margin-bottom: 18px !important;
+  padding: 18px 22px;
+  border-left: 3px solid var(--action);
+  background: var(--surface-warm);
+}
+
+.story-word strong {
+  font-family: Montserrat, Inter, sans-serif;
+  font-size: var(--text-xl);
+  font-weight: 900;
+}
+
+.story-word span,
+.story-word small {
+  color: var(--muted);
+}
+
+.story-word small {
+  font-size: var(--text-sm);
+}
+
+.story-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  margin-top: 8px;
+}

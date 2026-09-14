@@ -23,6 +23,11 @@ export default function AboutPage() {
             <p>Kambradu is not community endorsed. New teaching material, recordings and sharing require named partners, permission and review.</p>
           </details>
           <details>
+            <summary>Why Kambradu exists</summary>
+            <p>A greeting found in Melaka in 2013, and nobody to say it to.</p>
+            <a href="/story">Read the story</a>
+          </details>
+          <details>
             <summary>Project status</summary>
             <p>Two dictionary-listed words, written recall and browser-saved memories work now. Audio, accounts, sync, uploads and sharing do not.</p>
           </details>

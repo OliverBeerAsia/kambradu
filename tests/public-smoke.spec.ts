@@ -221,7 +221,7 @@ test("the printed stress mark is shown, and never invented", async ({ page }) =>
 });
 
 /** Learner-facing screens. Dev-only routes are closed in production. */
-const LEARNER_ROUTES = ["/", "/learn", "/learn/kristang", "/learn/malay", "/memories", "/about", "/practice?lesson=sabang"];
+const LEARNER_ROUTES = ["/", "/learn", "/learn/kristang", "/learn/malay", "/memories", "/about", "/story", "/practice?lesson=sabang"];
 
 test("learner copy stays plain and free of generated filler", async ({ page }) => {
   // Machine-written padding, marketing inflation and typographic tells.
