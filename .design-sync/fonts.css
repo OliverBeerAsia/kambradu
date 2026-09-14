@@ -14,3 +14,10 @@
   font-weight: 100 900;
   font-style: normal;
 }
+
+/* The app sets these on <html> through next/font. The design bundle has no
+   Next runtime, so the same names point at the faces declared above. */
+:root {
+  --font-inter: Inter;
+  --font-montserrat: Montserrat;
+}

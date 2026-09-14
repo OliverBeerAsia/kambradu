@@ -11,6 +11,13 @@ const nextConfig: NextConfig = {
    * slow connection.
    */
   output: "export",
+  /**
+   * GitHub Pages serves a project site under /<repo>, so the build takes an
+   * optional base path from the environment. Local builds and the smoke
+   * suite run at the root, unchanged. Anything that names an asset by a
+   * root-absolute path goes through withBasePath() in src/lib/base-path.ts.
+   */
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || undefined,
   outputFileTracingRoot: process.cwd(),
   reactStrictMode: true
 };
