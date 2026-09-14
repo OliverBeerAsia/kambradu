@@ -1,0 +1,16 @@
+/* The app serves these from /fonts at the site root. The design bundle ships
+   them beside its stylesheet, so the paths here are relative to this file. */
+@font-face {
+  font-family: "Montserrat";
+  src: url("../public/fonts/montserrat-900-latin.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../public/fonts/inter-variable-latin.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 100 900;
+  font-style: normal;
+}
