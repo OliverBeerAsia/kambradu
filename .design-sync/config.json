@@ -1,0 +1,49 @@
+{
+  "projectId": "2c83bfc6-ed70-49c3-ae3b-003548d8cbef",
+  "shape": "package",
+  "pkg": "kambradu",
+  "globalName": "Kambradu",
+  "srcDir": "src/components",
+  "tsconfig": ".design-sync/tsconfig.json",
+  "cssEntry": "src/app/globals.css",
+  "extraFonts": [
+    ".design-sync/fonts.css"
+  ],
+  "componentSrcMap": {
+    "BrandMark": "src/components/ui/BrandMark.tsx",
+    "Headword": "src/components/ui/Headword.tsx",
+    "HegelCompanion": "src/components/ui/HegelCompanion.tsx",
+    "VariantNote": "src/components/ui/VariantNote.tsx",
+    "AppShell": "src/components/layout/AppShell.tsx",
+    "LanguageChooser": null,
+    "LearnHome": null,
+    "MemoriesHome": null,
+    "MemoryCapture": null,
+    "MemoryEditor": null,
+    "PracticeSession": null,
+    "TryRecorder": null,
+    "TodayHome": null
+  },
+  "guidelinesGlob": [
+    "docs/product-principles.md",
+    "docs/content-policy.md"
+  ],
+  "dtsPropsFor": {
+    "BrandMark": "",
+    "Headword": "/** The word as written in the source. */\n  form: string;\n  /** Character range of the stressed syllable, as underlined in the source. Omit when the source marks nothing. */\n  stress?: { start: number; end: number };\n  /** BCP 47 tag of the language, e.g. \"mcm\" for Kristang. */\n  lang: string;",
+    "HegelCompanion": "/** The heading and supporting sentence Hegel sits beside. */\n  children: React.ReactNode;\n  /** Smaller portrait for completion screens. */\n  compact?: boolean;\n  /** Image for the portrait. In a design, pass `window.Kambradu.hegelPortrait`; the app's default path does not resolve outside the app. */\n  portraitSrc?: string;",
+    "VariantNote": "/** Other attested forms of the word. \"spelling\" is the same sound written differently; \"form\" sounds different. None is ranked. */\n  variants: Array<{ form: string; orthography: string; kind: \"spelling\" | \"form\"; note?: string }>;\n  /** BCP 47 tag of the language, e.g. \"mcm\" for Kristang. */\n  lang: string;",
+    "AppShell": "/** The screen's content. */\n  children: React.ReactNode;\n  /** Path of the current screen, used to mark the active tab: \"/\", \"/learn\" or \"/memories\". */\n  activePath?: string;\n  /** Practice mode: hides navigation and shows a quiet \"Leave practice\" link. */\n  immersive?: boolean;"
+  },
+  "overrides": {
+    "AppShell": {
+      "cardMode": "single",
+      "primaryStory": "LearnActive",
+      "viewport": "1024x560"
+    }
+  },
+  "extraEntries": [
+    "./.design-sync/shims/hegel-portrait.ts"
+  ],
+  "readmeHeader": ".design-sync/conventions.md"
+}
