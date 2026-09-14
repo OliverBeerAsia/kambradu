@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { withBasePath } from "@/lib/base-path";
 
 /**
  * Hegel beside a heading and one supporting sentence.
@@ -11,7 +12,7 @@ import type { ReactNode } from "react";
 export function HegelCompanion({
   children,
   compact = false,
-  portraitSrc = "/hegel.png"
+  portraitSrc = withBasePath("/hegel.png")
 }: {
   children: ReactNode;
   compact?: boolean;

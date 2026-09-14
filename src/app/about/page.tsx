@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { AppShell } from "@/components/layout/AppShell";
 import { dictionaryAttribution } from "@/data/languages/kristang";
 import { LANGUAGE_TAG } from "@/lib/language";
@@ -25,7 +26,7 @@ export default function AboutPage() {
           <details>
             <summary>Why Kambradu exists</summary>
             <p>A greeting found in Melaka in 2013, and nobody to say it to.</p>
-            <a href="/story">Read the story</a>
+            <Link href="/story">Read the story</Link>
           </details>
           <details>
             <summary>Project status</summary>
