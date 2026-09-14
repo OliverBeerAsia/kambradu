@@ -1,12 +1,19 @@
 name: Pages
 
-# Publish the static export to GitHub Pages when a release is published, or
-# on demand. The site is served under /kambradu, so the build takes that as
-# its base path; the CI workflow keeps testing the root build.
+# Publish the static export to GitHub Pages after each successful Release
+# run, or on demand. A release created by the Release workflow's own token
+# raises no `release` event (GitHub's guard against workflow loops), so this
+# chains off the Release run the same way Release chains off CI. The site is
+# served under /kambradu, so the build takes that as its base path; the CI
+# workflow keeps testing the root build.
 on:
-  release:
+  workflow_run:
+    workflows:
+      - Release
     types:
-      - published
+      - completed
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -20,9 +27,12 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: 22
